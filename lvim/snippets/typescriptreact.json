@@ -1,0 +1,25 @@
+{
+  "React Context": {
+    "prefix": ["prov", "provider"],
+    "body": [
+      "import { createContext, useContext } from 'react'",
+      "",
+      "interface ${1:ContextName}Context {",
+      "  name?: string",
+      "}",
+      "",
+      "export const Context = createContext<${1:ContextName}Context | undefined>(",
+      "  {} as ${1:ContextName}Context",
+      ")",
+      "export const ${2:ProviderName}Provider = Context.Provider",
+      "export const use${3:ContextName} = (): ${1:ContextName}Context | undefined =>",
+      "  useContext(Context)",
+      "",
+      "if (process.env.NODE_ENV !== 'production') {",
+      "  Context.displayName = '${2:ProviderName}'",
+      "}",
+      ""
+    ],
+    "description": "Log output to console"
+  }
+}

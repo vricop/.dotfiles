@@ -1,0 +1,10 @@
+{
+  "name": "nvim-snippets",
+  "author": "Víctor Rico",
+  "engines": {
+    "vscode": "^1.11.0"
+  },
+  "contributes": {
+    "snippets": []
+  }
+}
