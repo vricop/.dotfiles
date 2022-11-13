@@ -69,7 +69,6 @@ lvim.builtin.lualine.sections.lualine_x = {
 }
 lvim.builtin.alpha.active = true
 lvim.builtin.alpha.mode = "dashboard"
--- lvim.builtin.notify.active = true
 lvim.builtin.terminal.active = true -- Activate terminal plugin
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.setup.renderer.icons.git_placement = "after"
