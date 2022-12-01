@@ -1,25 +1,50 @@
+--[[
+## Sources
+
+* Original blog post: https://nuxsh.is-a.dev/blog/custom-nvim-statusline.html
+* Other post references: https://elianiva.my.id/post/neovim-lua-statusline/
+* .dotfile github page from author: https://github.com/nuxshed/dotfiles/tree/main/config/nvim/lua
+--]]
+
 local modes = {
-  ["n"] = " NORMAL ",
-  ["no"] = " NORMAL ",
-  ["v"] = " VISUAL ",
-  ["V"] = " VISUAL LINE ",
-  [""] = " VISUAL BLOCK ",
-  ["s"] = " SELECT ",
-  ["S"] = " SELECT LINE ",
-  [""] = " SELECT BLOCK ",
-  ["i"] = " INSERT ",
-  ["ic"] = " INSERT ",
-  ["R"] = " REPLACE ",
-  ["Rv"] = " VISUAL REPLACE ",
-  ["c"] = " COMMAND ",
-  ["cv"] = " VIM EX ",
-  ["ce"] = " EX ",
-  ["r"] = " PROMPT ",
-  ["rm"] = " MOAR ",
-  ["r?"] = " CONFIRM ",
-  ["!"] = " SHELL ",
-  ["t"] = " TERMINAL ",
+  ["n"] = "NORMAL",
+  ["no"] = "NORMAL",
+  ["v"] = "VISUAL",
+  ["V"] = "VISUAL LINE",
+  [""] = "VISUAL BLOCK",
+  ["s"] = "SELECT",
+  ["S"] = "SELECT LINE",
+  [""] = "SELECT BLOCK",
+  ["i"] = "INSERT",
+  ["ic"] = "INSERT",
+  ["R"] = "REPLACE",
+  ["Rv"] = "VISUAL REPLACE",
+  ["c"] = "COMMAND",
+  ["cv"] = "VIM EX",
+  ["ce"] = "EX",
+  ["r"] = "PROMPT",
+  ["rm"] = "MOAR",
+  ["r?"] = "CONFIRM",
+  ["!"] = "SHELL",
+  ["t"] = "TERMINAL",
 }
+
+local colors = {
+  { "StatusLineAccent", { fg = "#333333", bg = "#1a1b26", bold = true } },
+  { "StatusLineInsertAccent", { fg = "#333333", bg = "greenyellow", bold = true } },
+  { "StatusLineNormalAccent", { fg = "#333333", bg = "skyblue", bold = true } },
+  { "StatusLineVisualAccent", { fg = "#333333", bg = "magenta", bold = true } },
+  { "StatusLineVisualBlockAccent", { fg = "#333333", bg = "orange", bold = true } },
+  { "StatusLineReplaceAccent", { fg = "#333333", bg = "#db4b4b", bold = true } },
+  { "StatusLineCmdLineAccent", { fg = "#333333", bg = "#e0af68", bold = true } },
+  { "StatuslineTerminalAccent", { fg = "#333333", bg = "#e0af68", bold = true } },
+  { "StatusLineExtra", { fg = "#565f89", bold = true } },
+  { "StatusLineNC", { bg = "none" } },
+}
+
+for _, color in pairs(colors) do
+  vim.api.nvim_set_hl(0, color[1], color[2])
+end
 
 local function mode()
   local current_mode = vim.api.nvim_get_mode().mode
@@ -29,12 +54,15 @@ end
 local function update_mode_colors()
   local current_mode = vim.api.nvim_get_mode().mode
   local mode_color = "%#StatusLineAccent#"
+
   if current_mode == "n" then
-    mode_color = "%#StatuslineAccent#"
+    mode_color = "%#StatuslineNormalAccent#"
   elseif current_mode == "i" or current_mode == "ic" then
     mode_color = "%#StatuslineInsertAccent#"
   elseif current_mode == "v" or current_mode == "V" or current_mode == "" then
     mode_color = "%#StatuslineVisualAccent#"
+  elseif current_mode == "" then
+    mode_color = "%#StatuslineVisualBlockAccent#"
   elseif current_mode == "R" then
     mode_color = "%#StatuslineReplaceAccent#"
   elseif current_mode == "c" then
@@ -42,6 +70,7 @@ local function update_mode_colors()
   elseif current_mode == "t" then
     mode_color = "%#StatuslineTerminalAccent#"
   end
+
   return mode_color
 end
 
@@ -97,48 +126,31 @@ local function lsp()
 end
 
 local function filetype()
-  return string.format(" %s ", vim.bo.filetype):upper()
+  return string.format(" LSP: %s  ", vim.bo.filetype)
 end
 
 local function lineinfo()
   if vim.bo.filetype == "alpha" then
     return ""
   end
-  return " %P %l:%c "
+  return "%l:%c (%P) "
 end
 
-Statusline = {}
-
-Statusline.active = function()
+function statusline()
   return table.concat {
     "%#Statusline#",
     update_mode_colors(),
     mode(),
-    "%#Normal# ",
+    "%#Normal#",
     filepath(),
     filename(),
+    "%m",
     "%#Normal#",
     lsp(),
-    "%=%#StatusLineExtra#",
+    "%=%#Normal#",
     filetype(),
     lineinfo(),
   }
 end
 
-function Statusline.inactive()
-  return " %F"
-end
-
-function Statusline.short()
-  return "%#StatusLineNC#   NvimTree"
-end
-
--- TODO: update this to the new API for augroup / aucmd
-vim.cmd[[
-augroup Statusline
-au!
-au WinEnter,BufEnter * setlocal statusline=%!v:lua.Statusline.active()
-au WinLeave,BufLeave * setlocal statusline=%!v:lua.Statusline.inactive()
-au WinEnter,BufEnter,FileType NvimTree setlocal statusline=%!v:lua.Statusline.short()
-augroup END
-]]
+vim.o.statusline = "%!luaeval('statusline()')"

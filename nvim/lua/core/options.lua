@@ -5,6 +5,8 @@ Inspired in AstroNvim, LunarVim, NVChand and others
 
 local options = {
   opt = {
+    -- TODO: read docs to propertly set tabline
+    -- tabline = "%#TablineSel# %t %m %#TablineSel#%#Normal#",
     backup = false, -- Creates a backup file
     clipboard = "unnamedplus", -- Allows neovim to access the system clipboard
     cmdheight = 1, -- More space in the neovim command line for displaying messages
@@ -35,14 +37,12 @@ local options = {
     spell = true, -- Enable spelling
     splitbelow = true, -- Force all horizontal splits to go below current window
     splitright = true, -- Force all vertical splits to go to the right of current window
-    swapfile = false,
     swapfile = false, -- Creates a swapfile
     tabstop = 2, -- Insert 2 spaces for a tab
     termguicolors = true, -- Set term gui colors (most terminals support this)
     timeoutlen = 1000, -- Time to wait for a mapped sequence to complete (in milliseconds)
     undofile = true, -- Enable persistent undo
     updatetime = 300, -- Faster completion (4000ms default)
-    winbar = "%=%m %t %l/%L%=", -- Show file name in the top right with status symbol next to it
     wrap = false, -- Display lines as one long line
     writebackup = false, -- If a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
   },
@@ -50,7 +50,7 @@ local options = {
   g = {
     mapleader = " ", -- Set leader key
     netrw_banner = 0, -- Remove header for netrw file explorer
-    netrw_liststyle = 3, -- Show tree-like list style 
+    netrw_liststyle = 3, -- Show tree-like list style
     netrw_browser_split = 4,
     netrw_winsize = 20, -- Explorer width
     netrw_altv = 1,
