@@ -5,15 +5,12 @@ Inspired in AstroNvim, LunarVim, NVChand and others
 
 local options = {
   opt = {
-    -- TODO: read docs to propertly set tabline
-    -- tabline = "%#TablineSel# %t %m %#TablineSel#%#Normal#",
     backup = false, -- Creates a backup file
     clipboard = "unnamedplus", -- Allows neovim to access the system clipboard
     cmdheight = 1, -- More space in the neovim command line for displaying messages
     colorcolumn = "80", -- Show vertical column line
     completeopt = { "menu", "menuone", "noselect" }, -- Mostly just for cmp
     conceallevel = 0, -- So that `` is visible in markdown files
-    cursorline = true,
     cursorline = true, -- Highlight the current line
     expandtab = true, -- Convert tabs to spaces
     fileencoding = "utf-8", -- The encoding written to a file
@@ -26,7 +23,7 @@ local options = {
     numberwidth = 2, -- Set number column width to 2 {default 4}
     pumheight = 10, -- Pop up menu height
     relativenumber = true, -- Set relative numbered lines
-    scrolloff = 8, -- Is one of my fav
+    scrolloff = 8,
     shiftwidth = 2, -- The number of spaces inserted for each indentation
     showmode = false, -- We don't need to see things like -- INSERT -- anymore
     showtabline = 2, -- Always show tabs
@@ -35,6 +32,7 @@ local options = {
     smartcase = true, -- Smart case
     smartindent = true, -- Make indenting smarter again
     spell = true, -- Enable spelling
+    spelllang = { 'en', 'fr', 'ca', 'it' }, -- Install & recognise these languages
     splitbelow = true, -- Force all horizontal splits to go below current window
     splitright = true, -- Force all vertical splits to go to the right of current window
     swapfile = false, -- Creates a swapfile
