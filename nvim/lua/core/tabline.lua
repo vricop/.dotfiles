@@ -2,7 +2,16 @@
 Source: https://github.com/alvarosevilla95/luatab.nvim/blob/master/lua/luatab/init.lua#L26
 --]]
 
-function my_tabline()
+function tablabel(buffer_number)
+  local buffer_list = vim.fn.tabpagebuflist(buffer_number)
+  local win_number = vim.fn.tabpagewinnr(buffer_number)
+  local file = vim.fn.bufname(buffer_list[win_number])
+
+  -- Show only filename
+  return vim.fn.fnamemodify(file, ':t')
+end
+
+function tabline()
   local string = ""
 
   for i = 1, vim.fn.tabpagenr('$') do
@@ -12,22 +21,10 @@ function my_tabline()
       string = string.format("%s%%#TabLine#", string)
     end
 
-    string = string.format("%s %s ", string, my_tablabel(i))
+    string = string.format("%s %s ", string, tablabel(i))
   end
   string = string.format("%s%%#TabLineFill#%%", string)
   return string
 end
 
-function my_tablabel(n)
-  local buffer_list = vim.fn.tabpagebuflist(n)
-  local win_number = vim.fn.tabpagewinnr(n)
-  local file = vim.fn.bufname(buffer_list[win_number])
-  
-  -- Show only filename
-  return vim.fn.fnamemodify(file, ':t')
-end
-
-print(my_tabline())
-
-vim.o.tabline = "%!luaeval('my_tabline()')"
-
+vim.o.tabline = "%!luaeval('tabline()')"
