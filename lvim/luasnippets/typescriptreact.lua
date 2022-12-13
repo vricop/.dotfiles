@@ -37,6 +37,12 @@ return {
     i(1),
     i(2, "[]")
   })),
+  s("ut", fmt([[
+    const {{ t }} = useTranslation{}('{}')
+  ]], {
+    i(0),
+    i(1)
+  })),
   s("obj", fmt([[
     const {} = {{
       {}
