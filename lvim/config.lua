@@ -126,13 +126,12 @@ lvim.plugins = {
   { "sainnhe/everforest" },
   -- Cool diagnostics
   { "folke/trouble.nvim", cmd = "TroubleToggle" },
-  -- TODO: Typescript tools not working
-  -- {
-  --   "jose-elias-alvarez/typescript.nvim",
-  --   config = function()
-  --     require('typescript').setup({})
-  --   end
-  -- },
+  {
+    "jose-elias-alvarez/typescript.nvim",
+    config = function()
+      require("typescript").setup({})
+    end
+  },
   -- Show css colors
   {
     "norcalli/nvim-colorizer.lua",
