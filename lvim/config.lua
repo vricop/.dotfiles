@@ -3,6 +3,9 @@ lvim.format_on_save = true
 lvim.colorscheme = "tokyonight-night"
 vim.opt.relativenumber = true
 vim.opt.colorcolumn = { 80 }
+vim.opt.termguicolors = true
+vim.opt.spell = true
+vim.opt.spelllang = { 'en', 'fr', 'ca', 'it', 'de', 'pt' }
 
 lvim.leader = "space"
 lvim.keys.normal_mode["<c-s>"] = ":w<cr>"
