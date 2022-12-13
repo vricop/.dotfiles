@@ -1,5 +1,5 @@
 --[[
-## Sources
+SOURCES
 
 * Original blog post: https://nuxsh.is-a.dev/blog/custom-nvim-statusline.html
 * Other post references: https://elianiva.my.id/post/neovim-lua-statusline/
@@ -39,7 +39,6 @@ local colors = {
   { "StatusLineCmdLineAccent", { fg = "#333333", bg = "#e0af68", bold = true } },
   { "StatuslineTerminalAccent", { fg = "#333333", bg = "#e0af68", bold = true } },
   { "StatusLineExtra", { fg = "#565f89", bold = true } },
-  { "StatusLineNC", { bg = "none" } },
 }
 
 for _, color in pairs(colors) do
@@ -136,7 +135,7 @@ local function lineinfo()
   return "%l:%c (%P) "
 end
 
-function statusline()
+function Statusline()
   return table.concat {
     "%#Statusline#",
     update_mode_colors(),
@@ -153,4 +152,4 @@ function statusline()
   }
 end
 
-vim.o.statusline = "%!luaeval('statusline()')"
+vim.o.statusline = "%!luaeval('Statusline()')"
