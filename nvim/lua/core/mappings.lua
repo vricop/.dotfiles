@@ -1,19 +1,18 @@
 local keymap = vim.keymap.set
-
 -- Stop highlighting
-keymap("", "<Leader>h", ":nohlsearch<cr>", { silent = true }) -- Stop highlighting
-keymap("", "<C-s>", ":w<cr>", { silent = true })
+keymap("n", "<Leader>h", ":nohlsearch<cr>", { silent = true }) -- Stop highlighting
+keymap("n", "<C-s>", ":w<cr>", { silent = true }) -- Save file
 
 -- Tab navigation
-keymap("n", "<S-h>", "<Esc>:tabprevious<cr>")
-keymap("n", "<S-l>", "<Esc>:tabnext<cr>")
+keymap("n", "<S-h>", "<Esc>:tabprevious<cr>", { silent = true })
+keymap("n", "<S-l>", "<Esc>:tabnext<cr>", { silent = true })
 
 -- Better window navigation
-keymap("", "<C-h>", "<C-w>h")
-keymap("", "<C-j>", "<C-w>j")
-keymap("", "<C-k>", "<C-w>k")
-keymap("", "<C-l>", "<C-w>l")
+keymap("n", "<C-h>", "<C-w>h")
+keymap("n", "<C-j>", "<C-w>j")
+keymap("n", "<C-k>", "<C-w>k")
+keymap("n", "<C-l>", "<C-w>l")
+keymap("n", "<Leader>c", ":bdelete<cr>", { silent = true })
 
--- Netwr 
-keymap("", "<Leader>e", ":Lexplore<cr>", { silent = true })
-
+-- Netwr
+keymap("n", "<Leader>e", ":Lexplore<cr>", { silent = true })
