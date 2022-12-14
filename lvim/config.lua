@@ -1,3 +1,11 @@
+-- `7MMF'                                           `7MMF'   `7MF'db
+--   MM                                               `MA     ,V
+--   MM      `7MM  `7MM  `7MMpMMMb.   ,6"Yb.  `7Mb,od8 VM:   ,V `7MM  `7MMpMMMb.pMMMb.
+--   MM        MM    MM    MM    MM  8)   MM    MM' "'  MM.  M'   MM    MM    MM    MM
+--   MM      , MM    MM    MM    MM   ,pm9MM    MM      `MM A'    MM    MM    MM    MM
+--   MM     ,M MM    MM    MM    MM  8M   MM    MM       :MM;     MM    MM    MM    MM
+-- .JMMmmmmMMM `Mbod"YML..JMML  JMML.`Moo9^Yo..JMML.      VF    .JMML..JMML  JMML  JMML.
+
 lvim.log.level = "warn"
 lvim.format_on_save = true
 lvim.colorscheme = "tokyonight-night"
