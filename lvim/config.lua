@@ -231,5 +231,4 @@ lvim.plugins = {
       require('nvim-ts-autotag').setup()
     end
   },
-  -- { "yardnsm/vim-import-cost" }
 }
