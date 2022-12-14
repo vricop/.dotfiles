@@ -19,6 +19,8 @@ lvim.leader = "space"
 lvim.keys.normal_mode["<c-s>"] = ":w<cr>"
 lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
 lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
+lvim.builtin.which_key.setup.icons.separator = "→ "
+lvim.builtin.which_key.setup.icons.group = ""
 lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
 lvim.builtin.which_key.mappings["t"] = {
   name = "+Trouble",
@@ -29,6 +31,17 @@ lvim.builtin.which_key.mappings["t"] = {
   l = { "<cmd>Trouble loclist<cr>", "LocationList" },
   w = { "<cmd>Trouble workspace_diagnostics<cr>", "Workspace Diagnostics" },
 }
+
+-- Typescript code actions
+lvim.builtin.which_key.mappings["la"] = {
+  a = { "<cmd>TypescriptAddMissingImports<cr>", "Add missing imports" },
+  d = { "<cmd>TypescriptRemoveUnused<cr>", "Remove unused" },
+  f = { "<cmd>TypescriptFixAll<cr>", "Fix all" },
+  g = { "<cmd>TypescriptGoToSourceDefinition<cr>", "Go to source definition" },
+  o = { "<cmd>TypescriptOrganizeImports<cr>", "Organize imports" },
+  r = { "<cmd>TypescriptRenameFile<cr>", "Rename files" },
+}
+
 lvim.builtin.lualine.sections.lualine_x = {
   { 'encoding' },
   { 'fileformat', symbols = { unix = ' ' } },
