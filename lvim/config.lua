@@ -20,6 +20,10 @@ lvim.keys.normal_mode["<c-s>"] = ":w<cr>"
 lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
 lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
 lvim.builtin.which_key.setup.icons.separator = "→ "
+-- Move lines up/down
+lvim.keys.visual_mode["<C-k>"] = ":m '<-2<Cr>gv=gv"
+lvim.keys.visual_mode["<C-j>"] = ":m '>+1<Cr>gv=gv"
+
 lvim.builtin.which_key.setup.icons.group = ""
 lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
 lvim.builtin.which_key.mappings["t"] = {

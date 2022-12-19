@@ -13,7 +13,7 @@ keymap("n", "<S-l>", "<Esc>:tabnext<cr>", { silent = true })
 
 -- Move lines up/down
 keymap("v", "<C-j>", ":m '>+1<Cr>gv=gv")
-keymap("v", "<C-k>", ":m '>-2<Cr>gv=gv")
+keymap("v", "<C-k>", ":m '<-2<Cr>gv=gv")
 
 -- Better vertical navigation jumps
 keymap("n", "<C-d>", "<C-d>zz")
@@ -28,3 +28,7 @@ keymap("n", "<Leader>c", ":bdelete<cr>", { silent = true })
 
 -- Netwr
 keymap("n", "<Leader>e", ":Lexplore<cr>", { silent = true })
+
+-- Save file & save all files
+keymap("n", "<Leader>w", ":w<Cr>", { silent = true })
+keymap("n", "<Leader>wa", ":wa<Cr>", { silent = true })
