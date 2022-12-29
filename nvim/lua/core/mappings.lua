@@ -26,8 +26,10 @@ keymap("n", "<C-k>", "<C-w>k")
 keymap("n", "<C-l>", "<C-w>l")
 keymap("n", "<Leader>c", ":bdelete<cr>", { silent = true })
 
--- Netwr
-keymap("n", "<Leader>e", ":Lexplore<cr>", { silent = true })
+-- Toggle Netwr
+keymap("n", "<Leader>e", ":Lexplore<cr>",
+  { silent = true, desc = "Toggle Netwr" }
+)
 
 -- Save file & save all files
 keymap("n", "<Leader>w", ":w<Cr>", { silent = true })
