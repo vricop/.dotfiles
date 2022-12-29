@@ -44,7 +44,6 @@ local options = {
     wrap = false, -- Display lines as one long line
     writebackup = false, -- If a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
   },
-
   g = {
     mapleader = " ", -- Set leader key
     netrw_banner = 0, -- Remove header for netrw file explorer
@@ -61,10 +60,12 @@ for namespace, namespace_options in pairs(options) do
   end
 end
 
---- SETTINGS ---
+--- OTHER SETTINGS ---
 vim.cmd "colorscheme habamax"
 vim.cmd "highlight WinSeparator guibg=None" -- Thin split lines
-vim.opt.spelllang:append "cjk" -- disable spellchecking for asian characters (VIM algorithm does not support it)
-vim.opt.shortmess:append "c" -- don't show redundant messages from ins-completion-menu
+vim.opt.path:append "**" 
 vim.opt.shortmess:append "I" -- don't show the default intro message
+vim.opt.shortmess:append "c" -- don't show redundant messages from ins-completion-menu
+vim.opt.spelllang:append "cjk" -- disable spellchecking for asian characters (VIM algorithm does not support it)
 vim.opt.whichwrap:append "<,>,[,],h,l"
+vim.opt.wildignore:append "**/node_modules/**" -- don't show results from `node_modules` recursively

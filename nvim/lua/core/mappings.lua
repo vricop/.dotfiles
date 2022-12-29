@@ -34,3 +34,19 @@ keymap("n", "<Leader>e", ":Lexplore<cr>",
 -- Save file & save all files
 keymap("n", "<Leader>w", ":w<Cr>", { silent = true })
 keymap("n", "<Leader>wa", ":wa<Cr>", { silent = true })
+
+-- Reload config
+keymap("n", "<Leader>r", ":source $MYVIMRC<Cr>",
+  { silent = true, desc = "Reload config" }
+)
+
+-- Find & replace
+keymap("n", "<Leader>,", ":%s/\\<<C-r><C-w>\\>//g<Left><Left>",
+  { desc = "Find & replace word under cursor" }
+)
+
+-- Native fuzzy search (when vim.opt.path has "**" added)
+-- NOTE: It'll open files in a new tab
+keymap("n", "<Leader>f", ":tabnew | find<Space>",
+  { desc = "Find files" }
+)
