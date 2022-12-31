@@ -1,10 +1,11 @@
--- `7MMF'                                           `7MMF'   `7MF'db
---   MM                                               `MA     ,V
---   MM      `7MM  `7MM  `7MMpMMMb.   ,6"Yb.  `7Mb,od8 VM:   ,V `7MM  `7MMpMMMb.pMMMb.
---   MM        MM    MM    MM    MM  8)   MM    MM' "'  MM.  M'   MM    MM    MM    MM
---   MM      , MM    MM    MM    MM   ,pm9MM    MM      `MM A'    MM    MM    MM    MM
---   MM     ,M MM    MM    MM    MM  8M   MM    MM       :MM;     MM    MM    MM    MM
--- .JMMmmmmMMM `Mbod"YML..JMML  JMML.`Moo9^Yo..JMML.      VF    .JMML..JMML  JMML  JMML.
+--
+-- ██╗     ██╗   ██╗███╗   ██╗ █████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗
+-- ██║     ██║   ██║████╗  ██║██╔══██╗██╔══██╗██║   ██║██║████╗ ████║
+-- ██║     ██║   ██║██╔██╗ ██║███████║██████╔╝██║   ██║██║██╔████╔██║
+-- ██║     ██║   ██║██║╚██╗██║██╔══██║██╔══██╗╚██╗ ██╔╝██║██║╚██╔╝██║
+-- ███████╗╚██████╔╝██║ ╚████║██║  ██║██║  ██║ ╚████╔╝ ██║██║ ╚═╝ ██║
+-- ╚══════╝ ╚═════╝ ╚═╝  ╚═══╝╚═╝  ╚═╝╚═╝  ╚═╝  ╚═══╝  ╚═╝╚═╝     ╚═╝
+--
 
 lvim.log.level = "warn"
 lvim.format_on_save = true
@@ -14,16 +15,27 @@ vim.opt.colorcolumn = { 80 }
 vim.opt.termguicolors = true
 vim.opt.spell = true
 vim.opt.spelllang = { 'en', 'fr', 'ca', 'it', 'de', 'pt' }
+vim.opt.path:append "**"
+vim.opt.wildignore:append "node_modules"
 
 lvim.leader = "space"
 -- Save buffer (<Leader>w is another way)
 lvim.keys.normal_mode["<c-s>"] = ":w<cr>"
+-- Switch between buffers
 lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
 lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
 -- Move lines up/down
 lvim.keys.visual_mode["<C-k>"] = ":m '<-2<Cr>gv=gv"
 lvim.keys.visual_mode["<C-j>"] = ":m '>+1<Cr>gv=gv"
+-- Improved "join lines".
+lvim.keys.normal_mode["J"] = "mzJ`z"
+-- Find & Replace
+lvim.keys.normal_mode["<Leader>,"] = {
+  ":%s/\\v<<C-r><C-w>>//g<Left><Left>",
+  { desc = "Find & Replace word under cursor" }
+}
 
+lvim.builtin.cmp.experimental.ghost_text = true
 lvim.builtin.which_key.setup.icons.separator = "-"
 lvim.builtin.which_key.setup.icons.group = ""
 lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
@@ -155,12 +167,12 @@ lvim.plugins = {
   { "sainnhe/everforest" },
   -- Cool diagnostics
   { "folke/trouble.nvim", cmd = "TroubleToggle" },
-  {
-    "jose-elias-alvarez/typescript.nvim",
-    config = function()
-      require("typescript").setup({})
-    end
-  },
+  -- {
+  --   "jose-elias-alvarez/typescript.nvim",
+  --   config = function()
+  --     require("typescript").setup({})
+  --   end
+  -- },
   -- Show css colors
   {
     "norcalli/nvim-colorizer.lua",
@@ -236,4 +248,11 @@ lvim.plugins = {
       require('nvim-ts-autotag').setup()
     end
   },
+  {
+    "folke/todo-comments.nvim",
+    requires = "nvim-lua/plenary.nvim",
+    config = function()
+      require("todo-comments").setup {}
+    end
+  }, -- Lua
 }
