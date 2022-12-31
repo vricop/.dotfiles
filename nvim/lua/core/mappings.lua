@@ -45,7 +45,7 @@ keymap("n", "<Leader>,", ":%s/\\v<<C-r><C-w>>//g<Left><Left>",
   { desc = "Find & replace word under cursor" }
 )
 
--- Native fuzzy search (when vim.opt.path has "**" added)
+-- Native fuzzy search (once `vim.opt.path:append "**"` has been added)
 -- NOTE: It'll open files in a new tab
 keymap("n", "<Leader>f", ":tabnew | find<Space>",
   { desc = "Find files" }
