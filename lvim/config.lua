@@ -36,6 +36,7 @@ lvim.keys.normal_mode["<Leader>,"] = {
 }
 
 lvim.builtin.cmp.experimental.ghost_text = true
+lvim.builtin.which_key.mappings["sm"] = { "<cmd>Telescope marks<Cr>", "Show marks" }
 lvim.builtin.which_key.setup.icons.separator = "-"
 lvim.builtin.which_key.setup.icons.group = ""
 lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
