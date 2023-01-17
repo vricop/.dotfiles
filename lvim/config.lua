@@ -40,6 +40,13 @@ lvim.keys.normal_mode["<S-Tab>"] = "<<"
 lvim.keys.visual_mode["<Tab>"] = ">gv"
 lvim.keys.visual_mode["<S-Tab>"] = "<gv"
 
+lvim.builtin.alpha.dashboard.section.header.val = {
+  [[███    ██ ███████  ██████  ██    ██ ██ ███    ███]],
+  [[████   ██ ██      ██    ██ ██    ██ ██ ████  ████]],
+  [[██ ██  ██ █████   ██    ██ ██    ██ ██ ██ ████ ██]],
+  [[██  ██ ██ ██      ██    ██  ██  ██  ██ ██  ██  ██]],
+  [[██   ████ ███████  ██████    ████   ██ ██      ██]],
+}
 lvim.builtin.cmp.experimental.ghost_text = true
 lvim.builtin.which_key.mappings["sm"] = { "<cmd>Telescope marks<Cr>", "Show marks" }
 lvim.builtin.which_key.setup.icons.separator = "-"
