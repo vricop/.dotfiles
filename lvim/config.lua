@@ -34,6 +34,11 @@ lvim.keys.normal_mode["<Leader>,"] = {
   ":%s/\\v<<C-r><C-w>>//g<Left><Left>",
   { desc = "Find & Replace word under cursor" }
 }
+-- Improve shifting code with tab key
+lvim.keys.normal_mode["<Tab>"] = ">>"
+lvim.keys.normal_mode["<S-Tab>"] = "<<"
+lvim.keys.visual_mode["<Tab>"] = ">gv"
+lvim.keys.visual_mode["<S-Tab>"] = "<gv"
 
 lvim.builtin.cmp.experimental.ghost_text = true
 lvim.builtin.which_key.mappings["sm"] = { "<cmd>Telescope marks<Cr>", "Show marks" }
