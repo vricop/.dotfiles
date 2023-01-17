@@ -191,12 +191,12 @@ lvim.plugins = {
   },
   {
     "kylechui/nvim-surround",
-    tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
     config = function()
       require("nvim-surround").setup({})
     end,
     -- make sure to change the value of `timeoutlen` if it's not triggering correctly, see https://github.com/tpope/vim-surround/issues/117
-    setup = function()
+    init = function()
       vim.o.timeoutlen = 500
     end
   },
@@ -251,7 +251,7 @@ lvim.plugins = {
   },
   {
     "folke/todo-comments.nvim",
-    requires = "nvim-lua/plenary.nvim",
+    dependencies = "nvim-lua/plenary.nvim",
     config = function()
       require("todo-comments").setup {}
     end
