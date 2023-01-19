@@ -41,7 +41,7 @@ keymap("n", "<Leader>r", ":source $MYVIMRC<Cr>",
 )
 
 -- Find & replace
-keymap("n", "<Leader>,", ":%s/\\v<<C-r><C-w>>//g<Left><Left>",
+keymap("n", "<Leader>,", ":%s/\\v<<C-r><C-w>>//gc<Left><Left><Left>",
   { desc = "Find & replace word under cursor" }
 )
 

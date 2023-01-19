@@ -31,7 +31,7 @@ lvim.keys.visual_mode["<C-j>"] = ":m '>+1<Cr>gv=gv"
 lvim.keys.normal_mode["J"] = "mzJ`z"
 -- Find & Replace
 lvim.keys.normal_mode["<Leader>,"] = {
-  ":%s/\\v<<C-r><C-w>>//g<Left><Left>",
+  ":%s/\\v<<C-r><C-w>>//gc<Left><Left><Left>",
   { desc = "Find & Replace word under cursor" }
 }
 -- Improve shifting code with tab key
