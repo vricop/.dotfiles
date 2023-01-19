@@ -8,4 +8,4 @@ oooooooooo.                 .    .o88o.  o8o  oooo
 o888bood8P'   `Y8bod8P'   "888" o888o   o888o o888o `Y8bod8P' 8""888P'
 ```
 
-This is my dotfiles repo. There's no auto-install scripts yet.
+This is my dotfiles repo. There's no auto-install script yet.
