@@ -7,6 +7,10 @@ function tablabel(buffer_number)
   local win_number = vim.fn.tabpagewinnr(buffer_number)
   local file = vim.fn.bufname(buffer_list[win_number])
 
+  if (file == "") then
+    file = "NO NAME"
+  end
+
   -- Show only filename
   return vim.fn.fnamemodify(file, ':t')
 end
