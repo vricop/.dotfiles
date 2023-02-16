@@ -23,8 +23,8 @@ lvim.keys.visual_mode["<C-k>"] = ":m '<-2<Cr>gv=gv"
 lvim.keys.visual_mode["<C-j>"] = ":m '>+1<Cr>gv=gv"
 -- Improved "join lines".
 lvim.keys.normal_mode["J"] = "mzJ`z"
--- Find & Replace
-lvim.keys.normal_mode["<Leader>,"] = {
+
+lvim.keys.normal_mode["<Leader>*"] = {
   ":%s/\\v<<C-r><C-w>>//gc<Left><Left><Left>",
   { desc = "Find & Replace word under cursor" }
 }
