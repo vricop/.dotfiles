@@ -1,6 +1,6 @@
 lvim.log.level = "warn"
-lvim.format_on_save = true
-lvim.colorscheme = "tokyonight-night"
+lvim.format_on_save = false
+lvim.colorscheme = "catppuccin-mocha"
 vim.opt.relativenumber = true
 vim.opt.colorcolumn = { 80 }
 vim.opt.termguicolors = true
@@ -169,6 +169,7 @@ linters.setup {
 -- Additional Plugins
 lvim.plugins = {
   -- Colorschemes
+  { "catppuccin/nvim", name = "catppuccin" },
   { "EdenEast/nightfox.nvim" },
   { "Shatur/neovim-ayu" },
   { "sainnhe/everforest" },
