@@ -8,6 +8,9 @@ vim.opt.spell = true
 vim.opt.spelllang = { 'en', 'fr', 'ca', 'it', 'de', 'pt' }
 vim.opt.path:append "**"
 vim.opt.wildignore:append "node_modules"
+-- Setup tsserver manualy as its disabled by typescript pluging
+vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "tsserver" })
+require("lvim.lsp.manager").setup("tsserver", {})
 
 lvim.leader = "space"
 -- Save buffer (<Leader>w is another way)
@@ -41,6 +44,7 @@ lvim.builtin.alpha.dashboard.section.header.val = {
   [[| $$ \  $$| $$$$$$$$|  $$$$$$/   \  $/    /$$$$$$| $$ \/  | $$]],
   [[|__/  \__/|________/ \______/     \_/    |______/|__/     |__/]],
 }
+lvim.lsp.diagnostics.virtual_text = false
 lvim.builtin.cmp.experimental.ghost_text = true
 lvim.builtin.which_key.mappings["sm"] = { "<cmd>Telescope marks<Cr>", "Show marks" }
 lvim.builtin.which_key.setup.icons.separator = "-"
@@ -159,10 +163,10 @@ linters.setup {
     -- these cannot contain whitespaces, options such as `--line-width 80` become either `{'--line-width', '80'}` or `{'--line-width=80'}`
     extra_args = { "--severity", "warning" },
   },
-  {
-    command = "codespell",
-    ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
-  },
+  -- {
+  --   command = "codespell",
+  --   ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
+  -- },
   { command = "stylelint" }
 }
 
@@ -175,24 +179,24 @@ lvim.plugins = {
   { "sainnhe/everforest" },
   -- Cool diagnostics
   { "folke/trouble.nvim", cmd = "TroubleToggle" },
-  -- {
-  --   "jose-elias-alvarez/typescript.nvim",
-  --   config = function()
-  --     require("typescript").setup({})
-  --   end
-  -- },
+  {
+    "jose-elias-alvarez/typescript.nvim",
+    config = function()
+      require("typescript").setup({})
+    end
+  },
   -- Show css colors
   {
     "norcalli/nvim-colorizer.lua",
     config = function()
       require("colorizer").setup({ "css", "scss", "html", "javascript" }, {
-        RGB      = true; -- #RGB hex codes
-        RRGGBB   = true; -- #RRGGBB hex codes
-        names    = true; -- "Name" codes like Blue
-        RRGGBBAA = true; -- #RRGGBBAA hex codes
-        hsl_fn   = true; -- CSS hsl() and hsla() functions
-        css      = true; -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
-        css_fn   = true; -- Enable all CSS *functions*: rgb_fn, hsl_fn
+        RGB      = true, -- #RGB hex codes
+        RRGGBB   = true, -- #RRGGBB hex codes
+        names    = true, -- "Name" codes like Blue
+        RRGGBBAA = true, -- #RRGGBBAA hex codes
+        hsl_fn   = true, -- CSS hsl() and hsla() functions
+        css      = true, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+        css_fn   = true, -- Enable all CSS *functions*: rgb_fn, hsl_fn
       })
     end,
   },
