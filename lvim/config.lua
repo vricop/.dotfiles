@@ -42,6 +42,26 @@ lvim.builtin.alpha.dashboard.section.header.val = {
   "██   ████  ███████   ██████     ████    ██  ██      ██",
 }
 
+lvim.builtin.lualine.style = "default"
+lvim.builtin.lualine.options.section_separators = { left = "", right = "" }
+lvim.builtin.lualine.options.component_separators = { left = "", right = "" }
+lvim.builtin.lualine.sections.lualine_a = {
+  {
+    "mode",
+    icon = "",
+  }
+}
+lvim.builtin.lualine.sections.lualine_c = {
+  {
+    'diff',
+    symbols = {
+      added = " ",
+      modified = " ",
+      removed = " "
+    },
+  }
+}
+
 lvim.lsp.diagnostics.virtual_text = false
 lvim.builtin.cmp.experimental.ghost_text = true
 lvim.builtin.which_key.mappings["sm"] = { "<cmd>Telescope marks<Cr>", "Show marks" }
