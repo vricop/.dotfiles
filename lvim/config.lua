@@ -8,6 +8,7 @@ vim.opt.spell = true
 vim.opt.spelllang = { 'en', 'fr', 'ca', 'it', 'de', 'pt' }
 vim.opt.path:append "**"
 vim.opt.wildignore:append "node_modules"
+
 -- Setup tsserver manualy as its disabled by typescript pluging
 vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "tsserver" })
 require("lvim.lsp.manager").setup("tsserver", {})
