@@ -1,10 +1,8 @@
---[[
-SOURCES
-
-* Original blog post: https://nuxsh.is-a.dev/blog/custom-nvim-statusline.html
-* Other post references: https://elianiva.my.id/post/neovim-lua-statusline/
-* .dotfile github page from author: https://github.com/nuxshed/dotfiles/tree/main/config/nvim/lua
---]]
+-- SOURCES
+-- 
+-- * Original blog post: https://nuxsh.is-a.dev/blog/custom-nvim-statusline.html
+-- * Other post references: https://elianiva.my.id/post/neovim-lua-statusline/
+-- * .dotfile github page from author: https://github.com/nuxshed/dotfiles/tree/main/config/nvim/lua
 
 local modes = {
   ["n"] = "NORMAL",

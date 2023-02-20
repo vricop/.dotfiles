@@ -1,6 +1,4 @@
---[[
-Source: https://github.com/alvarosevilla95/luatab.nvim/blob/master/lua/luatab/init.lua#L26
---]]
+-- Source: https://github.com/alvarosevilla95/luatab.nvim/blob/master/lua/luatab/init.lua#L26
 
 function tablabel(buffer_number)
   local buffer_list = vim.fn.tabpagebuflist(buffer_number)

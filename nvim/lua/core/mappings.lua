@@ -1,8 +1,8 @@
 local map = vim.keymap.set
 
 map("n", "<Leader>h",  ":nohlsearch<cr>",                           { desc = "Stop highlighting", silent = true })
-map("n", "<Leader>w",  ":w<cr>",                                    { desc = "Save file", silent = true })
-map("n", "<Leader>wa", ":wa<Cr>",                                   { desc = "Save all files", silent = true })
+-- map("n", "<Leader>w",  ":w<cr>",                                    { desc = "Save file", silent = true })
+-- map("n", "<Leader>wa", ":wa<Cr>",                                   { desc = "Save all files", silent = true })
 map("n", "J",          "mzJ`z",                                     { desc = "Join lines and center screen" }) -- From ThePrimeagen
 map("n", "<S-h>",      "<Esc>:tabprevious<cr>",                     { desc = "Move previous tab", silent = true })
 map("n", "<S-l>",      "<Esc>:tabnext<cr>",                         { desc = "Move next tab", silent = true })
@@ -54,9 +54,9 @@ end
 local is_nvim_tree_loaded = pcall(require, 'nvim-tree')
 
 if not is_nvim_tree_loaded then
-  map("n", "<Leader>e",  ":Lexplore<cr>", { 
+  map("n", "<Leader>e",  ":Lexplore<Cr>", { 
     desc = "Toggle Netwr",
     silent = true,
-    noremap = true }
-  )
+    noremap = true
+  })
 end
