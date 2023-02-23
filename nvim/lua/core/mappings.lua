@@ -3,10 +3,6 @@ local map = vim.keymap.set
 map("n", "<Leader>;", ":nohlsearch<cr>",                              { desc = "Stop highlighting", silent = true })
 -- map("n", "<Leader>w",  ":w<cr>",                                    { desc = "Save file", silent = true })
 -- map("n", "<Leader>wa", ":wa<Cr>",                                   { desc = "Save all files", silent = true })
-map("n", "<Leader>ff", ":Telescope find_files<Cr>",                 { desc = "Find files", silent = true })
-map("n", "<Leader>fk", ":Telescope keymaps<Cr>",                    { desc = "Find keymaps" })
-map("n", "<Leader>fr", ":Telescope registers<Cr>",                  { desc = "Find registers" })
-map("n", "<Leader>fm", ":Telescope marks<Cr>",                      { desc = "Find marks" })
 map("n", "J",            "mzJ`z",                                     { desc = "Join lines and center screen" }) -- From ThePrimeagen
 map("n", "<S-h>",        "<Esc>:tabprevious<cr>",                     { desc = "Move previous tab", silent = true })
 map("n", "<S-l>",        "<Esc>:tabnext<cr>",                         { desc = "Move next tab", silent = true })
@@ -27,6 +23,11 @@ map("n", "<Leader>w",    ":w<Cr>",                                    { desc = "
 map("n", "<Leader>r",    ":luafile $MYVIMRC<Cr>",                     { desc = "Reload config", silent = true })
 map("n", "<Leader>*",    ":%s/\\v<<C-r><C-w>>//gc<Left><Left><Left>", { desc = "Find & replace word under cursor" })
 map("n", "<Leader>p",    ":lua= ",                                    { desc = "Print lua scripts" })
+-- TODO: provide a native alternative as a fallback
+map("n", "<Leader>ff",   ":Telescope find_files<Cr>",                 { desc = "Find files" })
+map("n", "<Leader>fk",   ":Telescope keymaps<Cr>",                    { desc = "Find keymaps" })
+map("n", "<Leader>f\"",  ":Telescope registers<Cr>",                  { desc = "Find registers" })
+map("n", "<Leader>f`",   ":Telescope marks<Cr>",                      { desc = "Find marks" })
 
 -- Fallback to native fuzzy finder (`find` command)
 local is_telescope_loaded, _ = pcall(require, 'telescope')
@@ -41,7 +42,6 @@ if not is_telescope_loaded then
 
     -- Otherwise open in in a new tab
     return ":tabnew | find<Space>"
-
   end, {
     desc = "Find files",
     expr = true, -- Allow {rhs} to be taken as an expression
