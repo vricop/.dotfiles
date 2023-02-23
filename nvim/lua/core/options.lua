@@ -49,10 +49,10 @@ g.netrw_altv          = 1
 
 --- OTHER SETTINGS
 cmd "colorscheme habamax"
-cmd "highlight WinSeparator guibg=None"    -- Thin split lines
+cmd "highlight WinSeparator guibg=None"                   -- Thin split lines
 opt.path:append "**" 
-opt.shortmess:append "I"                   -- don't show the default intro message
-opt.shortmess:append "c"                   -- don't show redundant messages from ins-completion-menu
-opt.spelllang:append "cjk"                 -- disable spellchecking for asian characters (VIM algorithm does not support it)
+opt.shortmess:append "I"                                  -- don't show the default intro message
+opt.shortmess:append "c"                                  -- don't show redundant messages from ins-completion-menu
+opt.spelllang:append "cjk"                                -- disable spellchecking for asian characters (VIM algorithm does not support it)
 opt.whichwrap:append "<,>,[,],h,l"
-opt.wildignore:append "**/node_modules/**" -- don't show results from `node_modules` recursively
+opt.wildignore:append "**/node_modules/**"                -- don't show results from `node_modules` recursively
