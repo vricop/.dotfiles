@@ -1,6 +1,7 @@
 #!/bin/sh
 
 help() {
+  echo ""
   echo "lpm: (l)ocal (p)ackage (m)anager" 
   echo "lpm <command>"
   echo ""
@@ -35,7 +36,8 @@ install() {
     echo "Installing ${PACKAGE}"
     npm i -f --no-save $PACKAGE
   else
-    echo "You need to pass a 'package-name' as 2nd argument & version number as third argument."
+    echo ""
+    echo "You have to pass a <package-name> & <version> number, in that order. Read help 'lpm help' to see some examples."
     echo ""
     help
   fi
@@ -44,10 +46,12 @@ install() {
 remove() {
   if  [ -n "$1" ]; then
     local PACKAGE="@cochescom/${1}"
+    echo ""
     echo "Removing ${PACKAGE}"
     npm rm -f --no-save $PACKAGE
   else
-   echo "You need to pass a package-name to be uninstall"
+   echo ""
+   echo "You need to pass a <package-name>. Read help 'lpm help' to see some examples."
    help
   fi
 }
