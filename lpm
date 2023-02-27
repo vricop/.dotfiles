@@ -27,10 +27,6 @@ help() {
   echo "Set \$LOCAL_LIBS env variable in your .zshrc or .bashrc with a path where you'll store all your local libraries."
 }
 
-if [ -z "$1" ]; then
-  help
-fi
-
 list() { ls $LOCAL_LIBS ;}
 
 install() {
@@ -57,14 +53,10 @@ remove() {
 }
 
 case $1 in
-          ls) list;;
-        list) list;;
-        pack) npm pack --pack-destination=$LOCAL_LIBS;;
-           i) install "$2" "$3";;
-     install) install "$2" "$3";;
-        help) help;;
-           h) help;;
-          rm) remove "$2";;
-      remove) remove "$2";;
-   uninstall) remove "$2";;
+  ls|list) list;;
+  pack) npm pack --pack-destination=$LOCAL_LIBS;;
+  i|install) install "$2" "$3";;
+  h|help) help;;
+  rm|remove|uninstall) remove "$2";;
+  *) help;;
 esac
