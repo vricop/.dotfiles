@@ -1,6 +1,6 @@
 #!/bin/sh
 
-help() {
+usage() {
   echo ""
   echo "lpm: (l)ocal (p)ackage (m)anager" 
   echo "lpm <command>"
@@ -12,10 +12,11 @@ help() {
   echo "  lpm pack                               Create package (don't forget to build your library first)"
   echo "  lpm list|ls                            List available packages in \$LOCAL_LIBS"
   echo "  lpm remove|rm|uninstall <package-name> Remove/uninstall a package"
+  echo "  lpm check                              See installed & unmet dependencies"
   echo ""
   echo "All commands:"
   echo ""
-  echo "  help|h, install|i, list|ls, pack, remove|uninstall|rm"
+  echo "  help|h, install|i, list|ls, pack, remove|uninstall|rm, check"
   echo ""
   echo "Examples:"
   echo ""
@@ -24,11 +25,10 @@ help() {
   echo "  lpm remove react-components"
   echo "  lpm rm frontend-common"
   echo "  lpm pack"
+  echo "  lpm check"
   echo ""
   echo "Set \$LOCAL_LIBS env variable in your .zshrc or .bashrc with a path where you'll store all your local libraries."
 }
-
-list() { ls $LOCAL_LIBS ;}
 
 install() {
   if [ -n "$1" ] && [ -n "$2" ]; then
@@ -39,7 +39,7 @@ install() {
     echo ""
     echo "You have to pass a <package-name> & <version> number, in that order. Read help 'lpm help' to see some examples."
     echo ""
-    help
+    usage
   fi
 }
 
@@ -50,17 +50,18 @@ remove() {
     echo "Removing ${PACKAGE}"
     npm rm -f --no-save $PACKAGE
   else
-   echo ""
-   echo "You need to pass a <package-name>. Read help 'lpm help' to see some examples."
-   help
+    echo ""
+    echo "You need to pass a <package-name>. Read help 'lpm help' to see some examples."
+   usage
   fi
 }
 
 case $1 in
-  ls|list) list;;
+  ls|list) ls $LOCAL_LIBS;;
   pack) npm pack --pack-destination=$LOCAL_LIBS;;
   i|install) install "$2" "$3";;
-  h|help) help;;
+  h|help) usage;;
   rm|remove|uninstall) remove "$2";;
-  *) help;;
+  check) npm ls | grep cochescom;;
+  *) usage;;
 esac
