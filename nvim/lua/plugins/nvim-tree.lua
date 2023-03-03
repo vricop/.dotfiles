@@ -1,4 +1,4 @@
-  return {
+ return {
   {
     'nvim-tree/nvim-tree.lua',
     dependencies = {{ 'nvim-tree/nvim-web-devicons' }},
@@ -16,6 +16,8 @@
           },
         },
         renderer = {
+          root_folder_label = ":t",
+          highlight_git = true,
           icons = {
             git_placement = "after",
             padding = " ",
@@ -35,11 +37,11 @@
               folder = {
                 arrow_closed = "",
                 arrow_open = "",
-                default = "",
-                open = "ﱮ",
-                empty = "",
+                default = "󰉋",
+                open = "󰝰",
+                empty = "󰉖",
                 empty_open = "ﱮ",
-                symlink = "",
+                symlink = "󱧱",
                 symlink_open = "ﱮ",
               },
               git = {
@@ -49,9 +51,12 @@
                 renamed = "R",
                 untracked = "U",
                 deleted = "D",
-                ignored = "I",
+                ignored = " ",
               },
             },
+          },
+          special_files = {
+            "Cargo.toml", "Makefile", "README.md", "readme.md", "Dockerfile"
           },
         },
       live_filter = {
