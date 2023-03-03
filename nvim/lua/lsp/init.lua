@@ -1,38 +1,51 @@
--- Mappings.
+-- TODO: Add lua vim LSP support
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-local opts = { noremap = true, silent = true }
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
-local lspconfig = require('lspconfig')
+local function diagnostic_mapping_opts(desc)
+  return {
+    noremap = true,
+    silent = true,
+    desc = desc
+  }
+end
 
--- vim.keymap.set('n', '<Leader>e', vim.diagnostic.open_float, opts)
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
-vim.keymap.set('n', '<Leader>q', vim.diagnostic.setloclist, opts)
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+local lspconfig = require 'lspconfig'
+local map = vim.keymap.set
+
+map('n', '<Leader>lo', vim.diagnostic.open_float, diagnostic_mapping_opts('Open diagnostic'))
+map('n', '[d', vim.diagnostic.goto_prev, diagnostic_mapping_opts('Go to prev diagnostic'))
+map('n', ']d', vim.diagnostic.goto_next, diagnostic_mapping_opts('Go to next diagnostic'))
+map('n', '<Leader>lq', vim.diagnostic.setloclist, diagnostic_mapping_opts('Add diagnostics to the location list'))
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
-  -- Enable completion triggered by <c-x><c-o>
+local on_attach = function(_, bufnr)
+  -- Enable completion using native <C-x><C-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-  -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  local bufopts = { noremap = true, silent = true, buffer = bufnr }
-  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-  vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-  vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-  vim.keymap.set('n', '<Leader>wa', vim.lsp.buf.add_workspace_folder, bufopts)
-  vim.keymap.set('n', '<Leader>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
-  vim.keymap.set('n', '<Leader>wl', function()
-    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-  end, bufopts)
-  vim.keymap.set('n', '<Leader>D', vim.lsp.buf.type_definition, bufopts)
-  vim.keymap.set('n', '<Leader>rn', vim.lsp.buf.rename, bufopts)
-  vim.keymap.set('n', '<Leader>ca', vim.lsp.buf.code_action, bufopts)
-  vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-  vim.keymap.set('n', '<Leader>f', function() vim.lsp.buf.format { async = true } end, bufopts)
+  local function lsp_mapping_opts(desc)
+    return {
+      noremap = true,
+      silent = true,
+      buffer = bufnr,
+      desc = desc
+    }
+  end
+
+  map('n', 'gD', vim.lsp.buf.declaration, lsp_mapping_opts('Go to declaration'))
+  map('n', 'gd', vim.lsp.buf.definition, lsp_mapping_opts('Go to definition'))
+  map('n', 'gi', vim.lsp.buf.implementation, lsp_mapping_opts('Go to implementation'))
+  map('n', 'gr', vim.lsp.buf.references, lsp_mapping_opts('Referencees'))
+  map('n', 'K', vim.lsp.buf.hover, lsp_mapping_opts('Show docs'))
+  map('n', '<C-k>', vim.lsp.buf.signature_help, lsp_mapping_opts('Show signature help'))
+  map('n', '<Leader>wa', vim.lsp.buf.add_workspace_folder, lsp_mapping_opts('Add workspace folder'))
+  map('n', '<Leader>wr', vim.lsp.buf.remove_workspace_folder, lsp_mapping_opts('Remove workspace folder'))
+  map('n', '<Leader>wl', function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, lsp_mapping_opts('List workspace folders'))
+  map('n', '<Leader>D', vim.lsp.buf.type_definition, lsp_mapping_opts('Type definition'))
+  map('n', '<Leader>lr', vim.lsp.buf.rename, lsp_mapping_opts('Rename'))
+  map('n', '<Leader>la', vim.lsp.buf.code_action, lsp_mapping_opts('Code actions'))
+  map('n', '<Leader>=', function() vim.lsp.buf.format { async = true } end, lsp_mapping_opts('Format'))
 end
 
 require('mason-lspconfig').setup_handlers({
