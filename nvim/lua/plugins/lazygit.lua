@@ -8,7 +8,7 @@ return {
 
       vim.keymap.set(
         'n',
-        '<Leader>gl',
+        '<Leader>gg',
         ':LazyGit<Cr>',
         {
           desc = 'Open Lazygit',
