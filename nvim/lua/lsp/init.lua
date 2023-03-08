@@ -1,5 +1,8 @@
--- TODO: Add lua vim LSP support
--- See `:help vim.diagnostic.*` for documentation on any of the below functions
+require 'neodev'.setup {}
+
+-- TODO: Move all lsp config related into lspconfig.lua? Move there os lsp
+-- related dependencies: mason, mason-lspconfig, typescript. Take a look at
+-- LazyVim configs https://www.lazyvim.org/plugins/lsp#nvim-lspconfig
 local function diagnostic_mapping_opts(desc)
   return {
     noremap = true,
@@ -45,7 +48,8 @@ local on_attach = function(_, bufnr)
   map('n', '<Leader>D', vim.lsp.buf.type_definition, lsp_mapping_opts('Type definition'))
   map('n', '<Leader>lr', vim.lsp.buf.rename, lsp_mapping_opts('Rename'))
   map('n', '<Leader>la', vim.lsp.buf.code_action, lsp_mapping_opts('Code actions'))
-  map('n', '<Leader>=', function() vim.lsp.buf.format { async = true } end, lsp_mapping_opts('Format'))
+  map('n', '<Leader>=', function() vim.lsp.buf.format { async = true } end, lsp_mapping_opts('Format buffer'))
+  map('n', '<Leader>li', '<Cmd>LspInfo<Cr>', lsp_mapping_opts('See lsp info'))
 end
 
 require('mason-lspconfig').setup_handlers({
