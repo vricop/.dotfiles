@@ -21,7 +21,7 @@ map( { 'i', 's' }, '<C-k>', function ()
   if luasnip.jumpable(-1) then
     luasnip.jump(-1)
   end
-end, { silent = true, desc = 'Next stop' })
+end, { silent = true, desc = 'Prev stop' })
 
 map('i', '<C-l>', function ()
   if luasnip.choice_active() then
