@@ -1,5 +1,6 @@
 local luasnip = require 'luasnip'
 local map = vim.keymap.set
+local types = require 'luasnip.util.types'
 
 require 'luasnip.loaders.from_lua'.load {
   paths = './lua/snippets/'
@@ -8,7 +9,14 @@ require 'luasnip.loaders.from_lua'.load {
 require 'luasnip.config'.set_config {
   history = true,
   update_events = 'TextChanged, TextChangedI',
-  enable_autosnippets = true
+  enable_autosnippets = true,
+  ext_opts = {
+    [types.choiceNode] = {
+      active = {
+        virt_text = {{ '  Current choice', '@field' }}
+      }
+    }
+  }
 }
 
 map( { 'i', 's' }, '<C-j>', function ()
