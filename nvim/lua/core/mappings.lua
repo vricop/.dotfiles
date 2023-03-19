@@ -32,6 +32,7 @@ map("n", '<Leader>f"', ":registers<Cr>", { desc = "Find registers" })
 map("n", "<Leader>f`", ":marks<Cr>", { desc = "Find marks" })
 map({ "n", "v" }, "gh", "^", { desc = "Go to the first non blank character" })
 map({ "n", "v" }, "gl", "g_", { desc = "Go to the last non blank character" })
+map("n", "<Leader>q", ":qa<Cr>", { desc = "Quit vim", silent = true })
 
 -- Fallback to native fuzzy finder (`find` command)
 local is_telescope_loaded, _ = pcall(require, 'telescope')
