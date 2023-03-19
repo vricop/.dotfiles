@@ -15,21 +15,22 @@ opt.guifont           = "PragmataProLiga Nerd Font:h17"   -- The font used in gr
 opt.hlsearch          = true                              -- Highlight all matches on previous search pattern
 opt.ignorecase        = true                              -- Ignore case in search patterns
 opt.laststatus        = 3                                 -- Enable global statusline
+opt.lazyredraw        = true                              -- Improve performance, especially when executing macros
 opt.mouse             = "a"                               -- Allow the mouse to be used in neovim
 opt.number            = true                              -- Set numbered lines
 opt.numberwidth       = 2                                 -- Set number column width to 2 {default 4}
 opt.pumheight         = 10                                -- Pop up menu height
 opt.relativenumber    = true                              -- Set relative numbered lines
-opt.scrolloff         = 8
+opt.scrolloff         = 8                                 -- Minimal number of screen lines to keep above and below the cursor.
 opt.shiftwidth        = 2                                 -- The number of spaces inserted for each indentation
 opt.showmode          = false                             -- We don't need to see things like -- INSERT -- anymore
 opt.showtabline       = 2                                 -- Always show tabs
-opt.sidescrolloff     = 8
+opt.sidescrolloff     = 8                                 -- The minimal number of screen columns to keep to the both sides of the cursor if `'nowrap'`  is set.
 opt.signcolumn        = "yes"                             -- Always show the sign column otherwise it would shift the text each time
 opt.smartcase         = true                              -- Smart case
 opt.smartindent       = true                              -- Make indenting smarter again
 opt.spell             = true                              -- Enable spelling
-opt.spelllang         = { 'en', 'fr', 'ca', 'it' }        -- Install & recognise these languages
+opt.spelllang         = { 'en', 'fr', 'ca', 'it' }        -- Install spelling for these languages
 opt.splitbelow        = true                              -- Force all horizontal splits to go below current window
 opt.splitright        = true                              -- Force all vertical splits to go to the right of current window
 opt.swapfile          = false                             -- Creates a swapfile
@@ -43,14 +44,14 @@ opt.writebackup       = false                             -- If a file is being 
 g.mapleader           = " "                               -- Set leader key
 g.netrw_banner        = 0                                 -- Remove header for netrw file explorer
 g.netrw_liststyle     = 3                                 -- Show tree-like list style
-g.netrw_browser_split = 4
+g.netrw_browser_split = 4                                 -- Open file by: previous window (4)
 g.netrw_winsize       = 20                                -- Explorer width
-g.netrw_altv          = 1
+g.netrw_altv          = 1                                 -- Change from left splitting to right splitting
 
 --- OTHER SETTINGS
 cmd "colorscheme habamax"
 cmd "highlight WinSeparator guibg=None"                   -- Thin split lines
-opt.path:append "**" 
+opt.path:append "**"
 opt.shortmess:append "I"                                  -- don't show the default intro message
 opt.shortmess:append "c"                                  -- don't show redundant messages from ins-completion-menu
 opt.spelllang:append "cjk"                                -- disable spellchecking for asian characters (VIM algorithm does not support it)
