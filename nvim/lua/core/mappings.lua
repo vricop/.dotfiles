@@ -28,8 +28,10 @@ map("n", "<Leader>r", ":luafile $MYVIMRC<Cr>", { desc = "Reload config", silent 
 map("n", "<Leader>*", ":%s/\\v<<C-r><C-w>>//gc<Left><Left><Left>", { desc = "Find & replace word under cursor" })
 map("n", "<Leader>:", ":lua= ", { desc = "Print lua scripts" })
 map("n", "<Leader>fk", ":map<Cr>", { desc = "Find keymaps" })
-map("n", "<Leader>f\"", ":registers<Cr>", { desc = "Find registers" })
+map("n", '<Leader>f"', ":registers<Cr>", { desc = "Find registers" })
 map("n", "<Leader>f`", ":marks<Cr>", { desc = "Find marks" })
+map({ "n", "v" }, "gh", "^", { desc = "Go to the first non blank character" })
+map({ "n", "v" }, "gl", "g_", { desc = "Go to the last non blank character" })
 
 -- Fallback to native fuzzy finder (`find` command)
 local is_telescope_loaded, _ = pcall(require, 'telescope')
