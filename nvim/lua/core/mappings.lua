@@ -1,13 +1,17 @@
 local map = vim.keymap.set
 
 map("n", ";", ":nohlsearch<cr>", { desc = "Stop highlighting", silent = true })
-map("n", "J", "mzJ`z", { desc = "Join lines and center screen" }) -- From ThePrimeagen
-map("n", "<S-h>", "<Esc>:tabprevious<cr>", { desc = "Move previous tab", silent = true })
-map("n", "<S-l>", "<Esc>:tabnext<cr>", { desc = "Move next tab", silent = true })
-map("v", "<S-j>", ":m '>+1<Cr>gv=gv", { desc = "Move line up" })
-map("v", "<S-k>", ":m '<-2<Cr>gv=gv", { desc = "Move line down" })
 map("n", "<Space>s", ":update<Cr>", { desc = "Save buffer", silent = true })
 map("n", "<Leader>w", ":wa<Cr>", { desc = "Save buffers", silent = true })
+map("n", "J", "mzJ`z", { desc = "Join lines and center screen" }) -- Cool mapping from ThePrimeagen
+map("n", "H", "<Esc>:tabprevious<cr>", { desc = "Move previous tab", silent = true })
+map("n", "L", "<Esc>:tabnext<cr>", { desc = "Move next tab", silent = true })
+map("v", "∆", ":m '>+1<Cr>gv=gv", { desc = "Move line down" }) -- Use <A>j in Linux
+map("v", "˚", ":m '<-2<Cr>gv=gv", { desc = "Move line up" }) -- Use <A>k in Linux
+map("n", "Ô", "yyp", { desc = "Copy line below", silent = true }) -- Use <A-J> in Linux
+map("n", "", "yyP", { desc = "Copy line above", silent = true }) -- Use <A-K> in Linux
+map("v", "Ô", "ygv<Esc>p", { desc = "Copy line below", silent = true }) -- Use <A-J> in Linux
+map("v", "", "ygv<Esc>P", { desc = "Copy line above", silent = true }) -- Use <A-K> in Linux
 map("n", "<Tab>", ">>", { desc = "Shift line right" })
 map("n", "<S-Tab>", "<<", { desc = "Shift line left" })
 map("v", "<Tab>", ">gv", { desc = "Shift line right" })
