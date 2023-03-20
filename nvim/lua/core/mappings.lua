@@ -1,38 +1,49 @@
 local map = vim.keymap.set
 
-map("n", ";", ":nohlsearch<cr>", { desc = "Stop highlighting", silent = true })
-map("n", "<Space>s", ":update<Cr>", { desc = "Save buffer", silent = true })
-map("n", "<Leader>w", ":wa<Cr>", { desc = "Save buffers", silent = true })
-map("n", "J", "mzJ`z", { desc = "Join lines and center screen" }) -- Cool mapping from ThePrimeagen
-map("n", "H", "<Esc>:tabprevious<cr>", { desc = "Move previous tab", silent = true })
-map("n", "L", "<Esc>:tabnext<cr>", { desc = "Move next tab", silent = true })
-map("v", "∆", ":m '>+1<Cr>gv=gv", { desc = "Move line down" }) -- Use <A>j in Linux
-map("v", "˚", ":m '<-2<Cr>gv=gv", { desc = "Move line up" }) -- Use <A>k in Linux
-map("n", "Ô", "yyp", { desc = "Copy line below", silent = true }) -- Use <A-J> in Linux
-map("n", "", "yyP", { desc = "Copy line above", silent = true }) -- Use <A-K> in Linux
-map("v", "Ô", "ygv<Esc>p", { desc = "Copy line below", silent = true }) -- Use <A-J> in Linux
-map("v", "", "ygv<Esc>P", { desc = "Copy line above", silent = true }) -- Use <A-K> in Linux
-map("n", "<Tab>", ">>", { desc = "Shift line right" })
-map("n", "<S-Tab>", "<<", { desc = "Shift line left" })
-map("v", "<Tab>", ">gv", { desc = "Shift line right" })
-map("v", "<S-Tab>", "<gv", { desc = "Shift line left" })
-map("n", "<C-d>", "<C-d>zz", { desc = "Move screen up & center" })
-map("n", "<C-u>", "<C-u>zz", { desc = "Move screen down & center" })
-map("n", "<C-h>", "<C-w>h", { desc = "Move to window left" })
-map("n", "<C-j>", "<C-w>j", { desc = "Move to window top" })
-map("n", "<C-k>", "<C-w>k", { desc = "Move to window down" })
-map("n", "<C-l>", "<C-w>l", { desc = "Move to window right" })
-map("n", "<C-c>", "<C-w><C-w>", { desc = "Cycle windows" })
-map("n", "<Leader>c", ":bdelete<cr>", { desc = "Close buffer", silent = true })
-map("n", "<Leader>r", ":luafile $MYVIMRC<Cr>", { desc = "Reload config", silent = true })
-map("n", "<Leader>*", ":%s/\\v<<C-r><C-w>>//gc<Left><Left><Left>", { desc = "Find & replace word under cursor" })
-map("n", "<Leader>:", ":lua= ", { desc = "Print lua scripts" })
-map("n", "<Leader>fk", ":map<Cr>", { desc = "Find keymaps" })
-map("n", '<Leader>f"', ":registers<Cr>", { desc = "Find registers" })
-map("n", "<Leader>f`", ":marks<Cr>", { desc = "Find marks" })
-map({ "n", "v" }, "gh", "^", { desc = "Go to the first non blank character" })
-map({ "n", "v" }, "gl", "g_", { desc = "Go to the last non blank character" })
-map("n", "<Leader>q", ":qa<Cr>", { desc = "Quit vim", silent = true })
+local opts = function(desc, opts)
+  opts = opts or {
+    desc = desc,
+    silent = true
+  }
+
+  return opts
+end
+
+map("n",          ";",           ":nohlsearch<cr>",                           opts("Stop highlighting"))
+map("n",          "<Space>s",    ":update<Cr>",                               opts("Save buffer"))
+map("n",          "<Leader>w",   ":wa<Cr>",                                   opts("Save buffers"))
+map("n",          "J",           "mzJ`z",                                     opts("Join lines and center screen")) -- Cool mapping from ThePrimeagen
+map("n",          "H",           "<Esc>:tabprevious<cr>",                     opts("Move previous tab"))
+map("n",          "L",           "<Esc>:tabnext<cr>",                         opts("Move next tab"))
+map("v",          "∆",           ":m '>+1<Cr>gv=gv",                          opts("Move line down"))               -- Use <A>j for non macOS computers
+map("n",          "∆",           ":m +1<Cr>",                                 opts("Move line down"))               -- Use <A>j for non macOS computers
+map("v",          "˚",           ":m '<-2<Cr>gv=gv",                          opts("Move line up"))                 -- Use <A>k for non macOS computers
+map("n",          "˚",           ":m -2<Cr>",                                 opts("Move line up"))                 -- Use <A>k for non macOS computers
+map("n",          "Ô",           "yyp",                                       opts("Copy line below"))              -- Use <A-J> for non macOS computers
+map("v",          "Ô",           "ygv<Esc>p",                                 opts("Copy line below"))              -- Use <A-J> for non macOS computers
+map("n",          "",           "yyP",                                       opts("Copy line above"))              -- Use <A-K> for non macOS computers
+map("v",          "",           "ygv<Esc>P",                                 opts("Copy line above"))              -- Use <A-K> for non macOS computers
+map("n",          "<Tab>",       ">>",                                        opts("Shift line right" ))
+map("n",          "<S-Tab>",     "<<",                                        opts("Shift line left" ))
+map("v",          "<Tab>",       ">gv",                                       opts("Shift line right" ))
+map("v",          "<S-Tab>",     "<gv",                                       opts("Shift line left" ))
+map("n",          "<C-d>",       "<C-d>zz",                                   opts("Move screen up & center"))
+map("n",          "<C-u>",       "<C-u>zz",                                   opts("Move screen down & center"))
+map("n",          "<C-h>",       "<C-w>h",                                    opts("Move to window left"))
+map("n",          "<C-j>",       "<C-w>j",                                    opts("Move to window top"))
+map("n",          "<C-k>",       "<C-w>k",                                    opts("Move to window down"))
+map("n",          "<C-l>",       "<C-w>l",                                    opts("Move to window right"))
+map("n",          "<C-c>",       "<C-w><C-w>",                                opts("Cycle windows"))
+map("n",          "<Leader>c",   ":bdelete<cr>",                              opts("Close buffer"))
+map("n",          "<Leader>r",   ":luafile $MYVIMRC<Cr>",                     opts("Reload config"))
+map("n",          "<Leader>*",   ":%s/\\v<<C-r><C-w>>//gc<Left><Left><Left>", opts("Find & replace word under cursor"))
+map("n",          "<Leader>:",   ":lua= ",                                    opts("Print lua scripts"))
+map("n",          "<Leader>fk",  ":map<Cr>",                                  opts("Find keymaps"))
+map("n",          '<Leader>f"',  ":registers<Cr>",                            opts("Find registers"))
+map("n",          "<Leader>f`",  ":marks<Cr>",                                opts("Find marks"))
+map({ "n", "v" }, "gh",          "^",                                         opts("Go to the first non blank character"))
+map({ "n", "v" }, "gl",          "g_",                                        opts("Go to the last non blank character"))
+map("n",          "<Leader>q",   ":qa<Cr>",                                   opts("Quit vim"))
 
 -- Fallback to native fuzzy finder (`find` command)
 local is_telescope_loaded, _ = pcall(require, 'telescope')
