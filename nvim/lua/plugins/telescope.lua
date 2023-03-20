@@ -28,6 +28,12 @@ return {
           oldfiles = {
             prompt_title = "Recent files",
             prompt_prefix = "   "
+          },
+          git_branches = {
+            prompt_prefix = " 󰘬 "
+          },
+          git_commits = {
+            prompt_prefix = " 󰜘 "
           }
         },
       }
