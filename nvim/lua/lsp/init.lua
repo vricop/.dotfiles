@@ -36,6 +36,22 @@ local on_attach = function(_, bufnr)
     }
   end
 
+  local function list_workspace_folders()
+    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+  end
+
+  local function format()
+    vim.lsp.buf.format { async = true }
+  end
+
+  local function format_selected()
+    vim.lsp.buf.format {
+      async = true,
+      ['start'] = vim.api.nvim_buf_get_mark(0, '<'),
+      ['end'] = vim.api.nvim_buf_get_mark(0, '>'),
+    }
+  end
+
   map('n', 'gD', vim.lsp.buf.declaration, lsp_mapping_opts('Go to declaration'))
   map('n', 'gd', vim.lsp.buf.definition, lsp_mapping_opts('Go to definition'))
   map('n', 'gi', vim.lsp.buf.implementation, lsp_mapping_opts('Go to implementation'))
@@ -44,11 +60,12 @@ local on_attach = function(_, bufnr)
   -- map('n', 'K', vim.lsp.buf.signature_help, lsp_mapping_opts('Show signature help'))
   map('n', '<Leader>wa', vim.lsp.buf.add_workspace_folder, lsp_mapping_opts('Add workspace folder'))
   map('n', '<Leader>wr', vim.lsp.buf.remove_workspace_folder, lsp_mapping_opts('Remove workspace folder'))
-  map('n', '<Leader>wl', function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, lsp_mapping_opts('List workspace folders'))
+  map('n', '<Leader>wl', list_workspace_folders, lsp_mapping_opts('List workspace folders'))
   map('n', '<Leader>D', vim.lsp.buf.type_definition, lsp_mapping_opts('Type definition'))
   map('n', '<Leader>lr', vim.lsp.buf.rename, lsp_mapping_opts('Rename'))
   map('n', '<Leader>la', vim.lsp.buf.code_action, lsp_mapping_opts('Code actions'))
-  map('n', '<Leader>=', function() vim.lsp.buf.format { async = true } end, lsp_mapping_opts('Format buffer'))
+  map('n', '<Leader>=', format, lsp_mapping_opts('Format buffer'))
+  map('v', '<Leader>=', format_selected, lsp_mapping_opts('Format buffer'))
   map('n', '<Leader>li', '<Cmd>LspInfo<Cr>', lsp_mapping_opts('See lsp info'))
 end
 
