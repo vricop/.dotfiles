@@ -75,7 +75,7 @@ return {
         },
       })
 
-			vim.keymap.set('n', '<Leader>e', ':NvimTreeToggle<Cr>', {
+			vim.keymap.set('n', '<Leader>e', ':NvimTreeFindFileToggle<Cr>', {
 				desc = 'Toggle explorer',
 				silent = true,
 			})
