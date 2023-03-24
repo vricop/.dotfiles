@@ -9,20 +9,28 @@ local opts = function(desc, opts)
   return opts
 end
 
+--[[
+macOS special mappings
+
+* ∆ = <M-j>
+* ˚ = <M-k>
+* Ô = <M-J>
+*  = <M-K>
+--]]
 map("n",          ";",           ":nohlsearch<cr>",                           opts("Stop highlighting"))
 map("n",          "<Space>s",    ":update<Cr>",                               opts("Save buffer"))
 map("n",          "<Leader>w",   ":wa<Cr>",                                   opts("Save buffers"))
-map("n",          "J",           "mzJ`z",                                     opts("Join lines and center screen")) -- Cool mapping from ThePrimeagen
+map("n",          "J",           "mzJ`z",                                     opts("Join lines and center screen"))
 map("n",          "H",           "<Esc>:tabprevious<cr>",                     opts("Move previous tab"))
 map("n",          "L",           "<Esc>:tabnext<cr>",                         opts("Move next tab"))
-map("v",          "∆",           ":m '>+1<Cr>gv=gv",                          opts("Move line down"))               -- Use <A>j for non macOS computers
-map("n",          "∆",           ":m +1<Cr>",                                 opts("Move line down"))               -- Use <A>j for non macOS computers
-map("v",          "˚",           ":m '<-2<Cr>gv=gv",                          opts("Move line up"))                 -- Use <A>k for non macOS computers
-map("n",          "˚",           ":m -2<Cr>",                                 opts("Move line up"))                 -- Use <A>k for non macOS computers
-map("n",          "Ô",           "yyp",                                       opts("Copy line below"))              -- Use <A-J> for non macOS computers
-map("v",          "Ô",           "ygv<Esc>p",                                 opts("Copy line below"))              -- Use <A-J> for non macOS computers
-map("n",          "",           "yyP",                                       opts("Copy line above"))              -- Use <A-K> for non macOS computers
-map("v",          "",           "ygv<Esc>P",                                 opts("Copy line above"))              -- Use <A-K> for non macOS computers
+map("v",          "∆",           ":m '>+1<Cr>gv=gv",                          opts("Move line down"))
+map("n",          "∆",           ":m .+1<Cr>==",                              opts("Move line down"))
+map("v",          "˚",           ":m '<-2<Cr>gv=gv",                          opts("Move line up"))
+map("n",          "˚",           ":m .-2<Cr>==",                              opts("Move line up"))
+map("n",          "Ô",           ":t+0<Cr>",                                  opts("Duplicate below"))
+map("v",          "Ô",           ":t'>+0<Cr>",                                opts("Duplicate below"))
+map("n",          "",           ":t-1<Cr>",                                  opts("Duplicate above"))
+map("v",          "",           "t'<+1<Cr>",                                 opts("Duplicate above"))
 map("n",          "<Tab>",       ">>",                                        opts("Shift line right" ))
 map("n",          "<S-Tab>",     "<<",                                        opts("Shift line left" ))
 map("v",          "<Tab>",       ">gv",                                       opts("Shift line right" ))
