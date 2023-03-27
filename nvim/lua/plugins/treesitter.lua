@@ -16,11 +16,24 @@ return {
 				auto_install = true,
 				sync_install = false,
 				highlight = { enable = true },
-				-- Config for nvim-ts-context-commentstring
 				context_commentstring = {
 					enable = true,
 					enable_autocmd = false,
+          config = {
+            -- Languages that have a single comment style
+            typescript = "// %s",
+            css = "/* %s */",
+            scss = "/* %s */",
+            html = "<!-- %s -->",
+            svelte = "<!-- %s -->",
+            vue = "<!-- %s -->",
+            json = "",
+          },
 				},
+        -- Improves indent formatting for the `=` command
+        indent = {
+          enable = true
+        }
 			}
 		end,
 	},
