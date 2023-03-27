@@ -40,18 +40,6 @@ local on_attach = function(_, bufnr)
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
   end
 
-  local function format()
-    vim.lsp.buf.format { async = true }
-  end
-
-  local function format_selected()
-    vim.lsp.buf.format {
-      async = true,
-      ['start'] = vim.api.nvim_buf_get_mark(0, '<'),
-      ['end'] = vim.api.nvim_buf_get_mark(0, '>'),
-    }
-  end
-
   map('n', 'gD', vim.lsp.buf.declaration, lsp_mapping_opts('Go to declaration'))
   map('n', 'gd', vim.lsp.buf.definition, lsp_mapping_opts('Go to definition'))
   map('n', 'gi', vim.lsp.buf.implementation, lsp_mapping_opts('Go to implementation'))
@@ -64,8 +52,7 @@ local on_attach = function(_, bufnr)
   map('n', '<Leader>D', vim.lsp.buf.type_definition, lsp_mapping_opts('Type definition'))
   map('n', '<Leader>lr', vim.lsp.buf.rename, lsp_mapping_opts('Rename'))
   map('n', '<Leader>la', vim.lsp.buf.code_action, lsp_mapping_opts('Code actions'))
-  map('n', '<Leader>=', format, lsp_mapping_opts('Format buffer'))
-  map('v', '<Leader>=', format_selected, lsp_mapping_opts('Format buffer'))
+  map({ 'n', 'v' }, '<Leader>=', vim.lsp.buf.format, lsp_mapping_opts('Format buffer'))
   map('n', '<Leader>li', '<Cmd>LspInfo<Cr>', lsp_mapping_opts('See lsp info'))
 end
 
