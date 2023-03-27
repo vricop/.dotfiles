@@ -2,6 +2,7 @@ local map = vim.keymap.set
 
 local opts = function(desc, opts)
   opts = opts or {
+    noremap = true,
     desc = desc,
     silent = true
   }
