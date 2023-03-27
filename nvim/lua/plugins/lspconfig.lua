@@ -3,12 +3,12 @@ return {
     'jose-elias-alvarez/null-ls.nvim',
     dependencies = { 'jose-elias-alvarez/typescript.nvim' },
     event = { 'BufReadPre', 'BufNewFile' },
-    opts = function()
+    config = function()
       local null_ls = require 'null-ls'
-      return {
+      null_ls.setup {
         sources = {
           null_ls.builtins.formatting.stylua,
-          null_ls.builtins.formatting.eslint,
+          null_ls.builtins.formatting.eslint_d,
           null_ls.builtins.formatting.prettierd,
           require'typescript.extensions.null-ls.code-actions'
         },

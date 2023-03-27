@@ -59,14 +59,21 @@ end
 require('mason-lspconfig').setup_handlers({
   function(server_name)
     lspconfig[server_name].setup({
-      on_attach =  on_attach,
+      on_attach = on_attach,
       capabilities = capabilities,
       settings = {
         Lua = {
-          diagnostics = { globals = { 'vim' } }
-        }
-      }
+          diagnostics = { globals = { 'vim' } },
+        },
+        -- NOTE: For some reason, stylelint isn't loading my config file with 
+        -- rules for avoiding false positives when using PostCss plugins.
+        css = {
+          validate = true,
+          lint = {
+            unknownAtRules = 'ignore',
+          },
+        },
+      },
     })
   end,
 })
-
