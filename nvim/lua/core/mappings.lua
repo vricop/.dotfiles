@@ -53,6 +53,8 @@ map("n",          "<Leader>f`",  ":marks<Cr>",                                op
 map({ "n", "v" }, "gh",          "^",                                         opts("Go to the first non blank character"))
 map({ "n", "v" }, "gl",          "g_",                                        opts("Go to the last non blank character"))
 map("n",          "<Leader>q",   ":qa<Cr>",                                   opts("Quit vim"))
+map("n",          "<Leader>|",   ":vsp<Cr>",                                  opts("Split vertically"))
+map("n",          "<Leader>-",   ":sp<Cr>",                                   opts("Split horizontally"))
 
 -- Fallback to native fuzzy finder (`find` command)
 local is_telescope_loaded, _ = pcall(require, 'telescope')
