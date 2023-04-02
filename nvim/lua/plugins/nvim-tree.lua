@@ -1,7 +1,7 @@
 return {
 	{
-		'nvim-tree/nvim-tree.lua',
-		dependencies = { { 'nvim-tree/nvim-web-devicons' } },
+		"nvim-tree/nvim-tree.lua",
+		dependencies = { { "nvim-tree/nvim-web-devicons" } },
 		config = function()
       require('nvim-tree').setup({
         on_attach = function(bufnr)
@@ -81,4 +81,13 @@ return {
 			})
 		end,
 	},
+  {
+    'antosha417/nvim-lsp-file-operations',
+    dependencies = {
+      { 'nvim-lua/plenary.nvim', 'nvim-tree/nvim-tree.lua' },
+    },
+    config = function ()
+      require('lsp-file-operations').setup()
+    end
+  },
 }
