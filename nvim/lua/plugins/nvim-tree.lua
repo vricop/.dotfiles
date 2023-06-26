@@ -26,6 +26,18 @@ return {
         renderer = {
           root_folder_label = ':t',
           highlight_git = true,
+          indent_width = 2,
+          indent_markers = {
+            enable = true,
+            inline_arrows = true,
+            icons = {
+              corner = '└',
+              edge = '│',
+              item = '│',
+              bottom = '─',
+              none = ' ',
+            },
+          },
           icons = {
             git_placement = 'after',
             padding = ' ',
