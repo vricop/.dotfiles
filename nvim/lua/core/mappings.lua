@@ -1,11 +1,15 @@
 local map = vim.keymap.set
 
 local opts = function(desc, opts)
-  opts = opts or {
+  opts = opts or {}
+
+  local default_opts = {
     noremap = true,
     desc = desc,
     silent = true
   }
+
+  opts = vim.tbl_extend('force', default_opts, opts)
 
   return opts
 end
@@ -45,7 +49,7 @@ map("n",          "<C-l>",       "<C-w>l",                                    op
 map("n",          "<C-c>",       "<C-w><C-w>",                                opts("Cycle windows"))
 map("n",          "<Leader>c",   ":bdelete<cr>",                              opts("Close buffer"))
 map("n",          "<Leader>r",   ":luafile $MYVIMRC<Cr>",                     opts("Reload config"))
-map("n",          "<Leader>*",   ":%s/\\v<<C-r><C-w>>//gc<Left><Left><Left>", opts("Find & replace word under cursor"))
+map("n",          "<Leader>*",   ":%s@\\v<<C-r><C-w>>@@gc<Left><Left><Left>", opts("Find & replace word under cursor", { silent = false }))
 map("n",          "<Leader>:",   ":lua= ",                                    opts("Print lua scripts"))
 map("n",          "<Leader>fk",  ":map<Cr>",                                  opts("Find keymaps"))
 map("n",          '<Leader>f"',  ":registers<Cr>",                            opts("Find registers"))
