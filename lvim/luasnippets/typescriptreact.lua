@@ -1,7 +1,10 @@
 local ls = require("luasnip")
+local t = ls.text_node
 local s = ls.snippet
 local i = ls.insert_node
 local f = ls.function_node
+local d = ls.dynamic_node
+local sn = ls.snippet_node
 local rep = require("luasnip.extras").rep
 local fmt = require("luasnip.extras.fmt").fmt
 
@@ -50,31 +53,25 @@ return {
     i(0),
     i(1)
   })),
-  s("obj", fmt([[
-    const {} = {{
-      {}
-    }}
-  ]], {
-    i(1, "objectName"),
-    i(2)
-  })),
-  s("dir", fmt("console.dir({})", {
-    i(1, "_")
-  })),
-  s("table", fmt("console.table({})", {
-    i(1, "_")
-  })),
-  s("log", fmt("console.log({})", {
-    i(1, "_")
-  })),
+  s('log', t 'console.'),
   s("afc", fmt([[
-    const {} = ({}) => {{
-      return ({})
+    export interface {}Props {{
+
     }}
+
+    const {} = (props:{}) => {{
+      return {}
+    }}
+
+    export default {}
   ]], {
-    i(1, "ComponentName"),
-    i(2, "props"),
-    i(3)
+    d(1, function (_, parent)
+      return sn(nil, i(1, parent.snippet.env.TM_FILENAME_BASE))
+    end, {}),
+    rep(1),
+    d(2, function (args) return sn(nil, t(args[1][1] .. 'Props')) end, { 1 }),
+    i(3, "''"),
+    rep(1),
   })),
   s("fc", fmt([[
     function {}({}) {{
