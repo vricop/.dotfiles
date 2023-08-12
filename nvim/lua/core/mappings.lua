@@ -14,6 +14,15 @@ local opts = function(desc, opts)
   return opts
 end
 
+local function toggle_relative_number()
+  local opt = vim.opt
+  if (opt.relativenumber:get()) then
+    opt.relativenumber = false
+  else
+    opt.relativenumber = true
+  end
+end
+
 --[[
 macOS special mappings
 
@@ -50,7 +59,7 @@ map("n",          "<C-c>",       "<C-w><C-w>",                                op
 map("n",          "<Leader>c",   ":bdelete<cr>",                              opts("Close buffer"))
 map("n",          "<Leader>r",   ":luafile $MYVIMRC<Cr>",                     opts("Reload config"))
 map("n",          "<Leader>*",   ":%s@\\v<<C-r><C-w>>@@gc<Left><Left><Left>", opts("Find & replace word under cursor", { silent = false }))
-map("n",          "<Leader>:",   ":lua= ",                                    opts("Print lua scripts"))
+map("n",          "<Leader>:",   ":lua= ",                                    opts(" lua scripts", { silent = false }))
 map("n",          "<Leader>fk",  ":map<Cr>",                                  opts("Find keymaps"))
 map("n",          '<Leader>f"',  ":registers<Cr>",                            opts("Find registers"))
 map("n",          "<Leader>f`",  ":marks<Cr>",                                opts("Find marks"))
@@ -59,6 +68,7 @@ map({ "n", "v" }, "gl",          "g_",                                        op
 map("n",          "<Leader>q",   ":qa<Cr>",                                   opts("Quit vim"))
 map("n",          "<Leader>|",   ":vsp<Cr>",                                  opts("Split vertically"))
 map("n",          "<Leader>-",   ":sp<Cr>",                                   opts("Split horizontally"))
+map("n",          "<Leader>tn",  toggle_relative_number,                      opts("Toggle relative numbers"))
 
 -- Fallback to native fuzzy finder (`find` command)
 local is_telescope_loaded, _ = pcall(require, 'telescope')
