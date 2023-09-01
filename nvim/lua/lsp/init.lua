@@ -52,7 +52,7 @@ local on_attach = function(_, bufnr)
   map('n', '<Leader>D', vim.lsp.buf.type_definition, lsp_mapping_opts('Type definition'))
   map('n', '<Leader>lr', vim.lsp.buf.rename, lsp_mapping_opts('Rename'))
   map('n', '<Leader>la', vim.lsp.buf.code_action, lsp_mapping_opts('Code actions'))
-  map({ 'n', 'v' }, '<Leader>=', vim.lsp.buf.format, lsp_mapping_opts('Format buffer'))
+  map({ 'n', 'v' }, '<Leader>=', function() vim.lsp.buf.format { async = true } end, lsp_mapping_opts('Format buffer'))
   map('n', '<Leader>li', '<Cmd>LspInfo<Cr>', lsp_mapping_opts('See lsp info'))
 end
 
