@@ -23,6 +23,7 @@ return {
       ["<Leader>l"] = { name = "Lsp" },
       ["<Leader>w"] = { name = "Workspace" },
       ["<Leader>t"] = { name = "Toggle" },
+      ["<Leader>b"] = { name = "Buffer" },
     }
     end,
   },
