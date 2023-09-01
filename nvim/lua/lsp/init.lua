@@ -65,7 +65,7 @@ require('mason-lspconfig').setup_handlers({
         Lua = {
           diagnostics = { globals = { 'vim' } },
         },
-        -- NOTE: For some reason, stylelint isn't loading my config file with 
+        -- NOTE: For some reason, stylelint isn't loading my config file with
         -- rules for avoiding false positives when using PostCss plugins.
         css = {
           validate = true,
@@ -73,7 +73,13 @@ require('mason-lspconfig').setup_handlers({
             unknownAtRules = 'ignore',
           },
         },
-      },
+        cssmodules = {
+          capabilities = {
+            -- NOTE: Avoids conflicting with typescript 'go-to-definition'
+            definitionProvider = false
+          }
+        }
+      }
     })
   end,
 })
