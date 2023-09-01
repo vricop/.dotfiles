@@ -69,6 +69,8 @@ map("n",          "<Leader>q",   ":qa<Cr>",                                   op
 map("n",          "<Leader>|",   "<C-w>v",                                    opts("Split vertically"))
 map("n",          "<Leader>-",   "<C-w>s",                                    opts("Split horizontally"))
 map("n",          "<Leader>tn",  toggle_relative_number,                      opts("Toggle relative numbers"))
+map("n",          "]q",          ':cn<Cr>',                                   opts("Next item in quickfix list"))
+map("n",          "[q",          ':cp<Cr>',                                   opts("Previous item in quickfix list"))
 
 -- Fallback to native fuzzy finder (`find` command)
 local is_telescope_loaded, _ = pcall(require, 'telescope')
