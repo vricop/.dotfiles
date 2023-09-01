@@ -31,9 +31,10 @@ macOS special mappings
 * Ô = <M-J>
 *  = <M-K>
 --]]
-map("n",          ";",           ":nohlsearch<cr>",                           opts("Stop highlighting"))
-map("n",          "<Space>s",    ":update<Cr>",                               opts("Save buffer"))
-map("n",          "<Leader>w",   ":wa<Cr>",                                   opts("Save buffers"))
+map("n",          "<Leader>;",   ":noh<cr>",                                  opts("Stop highlighting"))
+map("n",          "<Leader>w",   ":up<Cr>",                                   opts("Save buffer"))
+map("n",          "<Leader>s",   ":wa<Cr>",                                   opts("Save buffers"))
+map("n",          "<Leader>c",   ":bd<Cr>",                                   opts("Close buffer"))
 map("n",          "J",           "mzJ`z",                                     opts("Join lines and center screen"))
 map("n",          "H",           "<Esc>:tabprevious<cr>",                     opts("Move previous tab"))
 map("n",          "L",           "<Esc>:tabnext<cr>",                         opts("Move next tab"))
@@ -56,9 +57,8 @@ map("n",          "<C-j>",       "<C-w>j",                                    op
 map("n",          "<C-k>",       "<C-w>k",                                    opts("Move to window down"))
 map("n",          "<C-l>",       "<C-w>l",                                    opts("Move to window right"))
 map("n",          "<C-c>",       "<C-w><C-w>",                                opts("Cycle windows"))
-map("n",          "<Leader>c",   ":bdelete<cr>",                              opts("Close buffer"))
 map("n",          "<Leader>r",   ":luafile $MYVIMRC<Cr>",                     opts("Reload config"))
-map("n",          "<Leader>*",   ":%s@\\v<<C-r><C-w>>@@gc<Left><Left><Left>", opts("Find & replace word under cursor", { silent = false }))
+map("n",          "<Leader>/",   ":%s@\\v<<C-r><C-w>>@@gc<Left><Left><Left>", opts("Find & replace word under cursor", { silent = false }))
 map("n",          "<Leader>:",   ":lua= ",                                    opts(" lua scripts", { silent = false }))
 map("n",          "<Leader>fk",  ":map<Cr>",                                  opts("Find keymaps"))
 map("n",          '<Leader>f"',  ":registers<Cr>",                            opts("Find registers"))
@@ -66,8 +66,8 @@ map("n",          "<Leader>f`",  ":marks<Cr>",                                op
 map({ "n", "v" }, "gh",          "^",                                         opts("Go to the first non blank character"))
 map({ "n", "v" }, "gl",          "g_",                                        opts("Go to the last non blank character"))
 map("n",          "<Leader>q",   ":qa<Cr>",                                   opts("Quit vim"))
-map("n",          "<Leader>|",   ":vsp<Cr>",                                  opts("Split vertically"))
-map("n",          "<Leader>-",   ":sp<Cr>",                                   opts("Split horizontally"))
+map("n",          "<Leader>|",   "<C-w>v",                                    opts("Split vertically"))
+map("n",          "<Leader>-",   "<C-w>s",                                    opts("Split horizontally"))
 map("n",          "<Leader>tn",  toggle_relative_number,                      opts("Toggle relative numbers"))
 
 -- Fallback to native fuzzy finder (`find` command)
