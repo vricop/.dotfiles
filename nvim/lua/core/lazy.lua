@@ -16,7 +16,7 @@ require("lazy").setup("plugins")
 
 vim.keymap.set(
   'n',
-  '<Leader>p',
+  '<Leader>z',
   '<Cmd>Lazy<Cr>',
   { desc = 'Open Lazy', silent = true }
 )
