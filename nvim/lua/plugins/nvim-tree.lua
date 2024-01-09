@@ -40,7 +40,7 @@ return {
           },
           icons = {
             git_placement = 'after',
-            padding = ' ',
+            padding = '  ',
             show = {
               file = true,
               folder = true,
@@ -91,6 +91,8 @@ return {
 				desc = 'Toggle explorer',
 				silent = true,
 			})
+
+      vim.g.nvim_tree_auto_open = 0
 		end,
 	},
   {
