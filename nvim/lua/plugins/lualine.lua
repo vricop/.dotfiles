@@ -2,13 +2,13 @@ return {
   {
     "nvim-lualine/lualine.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons", opt = true },
-    config = function() 
-      require("lualine").setup {
+    config = function()
+      require("lualine").setup({
         options = {
           icons_enabled = true,
-          theme = "catppuccin",
-          component_separators = { left = "", right = ""},
-          section_separators = { left = "", right = ""},
+          theme = "tokyonight",
+          component_separators = { left = "", right = "" },
+          section_separators = { left = "", right = "" },
           disabled_filetypes = {
             statusline = {},
             winbar = {},
@@ -20,29 +20,30 @@ return {
             statusline = 1000,
             tabline = 1000,
             winbar = 1000,
-          }
+          },
         },
         sections = {
-          lualine_a = {
+          lualine_a = { { "mode" } },
+          lualine_b = {
             {
-              "mode",
-              icon = "",
-            }
+              "branch",
+              icon = "󰘬",
+            },
           },
-          lualine_b = { "branch" },
           lualine_c = {
             {
-              'diff',
+              "diff",
               symbols = {
                 added = " ",
                 modified = " ",
-                removed = " "
+                removed = " ",
               },
-            }
+            },
+            { 'filename' }
           },
-          lualine_x = { "filetype" },
+          lualine_x = { "diagnostics", "filetype" },
           lualine_y = { "progress" },
-          lualine_z = { "location" }
+          lualine_z = { "location" },
         },
         inactive_sections = {
           lualine_a = {},
@@ -50,13 +51,13 @@ return {
           lualine_c = { "filename" },
           lualine_x = { "location" },
           lualine_y = {},
-          lualine_z = {}
+          lualine_z = {},
         },
         tabline = {},
         winbar = {},
         inactive_winbar = {},
-        extensions = {}
-      }
-    end
-  }
+        extensions = {},
+      })
+    end,
+  },
 }
