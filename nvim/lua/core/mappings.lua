@@ -1,26 +1,32 @@
 local map = vim.keymap.set
+---@class MappingOpts
+---@field noremap? boolean
+---@field silent? boolean
 
+---Function for describing maps with default table options
+---@param desc string
+---@param opts? MappingOpts
 local opts = function(desc, opts)
-	opts = opts or {}
+  opts = opts or {}
 
-	local default_opts = {
-		noremap = true,
-		desc = desc,
-		silent = true,
-	}
+  local default_opts = {
+    noremap = true,
+    desc = desc,
+    silent = true,
+  }
 
-	opts = vim.tbl_extend("force", default_opts, opts)
+  opts = vim.tbl_extend("force", default_opts, opts)
 
-	return opts
+  return opts
 end
 
 local function toggle_relative_number()
-	local opt = vim.opt
-	if opt.relativenumber:get() then
-		opt.relativenumber = false
-	else
-		opt.relativenumber = true
-	end
+  local opt = vim.opt
+  if opt.relativenumber:get() then
+    opt.relativenumber = false
+  else
+    opt.relativenumber = true
+  end
 end
 
 local M_j = "<M-j>"
@@ -29,13 +35,14 @@ local M_J = "<M-J>"
 local M_K = "<M-J>"
 
 if vim.fn.has("mac") then
-	-- macOS special mappings. This solve some issues with meta key.
-	M_j = "∆"
-	M_k = "˚"
-	M_J = "Ô"
-	M_K = ""
+  -- macOS special mappings. This solve some issues with meta key.
+  M_j = "∆"
+  M_k = "˚"
+  M_J = "Ô"
+  M_K = ""
 end
 
+map({ "n", "x" }, ";", ":", opts("Enter command mode", { noremap = false }))
 map("n", "<Leader>;", ":noh<cr>", opts("Stop highlighting"))
 map("n", "<Leader>w", ":up<Cr>", opts("Save buffer"))
 map("n", "<Leader>s", ":wa<Cr>", opts("Save buffers"))
@@ -64,10 +71,10 @@ map("n", "<C-l>", "<C-w>l", opts("Move to window right"))
 map("n", "<C-c>", "<C-w><C-w>", opts("Cycle windows"))
 map("n", "<Leader>r", ":luafile $MYVIMRC<Cr>", opts("Reload config"))
 map(
-	"n",
-	"<Leader>/",
-	":%s@\\v<<C-r><C-w>>@@gc<Left><Left><Left>",
-	opts("Find & replace word under cursor", { silent = false })
+  "n",
+  "<Leader>/",
+  ":%s@\\v<<C-r><C-w>>@@gc<Left><Left><Left>",
+  opts("Find & replace word under cursor", { silent = false })
 )
 map("n", "<Leader>:", ":lua= ", opts("Print lua scripts under command mode", { silent = false }))
 map("n", "<Leader>fk", ":map<Cr>", opts("Find keymaps"))
@@ -86,16 +93,16 @@ map("n", "[q", ":cp<Cr>", opts("Previous item in quickfix list"))
 map("n", "<Leader>e", ":Lexplore<Cr>", opts("Toggle Netwr"))
 
 map("n", "<Leader>ff", function()
-	-- If empty buffer, reuse it
-	if vim.fn.bufname(0) == "" then
-		return ":find<Space>"
-	end
+  -- If empty buffer, reuse it
+  if vim.fn.bufname(0) == "" then
+    return ":find<Space>"
+  end
 
-	-- Otherwise open in in a new tab
-	return ":tabnew | find<Space>"
+  -- Otherwise open in in a new tab
+  return ":tabnew | find<Space>"
 end, opts("Find files", { expr = true })) -- Allow {rhs} to be taken as an expression
 
 return {
   opts = opts,
-  map = map
+  map = map,
 }
