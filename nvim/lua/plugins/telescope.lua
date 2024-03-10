@@ -9,9 +9,14 @@ return {
           selection_caret = " ",
           prompt_prefix = "   ",
           sorting_strategy = "ascending",
-          path_display = { "tail" },
+          preview = false,
+          path_display = { "truncate" },
           layout_config = {
             prompt_position = "top",
+            horizontal = {
+              width = 0.5,
+              height = 0.4,
+            },
           },
           mappings = {
             -- macOS special mappings: œ = <M-q>
@@ -20,6 +25,10 @@ return {
           },
         },
         pickers = {
+          find_files = {
+            -- no_ignore = true,
+            hidden = true
+          },
           live_grep = {
             prompt_prefix = " 󰑑 ",
           },
@@ -47,20 +56,24 @@ return {
           buffers = {
             initial_mode = "normal",
           },
-        },
+        }
       })
     end,
-    keys = {
-      { "<Leader>ff",  "<Cmd>Telescope find_files<Cr>",   desc = "Find Files" },
-      { "<Leader>fr",  "<Cmd>Telescope oldfiles<Cr>",     desc = "Find Recent Files" },
-      { "<Leader>fk",  "<Cmd>Telescope keymaps<Cr>",      desc = "Find Keymaps" },
-      { '<Leader>f"',  "<Cmd>Telescope registers<Cr>",    desc = "Find Registers" },
-      { "<Leader>f`",  "<Cmd>Telescope marks<Cr>",        desc = "Find Marks" },
-      { "<Leader>fw",  "<Cmd>Telescope grep_string<Cr>",  desc = "Find Word Under Cursor" },
-      { "<Leader>ft",  "<Cmd>Telescope live_grep<Cr>",    desc = "Find Text In Project" },
-      { "<Leader>fb",  "<Cmd>Telescope buffers<Cr>",      desc = "Find buffers" },
-      { "<Leader>fgb", "<Cmd>Telescope git_branches<Cr>", desc = "Find git branches" },
-      { "<Leader>fgc", "<Cmd>Telescope git_commits<Cr>",  desc = "Find git commits" },
-    },
+    keys = function()
+      local builtin = require("telescope.builtin")
+
+      return {
+        { "<Leader>ff",  builtin.find_files,   desc = "Find Files" },
+        { "<Leader>fr",  builtin.oldfiles,     desc = "Find Recent Files" },
+        { "<Leader>fk",  builtin.keymaps,      desc = "Find Keymaps" },
+        { '<Leader>f"',  builtin.registers,    desc = "Find Registers" },
+        { "<Leader>f`",  builtin.marks,        desc = "Find Marks" },
+        { "<Leader>fw",  builtin.grep_string,  desc = "Find Word Under Cursor" },
+        { "<Leader>ft",  builtin.live_grep,    desc = "Find Text In Project" },
+        { "<Leader>fb",  builtin.buffers,      desc = "Find buffers" },
+        { "<Leader>fgb", builtin.git_branches, desc = "Find git branches" },
+        { "<Leader>fgc", builtin.git_commits,  desc = "Find git commits" },
+      }
+    end
   },
 }
