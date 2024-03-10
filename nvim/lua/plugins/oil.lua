@@ -9,7 +9,7 @@ return {
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	keys = {
 		{
-			"<Leader>-",
+			"<Leader>o",
 			function()
 				require("oil").toggle_float()
 			end,
