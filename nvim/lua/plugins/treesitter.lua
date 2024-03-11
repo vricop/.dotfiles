@@ -24,6 +24,7 @@ return {
 					"vim",
 					"gitignore",
 					"bash",
+          "devicetree",
 				},
 				-- Improves indent formatting for the `=` command
 				indent = { enable = true },
