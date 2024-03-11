@@ -16,6 +16,7 @@ return {
           "marksman",
           "rust_analyzer",
           "tsserver",
+          "eslint"
         },
       }
     end
