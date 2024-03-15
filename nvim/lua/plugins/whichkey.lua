@@ -19,10 +19,10 @@ return {
       ["<Leader>f"] = { name = "Find" },
       ["<Leader>fg"] = { name = "Find git" },
       ["<Leader>g"] = { name = "Git" },
-      ["<Leader>h"] = { name = "Hunk" },
+      ["<Leader>gh"] = { name = "Hunk" },
       ["<Leader>l"] = { name = "Lsp" },
-      ["<Leader>w"] = { name = "Workspace" },
       ["<Leader>t"] = { name = "Toggle" },
+      ["<Leader>tg"] = { name = "Toggle git" },
       ["<Leader>b"] = { name = "Buffer" },
     }
     end,

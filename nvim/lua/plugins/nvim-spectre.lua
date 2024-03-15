@@ -6,17 +6,17 @@ return {
     },
     keys = {
       {
-        '<leader>sp',
+        '<leader>R',
         '<cmd>lua require("spectre").toggle()<CR>',
         desc = "Toggle Spectre"
       },
       {
-        '<leader>sw',
+        '<leader>rw',
         '<cmd>lua require("spectre").open_visual({select_word=true})<CR>',
         desc = "Search current word"
       },
       {
-        '<leader>sw',
+        '<leader>rw',
         '<esc><Cmd>lua require("spectre").open_visual()<CR>',
         mode= "v",
         desc = "Search current word"

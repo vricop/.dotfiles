@@ -36,17 +36,17 @@ return {
           end, { expr = true, desc = "Go to previous change" })
 
           -- Actions
-          map({ 'n', 'v' }, '<leader>hs', ':Gitsigns stage_hunk<CR>', { desc = 'Stage hunk' })
-          map({ 'n', 'v' }, '<leader>hr', ':Gitsigns reset_hunk<CR>', { desc = 'Reset hunk' })
-          map('n', '<leader>hS', gs.stage_buffer, { desc = 'Stage buffer' })
-          map('n', '<leader>hu', gs.undo_stage_hunk, { desc = 'Undo stage hunk' })
-          map('n', '<leader>hR', gs.reset_buffer, { desc = 'Reset buffer' })
-          map('n', '<leader>hp', gs.preview_hunk, { desc = 'Preview hunk' })
-          map('n', '<leader>hb', function() gs.blame_line { full = true } end, { desc = 'Blame line' })
-          map('n', '<leader>hd', gs.diffthis, { desc = 'Diff this' })
-          map('n', '<leader>hD', function() gs.diffthis('~') end, { desc = 'Diff last commit?' })
-          map('n', '<leader>gd', gs.toggle_deleted, { desc = 'Toggle deleted' })
-          map('n', '<leader>gb', gs.toggle_current_line_blame, { desc = 'Toggle current line blame' })
+          map({ 'n', 'v' }, '<Leader>ghs', ':Gitsigns stage_hunk<CR>', { desc = 'Stage hunk' })
+          map({ 'n', 'v' }, '<Leader>ghr', ':Gitsigns reset_hunk<CR>', { desc = 'Reset hunk' })
+          map('n', '<Leader>ghS', gs.stage_buffer, { desc = 'Stage buffer' })
+          map('n', '<Leader>ghu', gs.undo_stage_hunk, { desc = 'Undo stage hunk' })
+          map('n', '<Leader>ghR', gs.reset_buffer, { desc = 'Reset buffer' })
+          map('n', '<Leader>ghp', gs.preview_hunk, { desc = 'Preview hunk' })
+          map('n', '<Leader>ghb', function() gs.blame_line { full = true } end, { desc = 'Blame line' })
+          map('n', '<Leader>ghd', gs.diffthis, { desc = 'Diff this' })
+          map('n', '<Leader>ghD', function() gs.diffthis('~') end, { desc = 'Diff last commit?' })
+          map('n', '<Leader>tgd', gs.toggle_deleted, { desc = 'Toggle deleted' })
+          map('n', '<Leader>tgb', gs.toggle_current_line_blame, { desc = 'Toggle current line blame' })
 
           -- Text object
           map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>', { desc = "Inside hunk" })

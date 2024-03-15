@@ -43,10 +43,11 @@ if vim.fn.has("mac") then
 end
 
 map({ "n", "x" }, ";", ":", opts("Enter command mode", { noremap = false }))
-map("n", "<Leader>;", ":noh<cr>", opts("Stop highlighting"))
+map("n", "<Esc>", ":noh<cr>", opts("Stop highlighting"))
 map("n", "<Leader>w", ":up<Cr>", opts("Save buffer"))
 map("n", "<Leader>s", ":wa<Cr>", opts("Save buffers"))
 map("n", "<Leader>d", ":bd<Cr>", opts("Close buffer"))
+map("n", "<Leader>D", "<cmd>bufdo bd<Cr>", opts("Close all buffers"))
 map("n", "J", "mzJ`z", opts("Join lines and center screen"))
 map("n", "H", "<Esc>:tabprevious<cr>", opts("Move previous tab"))
 map("n", "L", "<Esc>:tabnext<cr>", opts("Move next tab"))
@@ -69,7 +70,6 @@ map("n", "<C-j>", "<C-w>j", opts("Move to window top"))
 map("n", "<C-k>", "<C-w>k", opts("Move to window down"))
 map("n", "<C-l>", "<C-w>l", opts("Move to window right"))
 map("n", "<C-c>", "<C-w><C-w>", opts("Cycle windows"))
-map("n", "<Leader>r", ":luafile $MYVIMRC<Cr>", opts("Reload config"))
 map(
   "n",
   "<Leader>/",
@@ -78,8 +78,8 @@ map(
 )
 map("n", "<Leader>:", ":lua= ", opts("Print lua scripts under command mode", { silent = false }))
 map("n", "<Leader>fk", ":map<Cr>", opts("Find keymaps"))
-map("n", '<Leader>f"', ":registers<Cr>", opts("Find registers"))
-map("n", "<Leader>f`", ":marks<Cr>", opts("Find marks"))
+map("n", '<Leader>fr', ":registers<Cr>", opts("Find registers"))
+map("n", "<Leader>fm", ":marks<Cr>", opts("Find marks"))
 map({ "n", "v" }, "gh", "^", opts("Go to the first non blank character"))
 map({ "n", "v" }, "gl", "g_", opts("Go to the last non blank character"))
 map("n", "<Leader>q", ":qa<Cr>", opts("Quit Neovim"))
