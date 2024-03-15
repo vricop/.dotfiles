@@ -6,7 +6,8 @@ return {
       local actions = require("telescope.actions")
       require("telescope").setup({
         defaults = {
-          selection_caret = " ",
+          selection_caret = "  ",
+          entry_prefix = "   ",
           prompt_prefix = "   ",
           sorting_strategy = "ascending",
           preview = false,
@@ -23,6 +24,7 @@ return {
             i = { ["œ"] = actions.smart_send_to_qflist + actions.open_qflist },
             n = { ["œ"] = actions.smart_send_to_qflist + actions.open_qflist },
           },
+          borderchars = { '─', '│', '─', '│', '┌', '┐', '┘', '└' },
         },
         pickers = {
           find_files = {
@@ -58,18 +60,38 @@ return {
           },
         }
       })
+      local colors = require("catppuccin.palettes").get_palette()
+      local TelescopeColor = {
+        TelescopeMatching = { fg = colors.flamingo },
+        TelescopeSelection = { fg = colors.text, bg = colors.surface0, bold = true },
+
+        TelescopePromptPrefix = { bg = colors.surface0 },
+        TelescopePromptNormal = { bg = colors.surface0 },
+        TelescopeResultsNormal = { bg = colors.mantle },
+        TelescopePreviewNormal = { bg = colors.mantle },
+        TelescopePromptBorder = { bg = colors.surface0, fg = colors.surface0 },
+        TelescopeResultsBorder = { bg = colors.mantle, fg = colors.mantle },
+        TelescopePreviewBorder = { bg = colors.mantle, fg = colors.mantle },
+        TelescopePromptTitle = { bg = colors.pink, fg = colors.mantle },
+        TelescopeResultsTitle = { fg = colors.mantle },
+        TelescopePreviewTitle = { bg = colors.green, fg = colors.mantle },
+      }
+
+      for hl, col in pairs(TelescopeColor) do
+        vim.api.nvim_set_hl(0, hl, col)
+      end
     end,
     keys = function()
       local builtin = require("telescope.builtin")
 
       return {
-        { "<Leader>ff",  builtin.find_files,   desc = "Find Files" },
-        { "<Leader>fr",  builtin.oldfiles,     desc = "Find Recent Files" },
-        { "<Leader>fk",  builtin.keymaps,      desc = "Find Keymaps" },
-        { '<Leader>f"',  builtin.registers,    desc = "Find Registers" },
-        { "<Leader>f`",  builtin.marks,        desc = "Find Marks" },
-        { "<Leader>fw",  builtin.grep_string,  desc = "Find Word Under Cursor" },
-        { "<Leader>ft",  builtin.live_grep,    desc = "Find Text In Project" },
+        { "<Leader>ff",  builtin.find_files,   desc = "Find files" },
+        { "<Leader>fr",  builtin.oldfiles,     desc = "Find recent files" },
+        { "<Leader>fk",  builtin.keymaps,      desc = "Find keymaps" },
+        { '<Leader>fR',  builtin.registers,    desc = "Find registers" },
+        { "<Leader>fm",  builtin.marks,        desc = "Find marks" },
+        { "<Leader>fw",  builtin.grep_string,  desc = "Find word under cursor" },
+        { "<Leader>ft",  builtin.live_grep,    desc = "Find text in project" },
         { "<Leader>fb",  builtin.buffers,      desc = "Find buffers" },
         { "<Leader>fgb", builtin.git_branches, desc = "Find git branches" },
         { "<Leader>fgc", builtin.git_commits,  desc = "Find git commits" },
