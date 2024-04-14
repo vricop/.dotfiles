@@ -45,11 +45,11 @@ return {
           enable = true,
           swap_next = {
             ["<leader>na"] = "@parameter.inner", -- swap parameters/argument with next
-            ["<leader>nm"] = "@function.outer", -- swap function with next
+            ["<leader>nm"] = "@function.outer",  -- swap function with next
           },
           swap_previous = {
             ["<leader>pa"] = "@parameter.inner", -- swap parameters/argument with prev
-            ["<leader>pm"] = "@function.outer", -- swap function with previous
+            ["<leader>pm"] = "@function.outer",  -- swap function with previous
           },
         },
         move = {
@@ -95,16 +95,16 @@ return {
     })
 
     local ts_repeat_move = require("nvim-treesitter.textobjects.repeatable_move")
-    local map = vim.keymap.set
+    local keymap = require 'core.utils'.keymap
 
     -- vim way: ; goes to the direction you were moving.
-    map({ "n", "x", "o" }, ";", ts_repeat_move.repeat_last_move)
-    map({ "n", "x", "o" }, ",", ts_repeat_move.repeat_last_move_opposite)
+    keymap({ "n", "x", "o" }, ";", ts_repeat_move.repeat_last_move)
+    keymap({ "n", "x", "o" }, ",", ts_repeat_move.repeat_last_move_opposite)
 
     -- Optionally, make builtin f, F, t, T also repeatable with ; and ,
-    map({ "n", "x", "o" }, "f", ts_repeat_move.builtin_f)
-    map({ "n", "x", "o" }, "F", ts_repeat_move.builtin_F)
-    map({ "n", "x", "o" }, "t", ts_repeat_move.builtin_t)
-    map({ "n", "x", "o" }, "T", ts_repeat_move.builtin_T)
+    keymap({ "n", "x", "o" }, "f", ts_repeat_move.builtin_f)
+    keymap({ "n", "x", "o" }, "F", ts_repeat_move.builtin_F)
+    keymap({ "n", "x", "o" }, "t", ts_repeat_move.builtin_t)
+    keymap({ "n", "x", "o" }, "T", ts_repeat_move.builtin_T)
   end,
 }

@@ -1,27 +1,25 @@
 return {
-	{
-		"nvim-tree/nvim-tree.lua",
-		dependencies = { { "nvim-tree/nvim-web-devicons" } },
-		config = function()
+  {
+    "nvim-tree/nvim-tree.lua",
+    dependencies = { { "nvim-tree/nvim-web-devicons" } },
+    config = function()
+      local keymap = require 'core.utils'.keymap
       require('nvim-tree').setup({
         on_attach = function(bufnr)
           local api = require 'nvim-tree.api'
-          local map = vim.keymap.set
           local function opts(desc)
             return {
               desc = desc,
               buffer = bufnr,
-              noremap = true,
-              silent = true,
               nowait = true,
             }
           end
           api.config.mappings.default_on_attach(bufnr)
           -- Match LSP diagnostics mappings
-          map('n', ']d', api.node.navigate.diagnostics.next, opts('Next Diagnostic'))
-          map('n', '[d', api.node.navigate.diagnostics.prev, opts('Prev Diagnostic'))
-          map('n', 'l', api.node.open.edit, opts('Open'))
-          map('n', 'h', api.node.navigate.parent_close, opts('Close'))
+          keymap('n', ']d', api.node.navigate.diagnostics.next, opts('Next Diagnostic'))
+          keymap('n', '[d', api.node.navigate.diagnostics.prev, opts('Prev Diagnostic'))
+          keymap('n', 'l', api.node.open.edit, opts('Open'))
+          keymap('n', 'h', api.node.navigate.parent_close, opts('Close'))
         end,
         renderer = {
           root_folder_label = ':t',
@@ -87,20 +85,19 @@ return {
         },
       })
 
-			vim.keymap.set('n', '<Leader>e', ':NvimTreeFindFileToggle<Cr>', {
-				desc = 'Toggle explorer',
-				silent = true,
-			})
+      keymap('n', '<Leader>e', ':NvimTreeFindFileToggle<Cr>', {
+        desc = 'Toggle explorer',
+      })
 
       vim.g.nvim_tree_auto_open = 0
-		end,
-	},
+    end,
+  },
   {
     'antosha417/nvim-lsp-file-operations',
     dependencies = {
       { 'nvim-lua/plenary.nvim', 'nvim-tree/nvim-tree.lua' },
     },
-    config = function ()
+    config = function()
       require('lsp-file-operations').setup()
     end
   },
