@@ -2,7 +2,7 @@ return {
   {
     'williamboman/mason.nvim',
     dependencies = { 'williamboman/mason-lspconfig.nvim' },
-    config = function ()
+    config = function()
       require('mason').setup {}
       require('mason-lspconfig').setup {
         ensure_installed = {
@@ -19,6 +19,9 @@ return {
           "eslint"
         },
       }
-    end
+      -- Not working under `keys` field
+      local keymap = require 'core.utils'.keymap
+      keymap("n", "<Leader>m", "<cmd>Mason<Cr>", { desc = "Open Mason" })
+    end,
   }
 }
