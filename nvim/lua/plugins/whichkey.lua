@@ -24,6 +24,7 @@ return {
       ["<Leader>t"] = { name = "Toggle" },
       ["<Leader>tg"] = { name = "Toggle git" },
       ["<Leader>b"] = { name = "Buffer" },
+      ["gs"] = { name = "Go swap word" },
     }
     end,
   },
