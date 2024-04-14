@@ -42,6 +42,7 @@ opt.updatetime        = 300                               -- Faster completion (
 opt.wrap              = false                             -- Display lines as one long line
 opt.writebackup       = false                             -- If a file is being edited by another program (or was written to file while editing with another program) it is not allowed to be edited
 opt.cursorcolumn      = true                              -- Draw vertical column for the cursor position
+opt.pumheight = 10                                        -- Pop up menu height
 g.mapleader           = " "                               -- Set leader key
 g.netrw_banner        = 0                                 -- Remove header for netrw file explorer
 g.netrw_liststyle     = 3                                 -- Show tree-like list style
