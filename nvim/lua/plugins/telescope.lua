@@ -10,13 +10,13 @@ return {
           entry_prefix = "   ",
           prompt_prefix = "   ",
           sorting_strategy = "ascending",
-          preview = false,
+          -- preview = false,
           path_display = { "truncate" },
           layout_config = {
             prompt_position = "top",
             horizontal = {
-              width = 0.5,
-              height = 0.4,
+              -- width = 0.5,
+              height = 0.65,
             },
           },
           mappings = {
@@ -32,39 +32,44 @@ return {
             hidden = true
           },
           live_grep = {
-            prompt_prefix = " 󰑑 ",
+            prompt_prefix = " 󰑑  ",
           },
           grep_string = {
             prompt_prefix = "   ",
           },
           keymaps = {
-            prompt_prefix = " 󰌌  ",
+            prompt_prefix = " 󰥻  ",
           },
           marks = {
-            prompt_prefix = " 󰃀 ",
+            prompt_prefix = " 󰃀  ",
           },
           oldfiles = {
             prompt_title = "Recent files",
             prompt_prefix = "   ",
           },
           git_branches = {
-            prompt_prefix = " 󰘬 ",
+            prompt_prefix = " 󰘬  ",
             initial_mode = "normal",
           },
           git_commits = {
-            prompt_prefix = " 󰜘 ",
+            prompt_prefix = " 󰜘  ",
             initial_mode = "normal",
           },
-          buffers = {
+          git_status = {
+            prompt_prefix = "   ",
+            initial_mode = "normal",
+          },
+          git_stash = {
+            prompt_prefix = "   ",
             initial_mode = "normal",
           },
         }
       })
+
       local colors = require("catppuccin.palettes").get_palette()
       local TelescopeColor = {
         TelescopeMatching = { fg = colors.flamingo },
         TelescopeSelection = { fg = colors.text, bg = colors.surface0, bold = true },
-
         TelescopePromptPrefix = { bg = colors.surface0 },
         TelescopePromptNormal = { bg = colors.surface0 },
         TelescopeResultsNormal = { bg = colors.mantle },
@@ -95,6 +100,8 @@ return {
         { "<Leader>fb",  builtin.buffers,      desc = "Find buffers" },
         { "<Leader>fgb", builtin.git_branches, desc = "Find git branches" },
         { "<Leader>fgc", builtin.git_commits,  desc = "Find git commits" },
+        { "<Leader>fgs", builtin.git_status,   desc = "Find git status" },
+        { "<Leader>fgS", builtin.git_stash,    desc = "Find git stash" },
       }
     end
   },
