@@ -6,7 +6,7 @@ return {
 		end,
 		keys = {
 			{
-				"<Leader>gl",
+				"<Leader>gg",
 				":LazyGit<Cr>",
 				noremap = true,
 				desc = "Open Lazygit",
