@@ -1,0 +1,35 @@
+return {
+  kind = {
+    Text = " ",
+    Color = " ",
+    Method = " ",
+    Function = " ",
+    Constructor = " ",
+    Field = " ",
+    Variable = " ",
+    Class = " ",
+    Interface = " ",
+    Module = " ",
+    Property = " ",
+    Unit = " ",
+    Value = " ",
+    Enum = " ",
+    Keyword = " ",
+    Snippet = " ",
+    File = " ",
+    Reference = " ",
+    Folder = " ",
+    EnumMember = " ",
+    Constant = " ",
+    Struct = " ",
+    Event = " ",
+    Operator = " ",
+    TypeParameter = " ",
+  },
+  diagnostics = {
+    Error = " ",
+    Warn = " ",
+    Hint = " ",
+    Info = " "
+  }
+}
