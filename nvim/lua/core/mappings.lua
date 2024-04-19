@@ -82,6 +82,11 @@ keymap("n", "gsh", "mayiwbviwpwvep`a", { desc = "Swap word left" })
 keymap("n", "gsl", "mayiwwviwpbbviwp`a", { desc = "Swap word right" })
 keymap("x", "p", [["_dP"]])
 
+keymap("n", "<Leader>pr", ":cfdo %s###gc | update | bd<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>", {
+  desc = "[R]eplace accross project Quickfix file list",
+  silent = false
+})
+
 keymap("n", "<Leader>ff", function()
   -- If empty buffer, reuse it
   if vim.fn.bufname(0) == "" then
