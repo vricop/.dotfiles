@@ -49,7 +49,7 @@ return {
             glyphs = {
               default = '',
               symlink = '',
-              bookmark = '',
+              bookmark = ' ',
               modified = '●',
               folder = {
                 arrow_closed = '',
@@ -57,9 +57,9 @@ return {
                 default = '󰉋',
                 open = '󰝰',
                 empty = '󰉖',
-                empty_open = 'ﱮ',
+                empty_open = '󰷏 ',
                 symlink = '󱧱',
-                symlink_open = 'ﱮ',
+                symlink_open = '󰷏 ',
               },
               git = {
                 unstaged = '●',
