@@ -1,36 +1,42 @@
 local keymap = require "core.utils".keymap
 
-local function toggle_relative_number()
-  local opt = vim.opt
-  if opt.relativenumber:get() then
-    opt.relativenumber = false
-  else
-    opt.relativenumber = true
-  end
-end
-
 local M_j = "<M-j>"
 local M_k = "<M-k>"
+local M_h = "<M-h>"
+local M_l = "<M-l>"
 local M_J = "<M-J>"
 local M_K = "<M-J>"
 
+--[[
+IMPORTANT: Those who type languages with special characters like Spanish,
+French, Italian, need the special macOS meta key (alt or opt) to work properly
+inside neovim without modifying its original behaviour. In order to use the
+meta key in mappings you need to use the string produced by the <M-*>. This
+Can be achieved by pressing <C-v> before typing the keyboard sequence
+--]]
 if vim.fn.has("mac") then
-  -- macOS special mappings. This solve some issues with meta key.
   M_j = "∆"
   M_k = "˚"
+  M_h = "˙"
+  M_l = "¬"
   M_J = "Ô"
   M_K = ""
 end
 
 keymap({ "n", "x" }, ";", ":", { desc = "Enter command mode", noremap = false })
 keymap("n", "<Esc>", ":noh<cr>", { desc = "Stop highlighting" })
-keymap("n", "<Leader>w", ":up<Cr>", { desc = "Save buffer" })
-keymap("n", "<Leader>s", ":wa<Cr>", { desc = "Save buffers" })
-keymap("n", "<Leader>d", ":bd<Cr>", { desc = "Close buffer" })
-keymap("n", "<Leader>x", "<cmd>bufdo bd<Cr>", { desc = "Close all buffers" })
+keymap("n", "<Leader>w", ":up<Cr>", { desc = "Update buffer" })
+keymap("n", "<Leader>s", ":wa<Cr>", { desc = "Write all buffers" })
+keymap("n", "<Leader>d", ":bd<Cr>", { desc = "Delete buffer" })
+keymap("n", "<Leader>x", ":bufdo bd<Cr>", { desc = "Close all buffers" })
+keymap("n", "<Leader>q", ":qa<Cr>", { desc = "Quit Neovim" })
+keymap("n", "<Leader>c", ":close<Cr>", { desc = "Close window" })
+keymap("n", "<Leader>B", ":bufdo tabedit %<Cr>", { desc = "Open all buffers in tabs" })
 keymap("n", "J", "mzJ`z", { desc = "Join lines and center screen" })
-keymap("n", "H", "<Esc>:tabprevious<cr>", { desc = "Move previous tab" })
-keymap("n", "L", "<Esc>:tabnext<cr>", { desc = "Move next tab" })
+keymap("n", M_h, "gT", { desc = "Previous tab" })
+keymap("n", M_l, "gt", { desc = "Next tab" })
+keymap("n", "H", ":bp<Cr>", { desc = "Previous buffer" })
+keymap("n", "L", ":bn<Cr>", { desc = "Next buffer" })
 keymap("v", M_j, ":m '>+1<Cr>gv=gv", { desc = "Move line down" })
 keymap("n", M_j, ":m .+1<Cr>==", { desc = "Move line down" })
 keymap("v", M_k, ":m '<-2<Cr>gv=gv", { desc = "Move line up" })
@@ -68,11 +74,10 @@ keymap("n", '<Leader>fr', ":registers<Cr>", { desc = "Find registers" })
 keymap("n", "<Leader>fm", ":marks<Cr>", { desc = "Find marks" })
 keymap({ "n", "v" }, "gh", "^", { desc = "Go to the first non blank character" })
 keymap({ "n", "v" }, "gl", "g_", { desc = "Go to the last non blank character" })
-keymap("n", "<Leader>q", ":qa<Cr>", { desc = "Quit Neovim" })
-keymap("n", "<Leader>c", ":q<Cr>", { desc = "Quit window" })
-keymap("n", "<Leader>|", "<C-w>v", { desc = "Split vertically" })
-keymap("n", "<Leader>-", "<C-w>s", { desc = "Split horizontally" })
-keymap("n", "<Leader>tn", toggle_relative_number, { desc = "Toggle relative numbers" })
+keymap("n", "<Leader>v", "<C-w>v", { desc = "Split vertically" })
+keymap("n", "<Leader>h", "<C-w>s", { desc = "Split horizontally" })
+
+
 keymap("n", "]q", ":cn<Cr>", { desc = "Next item in quickfix list" })
 keymap("n", "[q", ":cp<Cr>", { desc = "Previous item in quickfix list" })
 -- keymap("t",          "<Esc>",       [[<C-\><C-n>]],                              { desc = "Previous item in quickfix list"})
@@ -81,18 +86,34 @@ keymap("n", "<Leader>e", ":Lexplore<Cr>", { desc = "Toggle Netwr" })
 keymap("n", "gsh", "mayiwbviwpwvep`a", { desc = "Swap word left" })
 keymap("n", "gsl", "mayiwwviwpbbviwp`a", { desc = "Swap word right" })
 keymap("x", "p", [["_dP"]])
+keymap("i", "jj", '<Esc>')
 
-keymap("n", "<Leader>pr", ":cfdo %s###gc | update | bd<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>", {
-  desc = "[R]eplace accross project Quickfix file list",
-  silent = false
+keymap('n', '<Leader>r',
+  function()
+    local repetead_key = ''
+
+    for _ = 1, 18 do
+      repetead_key = repetead_key .. '<Left>'
+    end
+
+    return string.format(':cfdo %%s###gc | update | bd%s', repetead_key)
+  end, {
+    desc = 'Run substitute from quickfix file list',
+    silent = false,
+    expr = true
+  }
+)
+
+keymap("n", "<Leader>ff", ":find<Space>src/**/", {
+  desc = "Find files",
+  expr = true
 })
 
-keymap("n", "<Leader>ff", function()
-  -- If empty buffer, reuse it
-  if vim.fn.bufname(0) == "" then
-    return ":find<Space>"
-  end
+keymap("n", "<Leader>ti", function()
+  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({}))
+end, { desc = 'Toggle Inlay hint', silent = true })
 
-  -- Otherwise open in in a new tab
-  return ":tabnew | find<Space>"
-end, { desc = "Find files", expr = true }) -- Allow {rhs} to be taken as an expression
+
+keymap("n", "<Leader>tr", function()
+  vim.o.relativenumber = not vim.o.relativenumber
+end, { desc = "Toggle relative numbers", silent = true })
