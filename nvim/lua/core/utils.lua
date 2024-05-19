@@ -8,10 +8,10 @@ local M = {}
 ---@field nowait? boolean
 ---@field expr? boolean
 
----@param mode mode | table<mode>
+---@param mode mode | mode[]
 ---@param lhs string
 ---@param rhs string | function
----@param opts? Options
+---@param opts Options | nil
 function M.keymap(mode, lhs, rhs, opts)
   local keymap = vim.keymap.set
 
