@@ -1,9 +1,7 @@
 require 'neodev'.setup {}
 
--- TODO: Move all lsp config related into lspconfig.lua? Move there os lsp
--- related dependencies: mason, mason-lspconfig, typescript. Take a look at
--- LazyVim configs https://www.lazyvim.org/plugins/lsp#nvim-lspconfig
-
+-- TODO: Move all lsp config related into lspconfig.lua. Use LazyVim, kickstarter
+-- and Launch.nvim as references
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local lspconfig = require 'lspconfig'
 local keymap = require 'core.utils'.keymap
@@ -55,6 +53,7 @@ require('mason-lspconfig').setup_handlers({
       settings = {
         Lua = {
           diagnostics = { globals = { 'vim' } },
+          hint = { enable = true }
         },
         -- NOTE: For some reason, stylelint isn't loading my config file with
         -- rules for avoiding false positives when using PostCss plugins.
@@ -64,12 +63,38 @@ require('mason-lspconfig').setup_handlers({
             unknownAtRules = 'ignore',
           },
         },
+        -- taken from https://github.com/typescript-language-server/typescript-language-server#workspacedidchangeconfiguration
+        javascript = {
+          inlayHints = {
+            includeInlayEnumMemberValueHints = true,
+            includeInlayFunctionLikeReturnTypeHints = true,
+            includeInlayFunctionParameterTypeHints = true,
+            includeInlayParameterNameHints = 'all',
+            includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+            includeInlayPropertyDeclarationTypeHints = true,
+            includeInlayVariableTypeHints = true,
+          },
+        },
+        typescript = {
+          inlayHints = {
+            includeInlayEnumMemberValueHints = true,
+            includeInlayFunctionLikeReturnTypeHints = true,
+            includeInlayFunctionParameterTypeHints = true,
+            includeInlayParameterNameHints = 'all',
+            includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+            includeInlayPropertyDeclarationTypeHints = true,
+            includeInlayVariableTypeHints = true,
+          },
+        },
         cssmodules = {
           capabilities = {
             -- NOTE: Avoids conflicting with typescript 'go-to-definition'
             definitionProvider = false
           }
-        }
+        },
+        json = {
+          schemas = require("schemastore").json.schemas(),
+        },
       }
     })
   end,
