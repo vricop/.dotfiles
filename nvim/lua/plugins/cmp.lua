@@ -1,15 +1,16 @@
 return {
   {
     "hrsh7th/nvim-cmp",
+    event = "InsertEnter",
     dependencies = {
-      { "L3MON4D3/LuaSnip",         event = "InsertEnter" },
-      { "hrsh7th/cmp-buffer",       event = "InsertEnter" },
-      { "hrsh7th/cmp-cmdline",      event = "InsertEnter" },
-      { "hrsh7th/cmp-nvim-lsp",     event = "InsertEnter" },
-      { "hrsh7th/cmp-path",         event = "InsertEnter" },
-      { "saadparwaiz1/cmp_luasnip", event = "InsertEnter" },
-      { "hrsh7th/cmp-emoji",        event = "InsertEnter" },
-      { "hrsh7th/cmp-nvim-lua" },
+      "L3MON4D3/LuaSnip",
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-cmdline",
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-path",
+      "saadparwaiz1/cmp_luasnip",
+      "hrsh7th/cmp-emoji",
+      "hrsh7th/cmp-nvim-lua"
     },
     config = function()
       local cmp = require("cmp")
