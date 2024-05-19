@@ -10,12 +10,9 @@ return {
 	keys = {
 		{
 			"<Leader>o",
-			function()
-				require("oil").toggle_float()
-			end,
-			mode = "n",
+      "<Cmd>Oil<Cr>",
 			silent = true,
-			desc = "Open parent dir (Oil)",
+			desc = "Open parent dir",
 		},
 	},
 }
