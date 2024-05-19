@@ -10,21 +10,32 @@ return {
           entry_prefix = "   ",
           prompt_prefix = "   ",
           sorting_strategy = "ascending",
-          -- preview = false,
-          path_display = { "truncate" },
+          -- preview = true,
+          path_display = {
+            "truncate",
+            filename_first = {
+              reverse_directories = false
+            }
+          },
           layout_config = {
             prompt_position = "top",
             horizontal = {
-              -- width = 0.5,
               height = 0.65,
             },
           },
           mappings = {
             -- macOS special mappings: œ = <M-q>
-            i = { ["œ"] = actions.smart_send_to_qflist + actions.open_qflist },
-            n = { ["œ"] = actions.smart_send_to_qflist + actions.open_qflist },
+            i = { 
+              ["œ"] = actions.smart_send_to_qflist + actions.open_qflist,
+              ["K"] = actions.cycle_history_prev,
+              ["J"] = actions.cycle_history_next
+            },
+            n = { 
+              ["œ"] = actions.smart_send_to_qflist + actions.open_qflist,
+              ["K"] = actions.cycle_history_prev,
+              ["J"] = actions.cycle_history_next
+            },
           },
-          borderchars = { '─', '│', '─', '│', '┌', '┐', '┘', '└' },
         },
         pickers = {
           find_files = {
@@ -61,6 +72,10 @@ return {
           },
           git_stash = {
             prompt_prefix = "   ",
+            initial_mode = "normal",
+          },
+          diagnostics = {
+            prompt_prefix = "   ",
             initial_mode = "normal",
           },
         }
@@ -102,6 +117,8 @@ return {
         { "<Leader>fgc", builtin.git_commits,  desc = "Find git commits" },
         { "<Leader>fgs", builtin.git_status,   desc = "Find git status" },
         { "<Leader>fgS", builtin.git_stash,    desc = "Find git stash" },
+        { "<Leader>fd",  builtin.diagnostics,  desc = "Find diagnostics" },
+        { "<Leader>;",   builtin.resume,       desc = "Open last search" },
       }
     end
   },
