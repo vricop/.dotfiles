@@ -117,3 +117,11 @@ end, { desc = 'Toggle Inlay hint', silent = true })
 keymap("n", "<Leader>tr", function()
   vim.o.relativenumber = not vim.o.relativenumber
 end, { desc = "Toggle relative numbers", silent = true })
+
+keymap("n", "<Leader>tc", function()
+  if vim.o.conceallevel == 0 then
+    vim.o.conceallevel = 2
+  else
+    vim.o.conceallevel = 0
+  end
+end, { desc = "Toggle conceal", silent = true })
