@@ -1,0 +1,77 @@
+{
+  "useState": {
+    "prefix": [
+      "us"
+    ],
+    "body": [
+      "const [${1}, ${1/([a-z])(.*)/set${1:/upcase}${2}/}] = useState($3)"
+    ]
+  },
+  "useMemo": {
+    "prefix": [
+      "um"
+    ],
+    "body": [
+      "const [${1}, ${1/([a-z])(.*)/set${1:/upcase}${2}/}] = useMemo($3)"
+    ]
+  },
+  "useEffect": {
+    "prefix": [
+      "ue"
+    ],
+    "body": [
+      "useEffect(() => {",
+      "  $1",
+      "}, [$2])"
+    ]
+  },
+  "useRef": {
+    "prefix": [
+      "ur"
+    ],
+    "body": [
+      "const $1 = useRef($2)"
+    ]
+  },
+  "log": {
+    "prefix": [
+      "log"
+    ],
+    "body": "console.log($1)"
+  },
+  "dir": {
+    "prefix": [
+      "dir"
+    ],
+    "body": "console.dir($1)"
+  },
+  "Function component": {
+    "prefix": [
+      "fc"
+    ],
+    "body": [
+      "export default function ${1:${TM_FILENAME_BASE}}($2) {",
+      "  $3",
+      "}"
+    ]
+  },
+  "useCallBack": {
+    "prefix": ["uc"],
+    "body": [
+      "const $1 = useCallBack(",
+      "  () => {",
+      "    $2",
+      "  },",
+      " [$3]",
+      ")"
+    ]
+  },
+  "&": {
+    "prefix": "&",
+    "body": [
+      "{${1:condition} & (",
+      "  $2",
+      ")}"
+    ]
+  }
+}
