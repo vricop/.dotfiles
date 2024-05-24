@@ -25,12 +25,12 @@ return {
           },
           mappings = {
             -- macOS special mappings: œ = <M-q>
-            i = { 
+            i = {
               ["œ"] = actions.smart_send_to_qflist + actions.open_qflist,
               ["K"] = actions.cycle_history_prev,
               ["J"] = actions.cycle_history_next
             },
-            n = { 
+            n = {
               ["œ"] = actions.smart_send_to_qflist + actions.open_qflist,
               ["K"] = actions.cycle_history_prev,
               ["J"] = actions.cycle_history_next
@@ -44,6 +44,7 @@ return {
           },
           live_grep = {
             prompt_prefix = " 󰑑  ",
+            theme = "ivy"
           },
           grep_string = {
             prompt_prefix = "   ",
@@ -78,28 +79,12 @@ return {
             prompt_prefix = "   ",
             initial_mode = "normal",
           },
+          heps_tags = {
+            prompt_prefix = " 󰋖 ",
+            initial_mode = "normal",
+          },
         }
       })
-
-      local colors = require("catppuccin.palettes").get_palette()
-      local TelescopeColor = {
-        TelescopeMatching = { fg = colors.flamingo },
-        TelescopeSelection = { fg = colors.text, bg = colors.surface0, bold = true },
-        TelescopePromptPrefix = { bg = colors.surface0 },
-        TelescopePromptNormal = { bg = colors.surface0 },
-        TelescopeResultsNormal = { bg = colors.mantle },
-        TelescopePreviewNormal = { bg = colors.mantle },
-        TelescopePromptBorder = { bg = colors.surface0, fg = colors.surface0 },
-        TelescopeResultsBorder = { bg = colors.mantle, fg = colors.mantle },
-        TelescopePreviewBorder = { bg = colors.mantle, fg = colors.mantle },
-        TelescopePromptTitle = { bg = colors.pink, fg = colors.mantle },
-        TelescopeResultsTitle = { fg = colors.mantle },
-        TelescopePreviewTitle = { bg = colors.green, fg = colors.mantle },
-      }
-
-      for hl, col in pairs(TelescopeColor) do
-        vim.api.nvim_set_hl(0, hl, col)
-      end
     end,
     keys = function()
       local builtin = require("telescope.builtin")
@@ -118,7 +103,7 @@ return {
         { "<Leader>fgs", builtin.git_status,   desc = "Find git status" },
         { "<Leader>fgS", builtin.git_stash,    desc = "Find git stash" },
         { "<Leader>fd",  builtin.diagnostics,  desc = "Find diagnostics" },
-        { "<Leader>;",   builtin.resume,       desc = "Open last search" },
+        { "<Leader>fh",  builtin.help_tags,    desc = "Find helps tags" },
       }
     end
   },
