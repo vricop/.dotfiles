@@ -59,5 +59,5 @@ opt.path:append "**"                                      -- Tell Neovim to look
 -- opt.shortmess:append "I"                               -- Don't show the default intro message
 opt.shortmess:append "c"                                  -- Don't show redundant messages from ins-completion-menu
 opt.spelllang:append "cjk"                                -- Disable spellchecking for asian characters (VIM algorithm does not support it)
-opt.whichwrap:append "<,>,[,],h,l"                        -- Sete what commands wrap to the next line when at the end of the line
+opt.whichwrap:append "<,>,[,],h,l"                        -- Set what commands wrap to the next line when at the end of the line
 opt.wildignore:append "**/node_modules/**"                -- Don't show results from `node_modules` recursively
