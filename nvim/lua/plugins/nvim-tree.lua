@@ -5,6 +5,9 @@ return {
     config = function()
       local keymap = require 'core.utils'.keymap
       require('nvim-tree').setup({
+        hijack_directories = {
+          auto_open = false,
+        },
         on_attach = function(bufnr)
           local api = require 'nvim-tree.api'
           local function opts(desc)
