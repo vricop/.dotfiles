@@ -11,7 +11,7 @@ opt.conceallevel      = 2                                 -- So that `` is visib
 opt.cursorline        = true                              -- Highlight the current line
 opt.expandtab         = true                              -- Convert tabs to spaces
 opt.fileencoding      = "utf-8"                           -- The encoding written to a file
-opt.guifont           = "PragmataProLiga Nerd Font:h17"   -- The font used in graphical neovim applications
+opt.guifont           = "IosevkaTerm Nerd Font Propo:h18" -- The font used in graphical neovim applications
 opt.hlsearch          = true                              -- Highlight all matches on previous search pattern
 opt.ignorecase        = true                              -- Ignore case in search patterns
 opt.laststatus        = 3                                 -- Enable global statusline
@@ -55,9 +55,9 @@ g.netrw_altv          = 1                                 -- Change from left sp
 --- OTHER SETTINGS
 cmd "colorscheme habamax"
 cmd "highlight WinSeparator guibg=None"                   -- Thin split lines
-opt.path:append "**"
-opt.shortmess:append "I"                                  -- don't show the default intro message
-opt.shortmess:append "c"                                  -- don't show redundant messages from ins-completion-menu
-opt.spelllang:append "cjk"                                -- disable spellchecking for asian characters (VIM algorithm does not support it)
-opt.whichwrap:append "<,>,[,],h,l"
-opt.wildignore:append "**/node_modules/**"                -- don't show results from `node_modules` recursively
+opt.path:append "**"                                      -- Tell Neovim to look in all subdirectories relative to the current directory when searching for a file 
+-- opt.shortmess:append "I"                               -- Don't show the default intro message
+opt.shortmess:append "c"                                  -- Don't show redundant messages from ins-completion-menu
+opt.spelllang:append "cjk"                                -- Disable spellchecking for asian characters (VIM algorithm does not support it)
+opt.whichwrap:append "<,>,[,],h,l"                        -- Sete what commands wrap to the next line when at the end of the line
+opt.wildignore:append "**/node_modules/**"                -- Don't show results from `node_modules` recursively
