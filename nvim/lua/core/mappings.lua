@@ -104,9 +104,9 @@ keymap('n', '<Leader>r',
   }
 )
 
-keymap("n", "<Leader>ff", ":find<Space>src/**/", {
+keymap("n", "<Leader>ff", ":find<Space>**/", {
   desc = "Find files",
-  expr = true
+  silent = false
 })
 
 keymap("n", "<Leader>ti", function()
