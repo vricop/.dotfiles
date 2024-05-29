@@ -76,17 +76,15 @@ keymap({ "n", "v" }, "gh", "^", { desc = "Go to the first non blank character" }
 keymap({ "n", "v" }, "gl", "g_", { desc = "Go to the last non blank character" })
 keymap("n", "<Leader>v", "<C-w>v", { desc = "Split vertically" })
 keymap("n", "<Leader>h", "<C-w>s", { desc = "Split horizontally" })
-
-
 keymap("n", "]q", ":cn<Cr>", { desc = "Next item in quickfix list" })
 keymap("n", "[q", ":cp<Cr>", { desc = "Previous item in quickfix list" })
 -- keymap("t",          "<Esc>",       [[<C-\><C-n>]],                              { desc = "Previous item in quickfix list"})
-keymap("n", "<Leader>e", ":Lexplore<Cr>", { desc = "Toggle Netwr" })
 -- Swap words leaving cursor on initial position using marks
 keymap("n", "gsh", "mayiwbviwpwvep`a", { desc = "Swap word left" })
 keymap("n", "gsl", "mayiwwviwpbbviwp`a", { desc = "Swap word right" })
 keymap("x", "p", [["_dP"]])
 keymap("i", "jj", '<Esc>')
+keymap("n", "Q", "@q", { desc = "Run macro on regiser \"q" })
 
 keymap('n', '<Leader>r',
   function()
@@ -109,19 +107,21 @@ keymap("n", "<Leader>ff", ":find<Space>**/", {
   silent = false
 })
 
+-- Toggle mappings --
+keymap("n", "<Leader>e", ":Lexplore<Cr>", { desc = "Toggle Netwr" })
+
 keymap("n", "<Leader>ti", function()
   vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({}))
 end, { desc = 'Toggle Inlay hint', silent = true })
-
 
 keymap("n", "<Leader>tr", function()
   vim.o.relativenumber = not vim.o.relativenumber
 end, { desc = "Toggle relative numbers", silent = true })
 
 keymap("n", "<Leader>tc", function()
-  if vim.o.conceallevel == 0 then
-    vim.o.conceallevel = 2
-  else
-    vim.o.conceallevel = 0
-  end
+  vim.o.conceallevel = vim.o.conceallevel == 0 and 2 or 0
 end, { desc = "Toggle conceal", silent = true })
+
+keymap("n", "<Leader>tl", function()
+  vim.o.lazyredraw = not vim.o.lazyredraw
+end, { desc = "Toggle lazyredraw" })
