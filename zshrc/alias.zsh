@@ -13,9 +13,9 @@ alias ci="npm ci"
 alias pack="npm pack --pack-destination"
 
 # Repo folders
-alias work="${REPOS}/work/ && ls"
-alias side="${REPOS}/side && ls"
-alias courses="${REPOS}/courses && ls"
+# alias work="${REPOS}/work/ && ls"
+# alias side="${REPOS}/side && ls"
+# alias courses="${REPOS}/courses && ls"
 
 alias -s {js,jsx,ts,html,css,scss,sass,json,md,txt,php,yml,vue}=$EDITOR
 
