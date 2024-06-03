@@ -78,10 +78,11 @@ keymap("n", "<Leader>v", "<C-w>v", { desc = "Split vertically" })
 keymap("n", "<Leader>h", "<C-w>s", { desc = "Split horizontally" })
 keymap("n", "]q", ":cn<Cr>", { desc = "Next item in quickfix list" })
 keymap("n", "[q", ":cp<Cr>", { desc = "Previous item in quickfix list" })
--- keymap("t",          "<Esc>",       [[<C-\><C-n>]],                              { desc = "Previous item in quickfix list"})
+
 -- Swap words leaving cursor on initial position using marks
 keymap("n", "gsh", "mayiwbviwpwvep`a", { desc = "Swap word left" })
 keymap("n", "gsl", "mayiwwviwpbbviwp`a", { desc = "Swap word right" })
+
 keymap("x", "p", [["_dP"]])
 keymap("i", "jj", '<Esc>')
 keymap("n", "Q", "@q", { desc = "Run macro on regiser \"q" })
