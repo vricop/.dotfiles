@@ -1,4 +1,4 @@
-export ZSH="/Users/$USER/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 # export PATH="/opt/homebrew/opt/python@3.10/libexec/bin:$PATH" # Fix broken python in macOS Monterey
@@ -25,8 +25,9 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-open-work() {
-  dir="${REPOS}/work"
+op() {
+  dir="${REPOS}/$1"
+  
   cd "${dir}" || { echo "Failed to navigate to ${dir}"; return 1; }
   
   # Use ls to list files/directories and fzf to select one
@@ -36,28 +37,6 @@ open-work() {
   [ -n "$project" ] && cd "$project" && nvim || echo "No project selected"
 }
 
-open-side() {
-  dir="${REPOS}/side"
-  cd "${dir}" || { echo "Failed to navigate to ${dir}"; return 1; }
-  
-  # Use ls to list files/directories and fzf to select one
-  project=$(\ls | fzf)
-  
-  # Check if a project was selected
-  [ -n "$project" ] && cd "$project" && nvim || echo "No project selected"
-}
-
-open-course() {
-  dir="${REPOS}/courses"
-  cd "${dir}" || { echo "Failed to navigate to ${dir}"; return 1; }
-  
-  # Use ls to list files/directories and fzf to select one
-  project=$(\ls | fzf)
-  
-  # Check if a project was selected
-  [ -n "$project" ] && cd "$project" && nvim || echo "No project selected"
-}
- 
 # Load all config files
 for file in ~/zshrc/*; do
   source $file
