@@ -14,6 +14,9 @@ export FZF_CTRL_T_OPTS="
   --preview 'bat -n --color=always {}'
   --bind 'ctrl-/:change-preview-window(down|hidden|)'"
 
-open-lazygit() { lazygit }
-zle -N open-lazygit
-bindkey '^G' open-lazygit
+# Print tree structure in the preview window
+export FZF_ALT_C_OPTS="
+  --walker-skip .git,node_modules,target
+  --preview 'tree -C {}'"
+
+source <(fzf --zsh)
