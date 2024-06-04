@@ -25,66 +25,38 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# Set up fzf key bindings and fuzzy completion
-eval "$(fzf --zsh)"
-
 open-work() {
-    dir="${REPOS}/work"
-    cd "${dir}" || { echo "Failed to navigate to ${dir}"; return 1; }
-    
-    # Use ls to list files/directories and fzf to select one
-    project=$(\ls | fzf)
-    
-    # Check if a project was selected
-    if [ -n "$project" ]; then
-      # Open the selected project with nvim
-      cd "$project" && nvim
-    else
-      echo "No project selected"
-    fi
+  dir="${REPOS}/work"
+  cd "${dir}" || { echo "Failed to navigate to ${dir}"; return 1; }
+  
+  # Use ls to list files/directories and fzf to select one
+  project=$(\ls | fzf)
+  
+  # Check if a project was selected
+  [ -n "$project" ] && cd "$project" && nvim || echo "No project selected"
 }
 
 open-side() {
-    dir="${REPOS}/side"
-    cd "${dir}" || { echo "Failed to navigate to ${dir}"; return 1; }
-    
-    # Use ls to list files/directories and fzf to select one
-    project=$(\ls | fzf)
-    
-    # Check if a project was selected
-    if [ -n "$project" ]; then
-      # Open the selected project with nvim
-      cd "$project" && nvim
-    else
-      echo "No project selected"
-    fi
+  dir="${REPOS}/side"
+  cd "${dir}" || { echo "Failed to navigate to ${dir}"; return 1; }
+  
+  # Use ls to list files/directories and fzf to select one
+  project=$(\ls | fzf)
+  
+  # Check if a project was selected
+  [ -n "$project" ] && cd "$project" && nvim || echo "No project selected"
 }
 
 open-course() {
-    dir="${REPOS}/courses"
-    cd "${dir}" || { echo "Failed to navigate to ${dir}"; return 1; }
-    
-    # Use ls to list files/directories and fzf to select one
-    project=$(\ls | fzf)
-    
-    # Check if a project was selected
-    if [ -n "$project" ]; then
-      # Open the selected project with nvim
-      cd "$project" && nvim
-    else
-      echo "No project selected"
-    fi
+  dir="${REPOS}/courses"
+  cd "${dir}" || { echo "Failed to navigate to ${dir}"; return 1; }
+  
+  # Use ls to list files/directories and fzf to select one
+  project=$(\ls | fzf)
+  
+  # Check if a project was selected
+  [ -n "$project" ] && cd "$project" && nvim || echo "No project selected"
 }
-
-# TODO: Remove x86 version
-# Brew with both ARM64 and x86 versions. This set like this so that I can use
-# Apple's Game Porting Toolkit. Run under rossetta, which has to be installed
-# using x86 brew version
-if [ "$(arch)" = "arm64" ]; then
-  eval "$(/opt/homebrew/bin/brew shellenv)" # Current version
-else
-  eval "$(/usr/local/bin/brew shellenv)"    # x86 version
-fi
  
 # Load all config files
 for file in ~/zshrc/*; do
