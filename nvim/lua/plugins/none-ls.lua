@@ -14,7 +14,7 @@ return {
         sources = {
           formatting.stylua,
           -- formatting.eslint,
-          formatting.prettier.with,
+          formatting.prettier,
           require 'typescript.extensions.null-ls.code-actions'
         },
       }
