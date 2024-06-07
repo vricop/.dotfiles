@@ -1,15 +1,20 @@
 return {
   {
     'nvimtools/none-ls.nvim',
-    dependencies = { 'jose-elias-alvarez/typescript.nvim' },
-    event = { 'BufReadPre', 'BufNewFile' },
+    dependencies = {
+      'jose-elias-alvarez/typescript.nvim',
+      "nvim-lua/plenary.nvim"
+    },
     config = function()
       local null_ls = require 'null-ls'
+      local formatting = null_ls.builtins.formatting
+
       null_ls.setup {
+        debug = true,
         sources = {
-          null_ls.builtins.formatting.stylua,
-          -- null_ls.builtins.formatting.eslint_d,
-          null_ls.builtins.formatting.prettier,
+          formatting.stylua,
+          -- formatting.eslint,
+          formatting.prettier.with,
           require 'typescript.extensions.null-ls.code-actions'
         },
       }

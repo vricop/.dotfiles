@@ -16,7 +16,6 @@ return {
           "marksman",
           "rust_analyzer",
           "tsserver",
-          "eslint"
         },
       }
       -- Not working under `keys` field
