@@ -23,6 +23,7 @@ if vim.fn.has("mac") then
   M_K = ""
 end
 
+keymap("n", "U", "<C-r>", { desc = "Redo last change" })
 keymap({ "n", "x" }, ";", ":", { desc = "Enter command mode", silent = false })
 keymap("n", "<Esc>", ":noh<cr>", { desc = "Stop highlighting" })
 keymap("n", "<Leader>w", ":up<Cr>", { desc = "Update buffer" })
