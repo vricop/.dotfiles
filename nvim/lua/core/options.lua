@@ -1,6 +1,7 @@
 local opt = vim.opt
 local g = vim.g
 local cmd = vim.cmd
+local o = vim.o
 
 opt.backup            = false                             -- Creates a backup file
 opt.clipboard         = "unnamedplus"                     -- Allows neovim to access the system clipboard
@@ -61,3 +62,5 @@ opt.shortmess:append "c"                                  -- Don't show redundan
 opt.spelllang:append "cjk"                                -- Disable spellchecking for asian characters (VIM algorithm does not support it)
 opt.whichwrap:append "<,>,[,],h,l"                        -- Set what commands wrap to the next line when at the end of the line
 opt.wildignore:append "**/node_modules/**"                -- Don't show results from `node_modules` recursively
+
+o.exrc = true                                             -- Automatically execute .nvim.lua, .nvimrc, and .exrc files in the current directory

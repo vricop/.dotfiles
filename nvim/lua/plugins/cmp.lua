@@ -10,7 +10,8 @@ return {
       "hrsh7th/cmp-path",
       "saadparwaiz1/cmp_luasnip",
       "hrsh7th/cmp-emoji",
-      "hrsh7th/cmp-nvim-lua"
+      "hrsh7th/cmp-nvim-lua",
+      "roginfarrer/cmp-css-variables"
     },
     config = function()
       local cmp = require("cmp")
@@ -40,6 +41,7 @@ return {
           { name = "nvim_lsp" },
           { name = "path" },
           { name = "buffer" },
+          { name = "css-variables" }
         }),
         -- https://github.com/hrsh7th/nvim-cmp/wiki/Menu-Appearance
         formatting = {
