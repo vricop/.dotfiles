@@ -1,7 +1,8 @@
 local M = {}
 
----@alias mode "n" | "i" | "v" | "x" | "t" | "s" | "!" | "o"
+---@alias mode "n" | "i" | "v" | "x" | "t" | "s" | "!" | "o" | "c" | "!" | "l"
 
+--- Option maps from `vim.keymap.set`
 ---@class Options
 ---@field noremap? boolean
 ---@field silent? boolean
@@ -21,7 +22,7 @@ function M.keymap(mode, lhs, rhs, opts)
   }
 
   -- opts = opts or {}
-  opts = vim.tbl_extend("force", default_opts, opts or {})
+  opts = vim.tbl_extend('force', default_opts, opts or {})
 
   keymap(mode, lhs, rhs, opts)
 end
