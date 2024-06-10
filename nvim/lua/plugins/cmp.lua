@@ -41,7 +41,7 @@ return {
           { name = 'nvim_lsp' },
           { name = 'path' },
           { name = 'buffer' },
-          { name = 'cmp-css-variables' },
+          { name = 'css-variables' },
         },
         -- https://github.com/hrsh7th/nvim-cmp/wiki/Menu-Appearance
         formatting = {
