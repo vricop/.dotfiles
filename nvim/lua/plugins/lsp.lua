@@ -18,7 +18,7 @@ return {
       local on_attach = function(_, bufnr)
         -- Enable completion using native <C-x><C-o>
         -- TODO: Deprecated method, replaced with `nvim_set_option_value`
-        vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+        -- vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
         -- See `:help vim.lsp.*` for documentation on any of the below functions
         local function lsp_opts(desc)
@@ -71,9 +71,16 @@ return {
           lsp_opts 'Code actions'
         )
 
-        keymap({ 'n', 'v' }, '<Leader>=', function()
-          vim.lsp.buf.format { async = true }
-        end, lsp_opts 'Format buffer')
+        keymap(
+          'n',
+          '<Leader>lo',
+          vim.diagnostic.open_float,
+          { desc = 'Open diagnostic' }
+        )
+
+        -- keymap({ 'n', 'v' }, '<Leader>=', function()
+        --   vim.lsp.buf.format { async = true }
+        -- end, lsp_opts 'Format buffer')
 
         keymap('n', '<Leader>li', '<Cmd>LspInfo<Cr>', lsp_opts 'See lsp info')
       end
