@@ -1,7 +1,7 @@
 local format_opts = {
   lsp_fallback = true,
   async = false,
-  timeout_ms = 1000,
+  timeout_ms = 500,
 }
 
 local create_user_command = vim.api.nvim_create_user_command
