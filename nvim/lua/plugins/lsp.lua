@@ -1,3 +1,5 @@
+local keymap = require('core.utils').keymap
+
 return {
   {
     'neovim/nvim-lspconfig',
@@ -11,7 +13,6 @@ return {
 
       local capabilities = require('cmp_nvim_lsp').default_capabilities()
       local lspconfig = require 'lspconfig'
-      local keymap = require('core.utils').keymap
 
       -- Use an on_attach function to only map the following keys
       -- after the language server attaches to the current buffer
@@ -163,8 +164,9 @@ return {
     'williamboman/mason.nvim',
     config = function()
       require('mason').setup {}
+
+      keymap('n', '<Leader>m', ':Mason<Cr>', { desc = 'Open Mason' })
     end,
-    keys = { '<Leader>m', '<cmd>Mason<Cr>', desc = 'Open Mason' },
   },
 
   {
