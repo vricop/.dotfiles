@@ -1,5 +1,5 @@
 # Enable zsh vi mode
-bindkey -v
+# bindkey -v
 export KEYTIMEOUT=1
 
 # Open nvim with Control+V

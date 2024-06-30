@@ -1,5 +1,6 @@
 alias config="$CONFIG"
 alias dotfiles="$HOME/.dotfiles"
+alias nvimconfig="$CONFIG/nvim"
 
 # NPM
 alias run="npm run"
@@ -36,6 +37,7 @@ alias tree="tree -C $@"
 # Manage zshrc
 alias reload-zshrc='source ~/.zshrc && reset && zsh'
 alias edit-zshrc="$EDITOR ~/.zshrc"
+alias edit-aliases="cd=${REPOS}/Work/components/storybook"
 
 # Git aliases
 alias gs="git status"
@@ -47,3 +49,9 @@ alias gb="git branch"
 alias gc="git commit"
 alias lasttag='git describe --abbrev=0 --tags'
 alias gsl="git log --oneline | fzf --preview=\"echo {1} | cut -d ' ' -f 1 | xargs -I '#' sh -c 'git show --color=always #'\" | delta"
+
+# Projects
+alias side="${REPOS}/side"
+alias work="${REPOS}/work"
+alias courses="${REPOS}/courses/"
+alias components="${REPOS}/work/components/storybook"
