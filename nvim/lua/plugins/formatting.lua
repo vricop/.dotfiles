@@ -4,6 +4,10 @@ local format_opts = {
   timeout_ms = 500,
 }
 
+-- Keep formatting disabled by default
+vim.b.disable_autoformat = true
+vim.g.disable_autoformat = true
+
 local create_user_command = vim.api.nvim_create_user_command
 
 create_user_command('FormatDisable', function(args)
