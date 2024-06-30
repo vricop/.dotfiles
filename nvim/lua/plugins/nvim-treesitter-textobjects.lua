@@ -106,16 +106,13 @@ return {
               query = '@function.outer',
               desc = 'Next method/function def start',
             },
-            -- TODO: This is conflicting with going to next hunk, change this
+            -- Using )c instead of ]c to avoid conflicting with got oc next change
             [')c'] = { query = '@class.outer', desc = 'Next class start' },
             [']i'] = {
               query = '@conditional.outer',
               desc = 'Next conditional start',
             },
             [']l'] = { query = '@loop.outer', desc = 'Next loop start' },
-
-            -- You can pass a query group to use query from `queries/<lang>/<query_group>.scm file in your runtime path.
-            -- Below example nvim-treesitter's `locals.scm` and `folds.scm`. They also provide highlights.scm and indent.scm.
             [']s'] = {
               query = '@scope',
               query_group = 'locals',
@@ -149,7 +146,7 @@ return {
               query = '@function.outer',
               desc = 'Prev method/function def start',
             },
-            -- TODO: This is conflicting with going to next hunk, change this
+            -- Using (c instead of [c to avoid conflicting with got oc prev change
             ['(c'] = { query = '@class.outer', desc = 'Prev class start' },
             ['[i'] = {
               query = '@conditional.outer',
@@ -177,20 +174,10 @@ return {
     local ts_repeat_move = require 'nvim-treesitter.textobjects.repeatable_move'
     local keymap = require('core.utils').keymap
 
-    -- vim way: ; goes to the direction you were moving.
-    keymap(
-      { 'n', 'x', 'o' },
-      ';',
-      ts_repeat_move.repeat_last_move,
-      { expr = true }
-    )
-
-    keymap(
-      { 'n', 'x', 'o' },
-      ',',
-      ts_repeat_move.repeat_last_move_opposite,
-      { expr = true }
-    )
+    -- Repeat movement with ; and ,
+    -- ensure ; goes forward and , goes backward regardless of the last direction
+    keymap({ 'n', 'x', 'o' }, ';', ts_repeat_move.repeat_last_move)
+    keymap({ 'n', 'x', 'o' }, ',', ts_repeat_move.repeat_last_move_opposite)
 
     -- Optionally, make builtin f, F, t, T also repeatable with ; and ,
     keymap(
