@@ -50,10 +50,10 @@ keymap('n', M_J, ':t+0<Cr>', { desc = 'Duplicate line below' })
 keymap('v', M_J, ":t'>+0<Cr>", { desc = 'Duplicate line below' })
 keymap('n', M_K, ':t-1<Cr>', { desc = 'Duplicate line above' })
 keymap('v', M_K, ":t'<-1<Cr>", { desc = 'Duplicate line above' })
-keymap('n', '<Tab>', '>>', { desc = 'Shift line right' })
-keymap('n', '<S-Tab>', '<<', { desc = 'Shift line left' })
-keymap('v', '<Tab>', '>gv', { desc = 'Shift line right' })
-keymap('v', '<S-Tab>', '<gv', { desc = 'Shift line left' })
+keymap('n', '<Tab>', '>>', { desc = 'Indent line right' })
+keymap('n', '<S-Tab>', '<<', { desc = 'Indent line left' })
+keymap('v', '<Tab>', '>gv', { desc = 'Indent selection right' })
+keymap('v', '<S-Tab>', '<gv', { desc = 'Indent selection left' })
 keymap('n', 'n', 'nzz', { desc = 'Next occurrency & center' })
 keymap('n', 'N', 'Nzz', { desc = 'Previous occurrency & center' })
 keymap('n', '*', '*zz', { desc = 'Next occurrency & center' })
@@ -72,12 +72,6 @@ keymap(
   '<Leader>/',
   ':%s@\\v<<C-r><C-w>>@@gc<Left><Left><Left>',
   { desc = 'Find & replace word under cursor', silent = false }
-)
-keymap(
-  'n',
-  '<Leader>:',
-  ':lua= ',
-  { desc = 'Print lua scripts under command mode', silent = false }
 )
 keymap('n', '<Leader>fk', ':map<Cr>', { desc = 'Find keymaps' })
 keymap('n', '<Leader>fr', ':registers<Cr>', { desc = 'Find registers' })
@@ -98,11 +92,6 @@ keymap('n', '<Leader>v', '<C-w>v', { desc = 'Split vertically' })
 keymap('n', '<Leader>h', '<C-w>s', { desc = 'Split horizontally' })
 keymap('n', ']q', ':cn<Cr>', { desc = 'Next item in quickfix list' })
 keymap('n', '[q', ':cp<Cr>', { desc = 'Previous item in quickfix list' })
-
--- Swap words leaving cursor on initial position using marks
-keymap('n', 'gsh', 'mayiwbviwpwvep`a', { desc = 'Swap word left' })
-keymap('n', 'gsl', 'mayiwwviwpbbviwp`a', { desc = 'Swap word right' })
-
 keymap('x', 'p', [["_dP"]])
 keymap('i', 'jj', '<Esc>')
 keymap('n', 'Q', '@q', { desc = 'Run macro on regiser "q' })
