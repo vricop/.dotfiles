@@ -15,6 +15,13 @@ return {
       noremap = true,
       silent = true,
     },
+    {
+      '<Leader>E',
+      ':Neotree focus<Cr>',
+      desc = 'Focus Neotree',
+      noremap = true,
+      silent = true,
+    },
   },
   config = function()
     require('neo-tree').setup {
@@ -23,8 +30,14 @@ return {
           ['l'] = 'open',
           ['h'] = 'close_node',
           ['<Space>'] = 'none',
-          ['[c'] = 'prev_git_modified',
-          [']c'] = 'next_git_modified'
+        },
+      },
+      filesystem = {
+        window = {
+          mappings = {
+            ['[c'] = 'prev_git_modified',
+            [']c'] = 'next_git_modified',
+          },
         },
       },
       default_component_configs = {
@@ -43,6 +56,9 @@ return {
             conflict = ' ',
           },
         },
+      },
+      source_selector = {
+        winbar = true, -- toggle to show selector on winbar
       },
     }
   end,
