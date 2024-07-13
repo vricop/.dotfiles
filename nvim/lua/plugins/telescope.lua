@@ -87,29 +87,35 @@ return {
       }
 
       -- Custom theme
-      local colors = require('catppuccin.palettes').get_palette()
-      local TelescopeColor = {
-        TelescopeMatching = { fg = colors.flamingo },
-        TelescopeSelection = {
-          fg = colors.text,
-          bg = colors.surface0,
-          bold = true,
-        },
+      local catppuccin_ok, colors =
+        pcall(require, 'catppuccin.palettes')
 
-        TelescopePromptPrefix = { bg = colors.surface0 },
-        TelescopePromptNormal = { bg = colors.surface0 },
-        TelescopeResultsNormal = { bg = colors.mantle },
-        TelescopePreviewNormal = { bg = colors.mantle },
-        TelescopePromptBorder = { bg = colors.surface0, fg = colors.surface0 },
-        TelescopeResultsBorder = { bg = colors.mantle, fg = colors.mantle },
-        TelescopePreviewBorder = { bg = colors.mantle, fg = colors.mantle },
-        TelescopePromptTitle = { bg = colors.pink, fg = colors.mantle },
-        TelescopeResultsTitle = { fg = colors.mantle },
-        TelescopePreviewTitle = { bg = colors.green, fg = colors.mantle },
-      }
+      if catppuccin_ok then
+        colors = colors.get_palette()
 
-      for hl, col in pairs(TelescopeColor) do
-        vim.api.nvim_set_hl(0, hl, col)
+        local TelescopeColor = {
+          TelescopeMatching = { fg = colors.flamingo },
+          TelescopeSelection = {
+            fg = colors.text,
+            bg = colors.surface0,
+            bold = true,
+          },
+
+          TelescopePromptPrefix = { bg = colors.surface0 },
+          TelescopePromptNormal = { bg = colors.surface0 },
+          TelescopeResultsNormal = { bg = colors.mantle },
+          TelescopePreviewNormal = { bg = colors.mantle },
+          TelescopePromptBorder = { bg = colors.surface0, fg = colors.surface0 },
+          TelescopeResultsBorder = { bg = colors.mantle, fg = colors.mantle },
+          TelescopePreviewBorder = { bg = colors.mantle, fg = colors.mantle },
+          TelescopePromptTitle = { bg = colors.pink, fg = colors.mantle },
+          TelescopeResultsTitle = { fg = colors.mantle },
+          TelescopePreviewTitle = { bg = colors.green, fg = colors.mantle },
+        }
+
+        for hl, col in pairs(TelescopeColor) do
+          vim.api.nvim_set_hl(0, hl, col)
+        end
       end
     end,
     keys = function()
