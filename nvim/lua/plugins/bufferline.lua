@@ -8,9 +8,9 @@ return {
         mode = 'tabs',
       }
     })
-    local map = vim.keymap.set
+    local keymap = require 'core.utils'.keymap
 
-    map(
+    keymap(
       'n', '<Leader>b', '<Cmd>BufferLinePick<Cr>',
       { desc = 'Jump to tab' }
     )
