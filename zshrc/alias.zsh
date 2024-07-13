@@ -4,14 +4,15 @@ alias nvimconfig="$CONFIG/nvim"
 
 # NPM
 alias run="npm run"
-alias build="run build"
+alias build="npm run build"
 alias start="npm start"
-alias dev="run dev"
-alias test="run test"
-alias prod="build && start"
+alias dev="npm run dev"
+alias test="npm run test"
+alias prod="npm run build && npm start"
 alias i="npm i"
 alias ci="npm ci"
 alias pack="npm pack --pack-destination"
+alias clean="rm -rf node_modules && npm ci"
 
 # Repo folders
 # alias work="${REPOS}/work/ && ls"
@@ -37,7 +38,7 @@ alias tree="tree -C $@"
 # Manage zshrc
 alias reload-zshrc='source ~/.zshrc && reset && zsh'
 alias edit-zshrc="$EDITOR ~/.zshrc"
-alias edit-aliases="cd=${REPOS}/Work/components/storybook"
+alias edit-aliases="nvim ~/zshrc/alias.zsh"
 
 # Git aliases
 alias gs="git status"
@@ -54,4 +55,9 @@ alias gsl="git log --oneline | fzf --preview=\"echo {1} | cut -d ' ' -f 1 | xarg
 alias side="${REPOS}/side"
 alias work="${REPOS}/work"
 alias courses="${REPOS}/courses/"
-alias components="${REPOS}/work/components/storybook"
+
+# Project folders
+alias tokens="${REPOS}/work/kiwi-tokens"
+alias tokens-ios="${REPOS}/work/kiwi-ios"
+alias transforms="${REPOS}/work/sd-internal-transforms"
+alias components="${REPOS}/work/@components"

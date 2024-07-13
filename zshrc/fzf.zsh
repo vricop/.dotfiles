@@ -20,3 +20,12 @@ export FZF_ALT_C_OPTS="
   --preview 'tree -C {}'"
 
 source <(fzf --zsh)
+
+open-project(){
+  dir="${REPOS}/work"
+  result="${dir}/$(\ls $dir | fzf)"
+  cd $result && nvim
+}
+
+zle -N open-project
+bindkey '^X' open-project

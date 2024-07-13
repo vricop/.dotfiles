@@ -1,14 +1,14 @@
 export ZSH="$HOME/.oh-my-zsh"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
-# export PATH="/opt/homebrew/opt/python@3.10/libexec/bin:$PATH" # Fix broken python in macOS Monterey
-ZSH_THEME="refined"
 export CLICOLOR=1 # Enable ls with colors
 export TERM=xterm-256color
 export EDITOR="nvim"
 export BAT_THEME="Catppuccin Mocha"
 export CONFIG="$HOME/.config"
 export REPOS="$HOME/Repos"
+
+ZSH_THEME="refined"
 
 plugins=(
   git 
