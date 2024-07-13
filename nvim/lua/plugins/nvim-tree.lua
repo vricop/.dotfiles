@@ -2,6 +2,7 @@ return {
   {
     "nvim-tree/nvim-tree.lua",
     dependencies = { { "nvim-tree/nvim-web-devicons" } },
+    enabled = false,
     config = function()
       local keymap = require 'core.utils'.keymap
       require('nvim-tree').setup({
