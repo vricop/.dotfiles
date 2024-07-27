@@ -26,7 +26,7 @@ alias nvchad="NVIM_APPNAME='nvchad' nvim"
 alias lvim="NVIM_APPNAME=lvim nvim"
 
 # Better commands
-alias ls="eza --icons=always --color=always --git --no-filesize --no-user --no-time --long --no-permissions --tree --level=1"
+alias ls="eza --icons=always --color=always --git --no-filesize --no-user --no-time --long --no-permissions -G"
 alias rm="trash -F"
 alias cat="bat"
 alias mkdir"mkdir -p -v"
