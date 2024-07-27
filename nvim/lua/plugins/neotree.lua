@@ -4,20 +4,20 @@ return {
   enabled = true,
   dependencies = {
     'nvim-lua/plenary.nvim',
-    'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
+    'nvim-tree/nvim-web-devicons',
     'MunifTanjim/nui.nvim',
   },
   keys = {
     {
       '<Leader>e',
-      ':Neotree toggle<Cr>',
+      ':Neotree toggle reveal<Cr>',
       desc = 'Open Neotree',
       noremap = true,
       silent = true,
     },
     {
-      '<Leader>E',
-      ':Neotree focus<Cr>',
+      '<Leader><Space>',
+      ':Neotree focus reveal<Cr>',
       desc = 'Focus Neotree',
       noremap = true,
       silent = true,
@@ -58,7 +58,7 @@ return {
         },
       },
       source_selector = {
-        winbar = true, -- toggle to show selector on winbar
+        winbar = true,
       },
     }
   end,
