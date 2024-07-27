@@ -176,37 +176,47 @@ return {
 
     -- Repeat movement with ; and ,
     -- ensure ; goes forward and , goes backward regardless of the last direction
-    keymap({ 'n', 'x', 'o' }, ';', ts_repeat_move.repeat_last_move)
-    keymap({ 'n', 'x', 'o' }, ',', ts_repeat_move.repeat_last_move_opposite)
+    keymap(
+      { 'n', 'x', 'o' },
+      ';',
+      ts_repeat_move.repeat_last_move,
+      { desc = 'Next match' }
+    )
+
+    keymap(
+      { 'n', 'x', 'o' },
+      ',',
+      ts_repeat_move.repeat_last_move_opposite,
+      { desc = 'Previous match' }
+    )
 
     -- Optionally, make builtin f, F, t, T also repeatable with ; and ,
-    -- NOTE: These naive mapping are not working properly if enabled 
-    -- keymap(
-    --   { 'n', 'x', 'o' },
-    --   'f',
-    --   ts_repeat_move.builtin_f_expr,
-    --   { expr = true }
-    -- )
-    --
-    -- keymap(
-    --   { 'n', 'x', 'o' },
-    --   'F',
-    --   ts_repeat_move.builtin_f_expr,
-    --   { expr = true }
-    -- )
-    --
-    -- keymap(
-    --   { 'n', 'x', 'o' },
-    --   't',
-    --   ts_repeat_move.builtin_f_expr,
-    --   { expr = true }
-    -- )
-    --
-    -- keymap(
-    --   { 'n', 'x', 'o' },
-    --   'T',
-    --   ts_repeat_move.builtin_f_expr,
-    --   { expr = true }
-    -- )
+    keymap(
+      { 'n', 'x', 'o' },
+      'f',
+      ts_repeat_move.builtin_f_expr,
+      { expr = true }
+    )
+
+    keymap(
+      { 'n', 'x', 'o' },
+      'F',
+      ts_repeat_move.builtin_f_expr,
+      { expr = true }
+    )
+
+    keymap(
+      { 'n', 'x', 'o' },
+      't',
+      ts_repeat_move.builtin_f_expr,
+      { expr = true }
+    )
+
+    keymap(
+      { 'n', 'x', 'o' },
+      'T',
+      ts_repeat_move.builtin_f_expr,
+      { expr = true }
+    )
   end,
 }
