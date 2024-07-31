@@ -64,3 +64,6 @@ opt.whichwrap:append "<,>,[,],h,l"                        -- Set what commands w
 opt.wildignore:append "**/node_modules/**"                -- Don't show results from `node_modules` recursively
 
 o.exrc = true                                             -- Automatically execute .nvim.lua, .nvimrc, and .exrc files in the current directory
+
+-- Custom variables
+_G.diff_mode = false

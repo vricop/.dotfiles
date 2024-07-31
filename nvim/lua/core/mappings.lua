@@ -133,3 +133,15 @@ end, { desc = 'Toggle conceal', silent = true })
 keymap('n', '<Leader>tl', function()
   vim.o.lazyredraw = not vim.o.lazyredraw
 end, { desc = 'Toggle lazyredraw' })
+
+keymap('n', '<Leader>td', function()
+  if _G.diff_mode then
+    vim.cmd 'windo diffoff'
+  else
+    vim.cmd 'windo diffthis'
+  end
+  _G.diff_mode = not _G.diff_mode
+end, {
+  silent = true,
+  desc = 'Toggle diff in splits',
+})
