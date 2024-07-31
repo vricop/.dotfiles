@@ -91,10 +91,6 @@ return {
           { desc = 'Open diagnostic' }
         )
 
-        -- keymap({ 'n', 'v' }, '<Leader>=', function()
-        --   vim.lsp.buf.format { async = true }
-        -- end, lsp_opts 'Format buffer')
-
         keymap(
           'n',
           '<Leader>li',
