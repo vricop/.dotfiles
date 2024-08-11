@@ -32,6 +32,7 @@ end, {
 
 return {
   'stevearc/conform.nvim',
+  enabled = enable_plugins.formatting,
   config = function()
     local conform = require 'conform'
 
@@ -58,10 +59,10 @@ return {
       end,
     }
 
-    local keymap = require('core.utils').keymap
-
-    keymap('n', '<Leader>=', function()
+    vim.keymap.set('n', '<Leader>=', function()
       conform.format(format_opts)
-    end, { desc = 'Format buffer' })
+    end, {
+      desc = 'Format buffer',
+    })
   end,
 }

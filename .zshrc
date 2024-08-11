@@ -25,18 +25,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-op() {
-  dir="${REPOS}/$1"
-  
-  cd "${dir}" || { echo "Failed to navigate to ${dir}"; return 1; }
-  
-  # Use ls to list files/directories and fzf to select one
-  project=$(\ls | fzf)
-  
-  # Check if a project was selected
-  [ -n "$project" ] && cd "$project" && nvim || echo "No project selected"
-}
-
 # Load all config files
 for file in ~/zshrc/*; do
   source $file

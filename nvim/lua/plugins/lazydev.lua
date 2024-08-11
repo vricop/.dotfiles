@@ -1,6 +1,7 @@
 return {
   {
     'folke/lazydev.nvim',
+    enabled = enable_plugins.lazydev,
     ft = 'lua', -- only load on lua files
     opts = {
       library = {
@@ -10,9 +11,15 @@ return {
       },
     },
   },
-  { 'Bilal2453/luvit-meta', lazy = true }, -- optional `vim.uv` typings
+  {
+    -- optional `vim.uv` typings
+    'Bilal2453/luvit-meta',
+    lazy = true,
+    enabled = enable_plugins['luvit-meta'],
+  },
   { -- optional completion source for require statements and module annotations
     'hrsh7th/nvim-cmp',
+    enabled = enable_plugins.cmp,
     opts = function(_, opts)
       opts.sources = opts.sources or {}
       table.insert(opts.sources, {

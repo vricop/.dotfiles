@@ -1,29 +1,44 @@
 return {
   {
-    "nvim-tree/nvim-tree.lua",
-    dependencies = { { "nvim-tree/nvim-web-devicons" } },
-    enabled = false,
+    'nvim-tree/nvim-tree.lua',
+    dependencies = { { 'nvim-tree/nvim-web-devicons' } },
+    enabled = enable_plugins['nvim-tree'],
     config = function()
-      local keymap = require 'core.utils'.keymap
-      require('nvim-tree').setup({
+      local keymap = vim.keymap.set
+
+      require('nvim-tree').setup {
         hijack_directories = {
           auto_open = false,
         },
         on_attach = function(bufnr)
           local api = require 'nvim-tree.api'
-          local function opts(desc)
-            return {
-              desc = desc,
-              buffer = bufnr,
-              nowait = true,
-            }
-          end
+
           api.config.mappings.default_on_attach(bufnr)
           -- Match LSP diagnostics mappings
-          keymap('n', ']d', api.node.navigate.diagnostics.next, opts('Next Diagnostic'))
-          keymap('n', '[d', api.node.navigate.diagnostics.prev, opts('Prev Diagnostic'))
-          keymap('n', 'l', api.node.open.edit, opts('Open'))
-          keymap('n', 'h', api.node.navigate.parent_close, opts('Close'))
+
+          keymap('n', ']d', api.node.navigate.diagnostics.next, {
+            desc = 'Next Diagnostic',
+            nowait = true,
+            noremap = true
+          })
+
+          keymap('n', '[d', api.node.navigate.diagnostics.prev, {
+            desc = 'Prev Diagnostic',
+            nowait = true,
+            noremap = true
+          })
+
+          keymap('n', 'l', api.node.open.edit, {
+            desc = 'Open',
+            nowait = true,
+            noremap = true
+          })
+
+          keymap('n', 'h', api.node.navigate.parent_close, {
+            desc = 'Close',
+            nowait = true,
+            noremap = true
+          })
         end,
         renderer = {
           root_folder_label = ':t',
@@ -87,7 +102,7 @@ return {
         live_filter = {
           prefix = '󰈶 FILTER : ',
         },
-      })
+      }
 
       keymap('n', '<Leader>e', ':NvimTreeFindFileToggle<Cr>', {
         desc = 'Toggle explorer',
@@ -103,6 +118,6 @@ return {
     },
     config = function()
       require('lsp-file-operations').setup()
-    end
+    end,
   },
 }

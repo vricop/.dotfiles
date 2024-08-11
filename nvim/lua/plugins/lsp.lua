@@ -1,8 +1,7 @@
-local keymap = require('core.utils').keymap
-
 return {
   {
     'neovim/nvim-lspconfig',
+    enabled = enable_plugins['lsp-config'],
     config = function()
       vim.diagnostic.config {
         virtual_text = false,
@@ -25,79 +24,71 @@ return {
           print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
         end
 
-        keymap(
-          'n',
-          'gD',
-          vim.lsp.buf.declaration,
-          { buffer = bufnr, desc = 'Go to declaration' }
-        )
+        local keymap = vim.keymap.set
 
-        keymap(
-          'n',
-          'gd',
-          vim.lsp.buf.definition,
-          { buffer = bufnr, desc = 'Go to definition' }
-        )
+        keymap('n', 'gD', vim.lsp.buf.declaration, {
+          buffer = bufnr,
+          desc = 'Go to declaration',
+        })
 
-        keymap(
-          'n',
-          'gi',
-          vim.lsp.buf.implementation,
-          { buffer = bufnr, desc = 'Go to implementation' }
-        )
+        keymap('n', 'gd', vim.lsp.buf.definition, {
+          buffer = bufnr,
+          desc = 'Go to definition',
+        })
 
-        keymap(
-          'n',
-          'gr',
-          vim.lsp.buf.references,
-          { buffer = bufnr, desc = 'Referencees' }
-        )
+        keymap('n', 'gi', vim.lsp.buf.implementation, {
+          buffer = bufnr,
+          desc = 'Go to implementation',
+        })
 
-        keymap(
-          'n',
-          'gk',
-          vim.lsp.buf.signature_help,
-          { buffer = bufnr, desc = 'Show signature help' }
-        )
+        keymap('n', 'gr', vim.lsp.buf.references, {
+          buffer = bufnr,
+          desc = 'Referencees',
+        })
+
+        keymap('n', 'gk', vim.lsp.buf.signature_help, {
+          buffer = bufnr,
+          desc = 'Show signature help',
+        })
+
         -- keymap('n', '<Leader>wa', vim.lsp.buf.add_workspace_folder, lsp_opts('Add workspace folder'))
         -- keymap('n', '<Leader>wr', vim.lsp.buf.remove_workspace_folder, lsp_opts('Remove workspace folder'))
         -- keymap('n', '<Leader>wl', list_workspace_folders, lsp_opts('List workspace folders'))
 
-        keymap(
-          'n',
-          '<Leader>D',
-          vim.lsp.buf.type_definition,
-          { buffer = bufnr, desc = 'Type definition' }
-        )
+        keymap('n', '<Leader>D', vim.lsp.buf.type_definition, {
+          buffer = bufnr,
+          desc = 'Type definition',
+        })
 
-        keymap(
-          'n',
-          '<Leader>lr',
-          vim.lsp.buf.rename,
-          { buffer = bufnr, desc = 'Rename' }
-        )
+        keymap('n', '<Leader>lr', vim.lsp.buf.rename, {
+          buffer = bufnr,
+          desc = 'Rename',
+        })
 
-        keymap(
-          'n',
-          '<Leader>la',
-          vim.lsp.buf.code_action,
-          { buffer = bufnr, desc = 'Code actions' }
-        )
+        keymap('n', '<Leader>la', vim.lsp.buf.code_action, {
+          buffer = bufnr,
+          desc = 'Code actions',
+        })
 
-        keymap(
-          'n',
-          '<Leader>lo',
-          vim.diagnostic.open_float,
-          { desc = 'Open diagnostic' }
-        )
+        keymap('n', '<Leader>lo', vim.diagnostic.open_float, {
+          desc = 'Open diagnostic',
+        })
 
-        keymap(
-          'n',
-          '<Leader>li',
-          '<Cmd>LspInfo<Cr>',
-          { buffer = bufnr, desc = 'See lsp info' }
-        )
+        keymap('n', '<Leader>li', '<Cmd>LspInfo<Cr>', {
+          buffer = bufnr,
+          desc = 'See lsp info',
+        })
       end
+
+      local inlayHints = {
+        includeInlayEnumMemberValueHints = true,
+        includeInlayFunctionLikeReturnTypeHints = true,
+        includeInlayFunctionParameterTypeHints = true,
+        includeInlayParameterNameHints = 'all',
+        includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+        includeInlayPropertyDeclarationTypeHints = true,
+        includeInlayVariableTypeHints = true,
+      }
 
       require('mason-lspconfig').setup_handlers {
         function(server_name)
@@ -119,26 +110,10 @@ return {
               },
               -- taken from https://github.com/typescript-language-server/typescript-language-server#workspacedidchangeconfiguration
               javascript = {
-                inlayHints = {
-                  includeInlayEnumMemberValueHints = true,
-                  includeInlayFunctionLikeReturnTypeHints = true,
-                  includeInlayFunctionParameterTypeHints = true,
-                  includeInlayParameterNameHints = 'all',
-                  includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-                  includeInlayPropertyDeclarationTypeHints = true,
-                  includeInlayVariableTypeHints = true,
-                },
+                inlayHints = inlayHints,
               },
               typescript = {
-                inlayHints = {
-                  includeInlayEnumMemberValueHints = true,
-                  includeInlayFunctionLikeReturnTypeHints = true,
-                  includeInlayFunctionParameterTypeHints = true,
-                  includeInlayParameterNameHints = 'all',
-                  includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-                  includeInlayPropertyDeclarationTypeHints = true,
-                  includeInlayVariableTypeHints = true,
-                },
+                inlayHints = inlayHints,
               },
               cssmodules = {
                 capabilities = {
@@ -158,31 +133,30 @@ return {
 
   {
     'williamboman/mason.nvim',
-    config = function()
-      require('mason').setup {}
-
-      keymap('n', '<Leader>m', ':Mason<Cr>', { desc = 'Open Mason' })
-    end,
+    enabled = enable_plugins.mason,
+    config = true,
+    keys = {
+      { '<Leader>m', ':Mason<Cr>', desc = 'Open Mason', silent = true },
+    },
   },
 
   {
     'williamboman/mason-lspconfig.nvim',
+    enabled = enable_plugins['mason-lspconfig'],
     dependencies = { 'williamboman/mason.nvim' },
-    config = function()
-      require('mason-lspconfig').setup {
-        ensure_installed = {
-          'bashls',
-          'cssls',
-          'dotls',
-          'emmet_ls',
-          'html',
-          'jsonls',
-          'lua_ls',
-          'marksman',
-          'rust_analyzer',
-          'tsserver',
-        },
-      }
-    end,
+    opts = {
+      ensure_installed = {
+        'bashls',
+        'cssls',
+        'dotls',
+        'emmet_ls',
+        'html',
+        'jsonls',
+        'lua_ls',
+        'marksman',
+        'rust_analyzer',
+        'tsserver',
+      },
+    },
   },
 }

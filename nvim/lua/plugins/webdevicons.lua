@@ -1,8 +1,5 @@
 return {
-  {
-    'nvim-tree/nvim-web-devicons',
-    config = function ()
-      require 'nvim-web-devicons'.setup()
-    end
-  }
+  'nvim-tree/nvim-web-devicons',
+  enabled = enable_plugins['web-devicons'],
+  config = true
 }

@@ -34,6 +34,7 @@ alias mv="mv -i"
 alias vi="nvim"
 alias vim="nvim"
 alias tree="tree -C $@"
+alias zellij="zellij -l welcome"
 
 # Manage zshrc
 alias reload-zshrc='source ~/.zshrc && reset && zsh'

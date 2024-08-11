@@ -1,10 +1,8 @@
 return {
-	{
-		"roobert/tailwindcss-colorizer-cmp.nvim",
-		config = function()
-			require("tailwindcss-colorizer-cmp").setup({
-				color_square_width = 2,
-			})
-		end,
-	},
+  'roobert/tailwindcss-colorizer-cmp.nvim',
+  enabled = enable_plugins['tailwindcss-colorizer-cmp'],
+  config = true,
+  opts = {
+    color_square_width = 2,
+  },
 }

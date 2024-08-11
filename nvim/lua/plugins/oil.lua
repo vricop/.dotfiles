@@ -1,12 +1,13 @@
 return {
 	"stevearc/oil.nvim",
+  enabled = enable_plugins.oil,
+	dependencies = { "nvim-tree/nvim-web-devicons" },
 	opts = {
 		float = {
 			max_width = 80,
 			max_height = 10,
 		},
 	},
-	dependencies = { "nvim-tree/nvim-web-devicons" },
 	keys = {
 		{
 			"<Leader>o",

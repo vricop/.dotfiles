@@ -1,7 +1,7 @@
 return {
   'mfussenegger/nvim-lint',
   event = { 'BufReadPre', 'BufNewFile' },
-  enabled = false,
+  enabled = enable_plugins.linting,
   config = function()
     local lint = require 'lint'
 
