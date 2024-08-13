@@ -2,7 +2,6 @@ return {
   'akinsho/bufferline.nvim',
   enabled = enable_plugins.bufferline,
   dependencies = { 'nvim-tree/nvim-web-devicons' },
-  config = true,
   lazy = false,
   opts = {
     options = {
