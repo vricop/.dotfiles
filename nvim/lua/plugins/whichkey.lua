@@ -6,7 +6,6 @@ return {
     vim.o.timeoutlen = 300
 
     require('which-key').add {
-      { '<Leader>b', group = 'Buffer' },
       { '<Leader>f', group = 'Find' },
       { '<Leader>fg', group = 'Find git' },
       { '<Leader>g', group = 'Git' },

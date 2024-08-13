@@ -3,6 +3,7 @@ local keymap = vim.keymap.set
 keymap('n', '<Esc>', ':noh<cr>', {
   desc = 'Stop highlighting',
   noremap = true,
+  silent = true,
 })
 
 keymap('n', '<Leader>w', ':up<Cr>', {
