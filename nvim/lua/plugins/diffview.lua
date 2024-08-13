@@ -7,6 +7,7 @@ return {
     }
   end,
   keys = {
-    { '<Leader>td', '<CMD>DiffviewOpen<Cr>', desc = 'Toggle: diffview' },
+    { '<Leader>Do', '<Cmd>DiffviewOpen<Cr>', desc = 'Open Diffview' },
+    { '<Leader>Dc', '<Cmd>DiffviewClose<Cr>', desc = 'Close Diffview' },
   },
 }
