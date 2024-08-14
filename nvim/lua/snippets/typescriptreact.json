@@ -64,5 +64,21 @@
       "    return ();",
       "}"
     ]
+  },
+  "deprecation": {
+    "prefix": ["dn"],
+    "body": [
+     "/**",
+     " * > Certain props have been updated to align with the current React naming",
+     " * conventions. While the legacy props are still supported for backward",
+     " * compatibility, they will be deprecated in the future. Please migrate to the",
+     " * new conventions as soon as possible. ",
+     " * ",
+     " * | Deprecated        | Current           |",
+     " * | ----------------- | ----------------- |",
+     " * | $1                | $2                |",
+     " * | $3                | $3                |",
+     " */"
+    ]
   }
 }

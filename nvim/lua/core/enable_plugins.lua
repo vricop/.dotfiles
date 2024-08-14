@@ -4,6 +4,7 @@ _G.enable_plugins = {
   ['lsp-config'] = true,
   ['luvit-meta'] = true,
   ['mason-lspconfig'] = true,
+  ['mini.ai'] = false,
   ['mini.surround'] = true,
   ['neo-tree'] = true,
   ['nvim-tree'] = false,
