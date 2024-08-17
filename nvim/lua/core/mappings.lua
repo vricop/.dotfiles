@@ -21,8 +21,17 @@ keymap('n', '<Leader>d', ':bd<Cr>', {
   silent = true,
 })
 
-keymap('n', '<Leader>x', ':bufdo bd<Cr>', {
-  desc = 'Close all buffers',
+keymap('n', '<Leader>x', function()
+  local current_buf = vim.api.nvim_get_current_buf()
+  local buffers = vim.api.nvim_list_bufs()
+
+  for _, buf in ipairs(buffers) do
+    if buf ~= current_buf and vim.api.nvim_buf_is_loaded(buf) then
+      vim.api.nvim_buf_delete(buf, { force = true })
+    end
+  end
+end, {
+  desc = 'Delete all buffers but current',
   silent = true,
 })
 
@@ -45,11 +54,11 @@ keymap('n', 'J', 'mzJ`z', {
   desc = 'Join lines and center screen',
 })
 
-keymap('n', _G.Meta.h, 'gT', {
+keymap('n', Meta.h, 'gT', {
   desc = 'Previous tab',
 })
 
-keymap('n', _G.Meta.l, 'gt', {
+keymap('n', Meta.l, 'gt', {
   desc = 'Next tab',
 })
 
@@ -63,42 +72,53 @@ keymap('n', 'L', ':bn<Cr>', {
   silent = true,
 })
 
-keymap('v', _G.Meta.j, ":m '>+1<Cr>gv=gv", {
+-- Alternative way to navigate buffers
+keymap('n', '[b', ':bp<Cr>', {
+  desc = 'Previous buffer',
+  silent = true,
+})
+
+keymap('n', ']b', ':bn<Cr>', {
+  desc = 'Next buffer',
+  silent = true,
+})
+
+keymap('v', Meta.j, ":m '>+1<Cr>gv=gv", {
   desc = 'Move line down',
   silent = true,
 })
 
-keymap('n', _G.Meta.j, ':m .+1<Cr>==', {
+keymap('n', Meta.j, ':m .+1<Cr>==', {
   desc = 'Move line down',
   silent = true,
 })
 
-keymap('v', _G.Meta.k, ":m '<-2<Cr>gv=gv", {
+keymap('v', Meta.k, ":m '<-2<Cr>gv=gv", {
   desc = 'Move line up',
   silent = true,
 })
 
-keymap('n', _G.Meta.k, ':m .-2<Cr>==', {
+keymap('n', Meta.k, ':m .-2<Cr>==', {
   desc = 'Move line up',
   silent = true,
 })
 
-keymap('n', _G.Meta.J, ':t+0<Cr>', {
+keymap('n', Meta.J, ':t+0<Cr>', {
   desc = 'Duplicate line below',
   silent = true,
 })
 
-keymap('v', _G.Meta.J, ":t'>+0<Cr>", {
+keymap('v', Meta.J, ":t'>+0<Cr>", {
   desc = 'Duplicate line below',
   silent = true,
 })
 
-keymap('n', _G.Meta.K, ':t-1<Cr>', {
+keymap('n', Meta.K, ':t-1<Cr>', {
   desc = 'Duplicate line above',
   silent = true,
 })
 
-keymap('v', _G.Meta.K, ":t'<-1<Cr>", {
+keymap('v', Meta.K, ":t'<-1<Cr>", {
   desc = 'Duplicate line above',
   silent = true,
 })
@@ -209,34 +229,34 @@ keymap('n', '<Leader>ff', ':find<Space>**/', {
 
 -- TOGGLE MAPPINGS
 keymap('n', '<Leader>e', ':Lexplore<Cr>', {
-  desc = 'Toggle: netwr',
+  desc = 'Toggle netwr',
   silent = true,
 })
 
 keymap('n', '<Leader>ti', function()
   vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled {})
 end, {
-  desc = 'Toggle: inlay hint',
+  desc = 'Toggle inlay hint',
   silent = true,
 })
 
 keymap('n', '<Leader>tr', function()
   vim.o.relativenumber = not vim.o.relativenumber
 end, {
-  desc = 'Toggle: relative numbers',
+  desc = 'Toggle relative numbers',
   silent = true,
 })
 
 keymap('n', '<Leader>tc', function()
   vim.o.conceallevel = vim.o.conceallevel == 0 and 2 or 0
 end, {
-  desc = 'Toggle: conceal',
+  desc = 'Toggle conceal',
 })
 
 keymap('n', '<Leader>tl', function()
   vim.o.lazyredraw = not vim.o.lazyredraw
 end, {
-  desc = 'Toggle: lazyredraw',
+  desc = 'Toggle lazyredraw',
 })
 
 keymap('n', '<Leader>td', function()
@@ -248,5 +268,5 @@ keymap('n', '<Leader>td', function()
   _G.is_diff_mode_on = not is_diff_mode_on
 end, {
   silent = true,
-  desc = 'Toggle: diff in splits',
+  desc = 'Toggle diff in splits',
 })

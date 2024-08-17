@@ -2,7 +2,6 @@ return {
   'nvim-lualine/lualine.nvim',
   dependencies = { 'nvim-tree/nvim-web-devicons', opt = true },
   enabled = enable_plugins.lualine,
-  config = true,
   opts = {
     options = {
       icons_enabled = true,

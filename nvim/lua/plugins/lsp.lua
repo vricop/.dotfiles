@@ -20,9 +20,9 @@ return {
         -- TODO: Deprecated method, replaced with `nvim_set_option_value`
         -- vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-        local function list_workspace_folders()
-          print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-        end
+        -- local function list_workspace_folders()
+        --   print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+        -- end
 
         local keymap = vim.keymap.set
 
@@ -81,13 +81,15 @@ return {
       end
 
       local inlayHints = {
-        includeInlayEnumMemberValueHints = true,
-        includeInlayFunctionLikeReturnTypeHints = true,
-        includeInlayFunctionParameterTypeHints = true,
-        includeInlayParameterNameHints = 'all',
-        includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-        includeInlayPropertyDeclarationTypeHints = true,
-        includeInlayVariableTypeHints = true,
+        inlayHints = {
+          includeInlayEnumMemberValueHints = true,
+          includeInlayFunctionLikeReturnTypeHints = true,
+          includeInlayFunctionParameterTypeHints = true,
+          includeInlayParameterNameHints = 'all',
+          includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+          includeInlayPropertyDeclarationTypeHints = true,
+          includeInlayVariableTypeHints = true,
+        },
       }
 
       require('mason-lspconfig').setup_handlers {
@@ -109,12 +111,8 @@ return {
                 },
               },
               -- taken from https://github.com/typescript-language-server/typescript-language-server#workspacedidchangeconfiguration
-              javascript = {
-                inlayHints = inlayHints,
-              },
-              typescript = {
-                inlayHints = inlayHints,
-              },
+              javascript = inlayHints,
+              typescript = inlayHints,
               cssmodules = {
                 capabilities = {
                   -- NOTE: Avoids conflicting with typescript 'go-to-definition'
@@ -130,7 +128,6 @@ return {
       }
     end,
   },
-
   {
     'williamboman/mason.nvim',
     enabled = enable_plugins.mason,
@@ -139,7 +136,6 @@ return {
       { '<Leader>m', ':Mason<Cr>', desc = 'Open Mason', silent = true },
     },
   },
-
   {
     'williamboman/mason-lspconfig.nvim',
     enabled = enable_plugins['mason-lspconfig'],

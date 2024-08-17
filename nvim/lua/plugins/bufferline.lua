@@ -5,7 +5,7 @@ return {
   lazy = false,
   opts = {
     options = {
-      mode = 'buffers',
+      mode = 'tabs',
     },
   },
   keys = {

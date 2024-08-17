@@ -2,7 +2,6 @@ return {
   'folke/todo-comments.nvim',
   enabled = enable_plugins['todo-comments'],
   dependencies = { 'nvim-lua/plenary.nvim' },
-  config = true,
   opts = {
     keywords = {
       FIX = {

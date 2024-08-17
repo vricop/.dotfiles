@@ -5,7 +5,7 @@ return {
     {
       '<Leader>tu',
       ':UndotreeToggle<Cr>',
-      desc = 'Toggle: undotree',
+      desc = 'Toggle undotree',
       silent = true,
     },
   },

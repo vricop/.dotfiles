@@ -86,6 +86,7 @@ if vim.fn.has 'mac' then
     l = '¬',
     J = 'Ô',
     K = '',
+    q = 'œ',
   }
 else
   -- Non macOS users will use these
@@ -96,5 +97,6 @@ else
     l = '<M-l>',
     J = '<M-J>',
     K = '<M-J>',
+    q = '<M-q>',
   }
 end

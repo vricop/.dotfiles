@@ -34,90 +34,93 @@ return {
       end
     end
   end,
-  config = true,
-  opts = {
-    defaults = {
-      selection_caret = '  ',
-      entry_prefix = '   ',
-      prompt_prefix = '   ',
-      sorting_strategy = 'ascending',
-      preview = true,
-      path_display = {
-        'truncate',
-        filename_first = {
-          reverse_directories = false,
+  opts = function()
+    local action = require 'telescope.actions'
+
+    return {
+      defaults = {
+        selection_caret = '  ',
+        entry_prefix = '   ',
+        prompt_prefix = '   ',
+        sorting_strategy = 'ascending',
+        preview = true,
+        path_display = {
+          'truncate',
+          filename_first = {
+            reverse_directories = false,
+          },
+        },
+        layout_config = {
+          prompt_position = 'top',
+          horizontal = {
+            preview_width = 0.65, -- Adjust the width of the preview window
+            -- height = 0.65,
+          },
+        },
+        mappings = {
+          i = {
+            [Meta.q] = action.smart_send_to_qflist + action.open_qflist,
+            [Meta.k] = action.cycle_history_prev,
+            [Meta.j] = action.cycle_history_next,
+            ['<C-K>'] = action.move_selection_previous,
+            ['<C-J>'] = action.move_selection_next,
+          },
+          n = {
+            [Meta.q] = action.smart_send_to_qflist + action.open_qflist,
+            [Meta.k] = action.cycle_history_prev,
+            [Meta.j] = action.cycle_history_next,
+          },
         },
       },
-      layout_config = {
-        prompt_position = 'top',
-        horizontal = {
-          preview_width = 0.5, -- Adjust the width of the preview window
-          -- height = 0.65,
+      pickers = {
+        find_files = {
+          -- no_ignore = true,
+          hidden = true,
+        },
+        live_grep = {
+          prompt_prefix = ' 󰑑  ',
+          -- theme = 'ivy',
+        },
+        grep_string = {
+          prompt_prefix = '   ',
+        },
+        keymaps = {
+          prompt_prefix = ' 󰥻  ',
+        },
+        marks = {
+          prompt_prefix = ' 󰃀  ',
+        },
+        oldfiles = {
+          prompt_title = 'Recent files',
+          prompt_prefix = '   ',
+        },
+        git_branches = {
+          prompt_prefix = ' 󰘬  ',
+          initial_mode = 'normal',
+        },
+        git_commits = {
+          prompt_prefix = ' 󰜘  ',
+          initial_mode = 'normal',
+        },
+        git_status = {
+          prompt_prefix = '   ',
+          initial_mode = 'normal',
+        },
+        git_stash = {
+          prompt_prefix = '   ',
+          initial_mode = 'normal',
+        },
+        diagnostics = {
+          prompt_prefix = '   ',
+          initial_mode = 'normal',
+        },
+        heps_tags = {
+          prompt_prefix = ' 󰋖 ',
+          initial_mode = 'normal',
         },
       },
-      mappings = {
-        -- macOS special mappings: œ = <M-q>
-        -- i = {
-        --   ['œ'] = actions.smart_send_to_qflist + actions.open_qflist,
-        --   ['K'] = actions.cycle_history_prev,
-        --   ['J'] = actions.cycle_history_next,
-        -- },
-        n = {
-          ['œ'] = require('telescope.actions').smart_send_to_qflist
-            + require('telescope.actions').open_qflist,
-          ['K'] = require('telescope.actions').cycle_history_prev,
-          ['J'] = require('telescope.actions').cycle_history_next,
-        },
-      },
-    },
-    pickers = {
-      find_files = {
-        -- no_ignore = true,
-        hidden = true,
-      },
-      live_grep = {
-        prompt_prefix = ' 󰑑  ',
-        -- theme = 'ivy',
-      },
-      grep_string = {
-        prompt_prefix = '   ',
-      },
-      keymaps = {
-        prompt_prefix = ' 󰥻  ',
-      },
-      marks = {
-        prompt_prefix = ' 󰃀  ',
-      },
-      oldfiles = {
-        prompt_title = 'Recent files',
-        prompt_prefix = '   ',
-      },
-      git_branches = {
-        prompt_prefix = ' 󰘬  ',
-        initial_mode = 'normal',
-      },
-      git_commits = {
-        prompt_prefix = ' 󰜘  ',
-        initial_mode = 'normal',
-      },
-      git_status = {
-        prompt_prefix = '   ',
-        initial_mode = 'normal',
-      },
-      git_stash = {
-        prompt_prefix = '   ',
-        initial_mode = 'normal',
-      },
-      diagnostics = {
-        prompt_prefix = '   ',
-        initial_mode = 'normal',
-      },
-      heps_tags = {
-        prompt_prefix = ' 󰋖 ',
-        initial_mode = 'normal',
-      },
-    },
-  },
+    }
+  end,
   keys = function()
     local builtin = require 'telescope.builtin'
 
@@ -138,120 +141,4 @@ return {
       { '<Leader>fh', builtin.help_tags, desc = 'Find helps tags' },
     }
   end,
-  -- config = function()
-  --   local actions = require 'telescope.actions'
-  --   require('telescope').setup {
-  --     defaults = {
-  --       selection_caret = '  ',
-  --       entry_prefix = '   ',
-  --       prompt_prefix = '   ',
-  --       sorting_strategy = 'ascending',
-  --       preview = true,
-  --       path_display = {
-  --         'truncate',
-  --         filename_first = {
-  --           reverse_directories = false,
-  --         },
-  --       },
-  --       layout_config = {
-  --         prompt_position = 'top',
-  --         horizontal = {
-  --           preview_width = 0.5, -- Adjust the width of the preview window
-  --           -- height = 0.65,
-  --         },
-  --       },
-  --       mappings = {
-  --         -- macOS special mappings: œ = <M-q>
-  --         -- i = {
-  --         --   ['œ'] = actions.smart_send_to_qflist + actions.open_qflist,
-  --         --   ['K'] = actions.cycle_history_prev,
-  --         --   ['J'] = actions.cycle_history_next,
-  --         -- },
-  --         n = {
-  --           ['œ'] = actions.smart_send_to_qflist + actions.open_qflist,
-  --           ['K'] = actions.cycle_history_prev,
-  --           ['J'] = actions.cycle_history_next,
-  --         },
-  --       },
-  --     },
-  --     pickers = {
-  --       find_files = {
-  --         -- no_ignore = true,
-  --         hidden = true,
-  --       },
-  --       live_grep = {
-  --         prompt_prefix = ' 󰑑  ',
-  --         -- theme = 'ivy',
-  --       },
-  --       grep_string = {
-  --         prompt_prefix = '   ',
-  --       },
-  --       keymaps = {
-  --         prompt_prefix = ' 󰥻  ',
-  --       },
-  --       marks = {
-  --         prompt_prefix = ' 󰃀  ',
-  --       },
-  --       oldfiles = {
-  --         prompt_title = 'Recent files',
-  --         prompt_prefix = '   ',
-  --       },
-  --       git_branches = {
-  --         prompt_prefix = ' 󰘬  ',
-  --         initial_mode = 'normal',
-  --       },
-  --       git_commits = {
-  --         prompt_prefix = ' 󰜘  ',
-  --         initial_mode = 'normal',
-  --       },
-  --       git_status = {
-  --         prompt_prefix = '   ',
-  --         initial_mode = 'normal',
-  --       },
-  --       git_stash = {
-  --         prompt_prefix = '   ',
-  --         initial_mode = 'normal',
-  --       },
-  --       diagnostics = {
-  --         prompt_prefix = '   ',
-  --         initial_mode = 'normal',
-  --       },
-  --       heps_tags = {
-  --         prompt_prefix = ' 󰋖 ',
-  --         initial_mode = 'normal',
-  --       },
-  --     },
-  --   }
-  --
-  --   -- Custom theme
-  --   local catppuccin_ok, colors = pcall(require, 'catppuccin.palettes')
-  --
-  --   if catppuccin_ok then
-  --     colors = colors.get_palette()
-  --
-  --     local TelescopeColor = {
-  --       TelescopeMatching = { fg = colors.flamingo },
-  --       TelescopeSelection = {
-  --         fg = colors.text,
-  --         bg = colors.surface0,
-  --         bold = true,
-  --       },
-  --
-  --       TelescopePromptPrefix = { bg = colors.surface0 },
-  --       TelescopePromptNormal = { bg = colors.surface0 },
-  --       TelescopeResultsNormal = { bg = colors.mantle },
-  --       TelescopePreviewNormal = { bg = colors.mantle },
-  --       TelescopePromptBorder = { bg = colors.surface0, fg = colors.surface0 },
-  --       TelescopeResultsBorder = { bg = colors.mantle, fg = colors.mantle },
-  --       TelescopePreviewBorder = { bg = colors.mantle, fg = colors.mantle },
-  --       TelescopePromptTitle = { bg = colors.pink, fg = colors.mantle },
-  --       TelescopeResultsTitle = { fg = colors.mantle },
-  --       TelescopePreviewTitle = { bg = colors.green, fg = colors.mantle },
-  --     }
-  --
-  --     for hl, col in pairs(TelescopeColor) do
-  --       vim.api.nvim_set_hl(0, hl, col)
-  --     end
-  --   end
-  -- end,
 }

@@ -23,5 +23,4 @@ return {
       group = '',
     },
   },
-  config = true,
 }
