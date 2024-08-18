@@ -33,6 +33,7 @@ _G.enable_plugins = {
   neogen = true,
   nerdy = true,
   oil = true,
+  quicker = true,
   schemastore = true,
   telescope = true,
   treesitter = true,
