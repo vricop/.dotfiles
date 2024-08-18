@@ -1,5 +1,31 @@
 return {
   {
+    'williamboman/mason.nvim',
+    enabled = enable_plugins.mason,
+    config = true,
+    keys = {
+      { '<Leader>m', ':Mason<Cr>', desc = 'Open Mason', silent = true },
+    },
+  },
+  {
+    'williamboman/mason-lspconfig.nvim',
+    enabled = enable_plugins['mason-lspconfig'],
+    opts = {
+      ensure_installed = {
+        'bashls',
+        'cssls',
+        'dotls',
+        'emmet_ls',
+        'html',
+        'jsonls',
+        'lua_ls',
+        'marksman',
+        'rust_analyzer',
+        'tsserver',
+      },
+    },
+  },
+  {
     'neovim/nvim-lspconfig',
     enabled = enable_plugins['lsp-config'],
     config = function()
@@ -13,17 +39,7 @@ return {
       local capabilities = require('cmp_nvim_lsp').default_capabilities()
       local lspconfig = require 'lspconfig'
 
-      -- Use an on_attach function to only map the following keys
-      -- after the language server attaches to the current buffer
       local on_attach = function(_, bufnr)
-        -- Enable completion using native <C-x><C-o>
-        -- TODO: Deprecated method, replaced with `nvim_set_option_value`
-        -- vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-        -- local function list_workspace_folders()
-        --   print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-        -- end
-
         local keymap = vim.keymap.set
 
         keymap('n', 'gD', vim.lsp.buf.declaration, {
@@ -51,10 +67,6 @@ return {
           desc = 'Show signature help',
         })
 
-        -- keymap('n', '<Leader>wa', vim.lsp.buf.add_workspace_folder, lsp_opts('Add workspace folder'))
-        -- keymap('n', '<Leader>wr', vim.lsp.buf.remove_workspace_folder, lsp_opts('Remove workspace folder'))
-        -- keymap('n', '<Leader>wl', list_workspace_folders, lsp_opts('List workspace folders'))
-
         keymap('n', '<Leader>D', vim.lsp.buf.type_definition, {
           buffer = bufnr,
           desc = 'Type definition',
@@ -80,7 +92,7 @@ return {
         })
       end
 
-      local inlayHints = {
+      local hints = {
         inlayHints = {
           includeInlayEnumMemberValueHints = true,
           includeInlayFunctionLikeReturnTypeHints = true,
@@ -102,7 +114,8 @@ return {
                 diagnostics = { globals = { 'vim', '_G' } },
                 hint = { enable = true },
               },
-              -- NOTE: For some reason, stylelint isn't loading my config file with
+              -- NOTE: For some reason, stylelint isn't loading my config file
+              -- with
               -- rules for avoiding false positives when using PostCss plugins.
               css = {
                 validate = true,
@@ -111,8 +124,8 @@ return {
                 },
               },
               -- taken from https://github.com/typescript-language-server/typescript-language-server#workspacedidchangeconfiguration
-              javascript = inlayHints,
-              typescript = inlayHints,
+              javascript = hints,
+              typescript = hints,
               cssmodules = {
                 capabilities = {
                   -- NOTE: Avoids conflicting with typescript 'go-to-definition'
@@ -127,32 +140,5 @@ return {
         end,
       }
     end,
-  },
-  {
-    'williamboman/mason.nvim',
-    enabled = enable_plugins.mason,
-    config = true,
-    keys = {
-      { '<Leader>m', ':Mason<Cr>', desc = 'Open Mason', silent = true },
-    },
-  },
-  {
-    'williamboman/mason-lspconfig.nvim',
-    enabled = enable_plugins['mason-lspconfig'],
-    dependencies = { 'williamboman/mason.nvim' },
-    opts = {
-      ensure_installed = {
-        'bashls',
-        'cssls',
-        'dotls',
-        'emmet_ls',
-        'html',
-        'jsonls',
-        'lua_ls',
-        'marksman',
-        'rust_analyzer',
-        'tsserver',
-      },
-    },
   },
 }

@@ -65,10 +65,10 @@ return {
           modified = ' ',
           renamed = ' ',
           -- Status type
-          untracked = ' ',
+          untracked = '󰋱 ',
           ignored = ' ',
-          unstaged = '󱊾 ',
-          staged = '󱊽 ',
+          unstaged = 'U',
+          staged = 'S',
           conflict = ' ',
         },
       },

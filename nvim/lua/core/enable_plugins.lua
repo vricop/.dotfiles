@@ -9,7 +9,6 @@ _G.enable_plugins = {
   ['mini.pairs'] = true,
   ['mini.surround'] = true,
   ['neo-tree'] = true,
-  ['nvim-ufo'] = true,
   ['tailwindcss-colorizer-cmp'] = true,
   ['todo-comments'] = true,
   ['treesitter-textobjects'] = true,
@@ -37,5 +36,6 @@ _G.enable_plugins = {
   schemastore = true,
   telescope = true,
   treesitter = true,
+  ufo = false,
   undotree = true,
 }

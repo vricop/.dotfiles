@@ -8,7 +8,7 @@ opt.clipboard = 'unnamedplus' -- Allows neovim to access the system clipboard
 opt.cmdheight = 1 -- More space in the neovim command line for displaying messages
 opt.colorcolumn = '80' -- Show vertical column line
 opt.completeopt = { 'menu', 'menuone', 'noselect' } -- Mostly just for cmp
-opt.conceallevel = 2 -- So that `` is visible in markdown files
+opt.conceallevel = 0 -- So that `` is visible in markdown files
 opt.cursorline = true -- Highlight the current line
 opt.expandtab = true -- Convert tabs to spaces
 opt.fileencoding = 'utf-8' -- The encoding written to a file
@@ -62,6 +62,14 @@ opt.shortmess:append 'c' -- Don't show redundant messages from ins-completion-me
 opt.spelllang:append 'cjk' -- Disable spellchecking for asian characters (VIM algorithm does not support it)
 opt.whichwrap:append '<,>,[,],h,l' -- Set what commands wrap to the next line when at the end of the line
 opt.wildignore:append '**/node_modules/**' -- Don't show results from `node_modules` recursively
+
+
+-- Folds
+o.foldenable = true
+o.foldmethod = 'manual'
+o.foldcolumn = '1'
+o.foldlevel = 999
+o.foldexpr = vim.treesitter.foldexpr()
 
 o.exrc = true -- Automatically execute .nvim.lua, .nvimrc, and .exrc files in the current directory
 
