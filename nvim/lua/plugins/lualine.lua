@@ -6,8 +6,8 @@ return {
     options = {
       icons_enabled = true,
       theme = 'catppuccin-macchiato',
-      component_separators = { left = '', right = '' },
-      section_separators = { left = '', right = '' },
+      component_separators = { left = '', right = '', },
+      section_separators = { left = [[  ]], right = [[  ]] },
       disabled_filetypes = {
         statusline = {},
         winbar = {},
@@ -22,27 +22,24 @@ return {
       },
     },
     sections = {
-      lualine_a = { { 'mode' } },
+      lualine_a = { 'mode' },
       lualine_b = {
-        {
-          'branch',
-          icon = '󰘬',
-        },
+        { 'branch', icon = '󰘬' },
       },
       lualine_c = {
+        { 'filename' },
         {
           'diff',
           symbols = {
-            added = ' ',
-            modified = ' ',
-            removed = ' ',
+            added = ' ',
+            modified = ' ',
+            removed = ' ',
           },
         },
-        { 'filename' },
       },
-      lualine_x = { 'diagnostics', 'filetype' },
-      lualine_y = { 'progress' },
-      lualine_z = { 'location' },
+      lualine_x = {},
+      lualine_y = { 'diagnostics' },
+      lualine_z = { { 'location', icon = ' ' } },
     },
     inactive_sections = {
       lualine_a = {},
