@@ -35,8 +35,9 @@ _G.enable_plugins = {
   oil = true,
   quicker = true,
   schemastore = true,
+  statuscol = true,
   telescope = true,
   treesitter = true,
-  ufo = false,
+  ufo = true,
   undotree = true,
 }

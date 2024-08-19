@@ -1,5 +1,6 @@
 return {
   'luukvbaal/statuscol.nvim',
+  enabled = enable_plugins.statuscol,
   init = function()
     vim.o.foldcolumn = '1'
     -- Using ufo provider need a large value, feel free to decrease the value

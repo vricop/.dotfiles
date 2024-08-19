@@ -1,6 +1,6 @@
 return {
   'kevinhwang91/nvim-ufo',
-  enabled = enable_plugins['nvim-ufo'],
+  enabled = enable_plugins.ufo,
   dependencies = { 'kevinhwang91/promise-async' },
   opts = {
     fold_virt_text_handler = function(virtText, lnum, endLnum, width, truncate)
