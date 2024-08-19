@@ -63,14 +63,6 @@ opt.spelllang:append 'cjk' -- Disable spellchecking for asian characters (VIM al
 opt.whichwrap:append '<,>,[,],h,l' -- Set what commands wrap to the next line when at the end of the line
 opt.wildignore:append '**/node_modules/**' -- Don't show results from `node_modules` recursively
 
-
--- Folds
-o.foldenable = true
-o.foldmethod = 'manual'
-o.foldcolumn = '1'
-o.foldlevel = 999
-o.foldexpr = vim.treesitter.foldexpr()
-
 o.exrc = true -- Automatically execute .nvim.lua, .nvimrc, and .exrc files in the current directory
 
 --- CUSTOM VARIABLES ---
