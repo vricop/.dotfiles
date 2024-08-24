@@ -16,7 +16,7 @@ keymap('n', '<Leader>s', ':wa<Cr>', {
   silent = true,
 })
 
-keymap('n', '<Leader>d', ':bd<Cr>', {
+keymap('n', '<Leader>d', require 'utils.ui'.bufremove, {
   desc = 'Delete buffer',
   silent = true,
 })

@@ -13,7 +13,6 @@ return {
       function()
         require('neo-tree.command').execute {
           toggle = true,
-          position = 'left',
         }
       end,
       desc = 'Explorer NeoTree (Root Dir)',
@@ -30,7 +29,7 @@ return {
     sources = { 'filesystem', 'buffers', 'git_status' },
     filesystem = {
       bind_to_cwd = false,
-      follow_current_file = { enabled = true },
+      follow_current_file = true,
       use_libuv_file_watcher = true,
       window = {
         mappings = {
@@ -70,6 +69,7 @@ return {
           unstaged = 'U',
           staged = 'S',
           conflict = ' ',
+
         },
       },
     },
