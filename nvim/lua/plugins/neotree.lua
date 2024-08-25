@@ -29,7 +29,9 @@ return {
     sources = { 'filesystem', 'buffers', 'git_status' },
     filesystem = {
       bind_to_cwd = false,
-      follow_current_file = true,
+      follow_current_file = {
+        enabled = true
+      },
       use_libuv_file_watcher = true,
       window = {
         mappings = {
@@ -42,8 +44,6 @@ return {
     },
     window = {
       position = 'left',
-      width = 40,
-      auto_expand_width = false,
       mappings = {
         ['l'] = 'open',
         ['h'] = 'close_node',
