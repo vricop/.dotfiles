@@ -14,6 +14,7 @@ return {
   {
     'echasnovski/mini.pairs',
     event = 'VeryLazy',
+    enabled = enable_plugins['mini.pairs'],
     opts = {
       modes = { insert = true, command = true, terminal = false },
       -- skip autopair when next character is one of these
