@@ -32,7 +32,7 @@ require('lazy').setup {
     notify = false,
   },
   checker = {
-    enabled = true
+    enabled = false
   }
 }
 
