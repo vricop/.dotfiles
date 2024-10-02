@@ -7,6 +7,7 @@ export EDITOR="nvim"
 export BAT_THEME="Catppuccin Mocha"
 export CONFIG="$HOME/.config"
 export REPOS="$HOME/Repos"
+export EXA_ICON_SPACING=2
 
 ZSH_THEME="refined"
 
