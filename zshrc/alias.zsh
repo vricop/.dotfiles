@@ -14,11 +14,6 @@ alias ci="npm ci"
 alias pack="npm pack --pack-destination"
 alias clean="rm -rf node_modules && npm ci"
 
-# Repo folders
-# alias work="${REPOS}/work/ && ls"
-# alias side="${REPOS}/side && ls"
-# alias courses="${REPOS}/courses && ls"
-
 alias -s {js,jsx,ts,html,css,scss,sass,json,md,txt,php,yml,vue}=$EDITOR
 
 # Neovim distros
@@ -33,7 +28,7 @@ alias mkdir"mkdir -p -v"
 alias mv="mv -i"
 alias vi="nvim"
 alias vim="nvim"
-alias tree="tree -C $@"
+alias tree="tree -C"
 alias zellij="zellij -l welcome"
 
 # Manage zshrc
@@ -42,6 +37,8 @@ alias edit-zshrc="$EDITOR ~/.zshrc"
 alias edit-aliases="nvim ~/zshrc/alias.zsh"
 
 # Git aliases
+alias gl="git log"
+alias glol="git log --oneline"
 alias gs="git status"
 alias gco="git checkout"
 alias gsw="git switch"
@@ -51,14 +48,21 @@ alias gb="git branch"
 alias gc="git commit"
 alias lasttag='git describe --abbrev=0 --tags'
 alias gsl="git log --oneline | fzf --preview=\"echo {1} | cut -d ' ' -f 1 | xargs -I '#' sh -c 'git show --color=always #'\" | delta"
+alias gst="git stash"
+alias gstp="git stash push -u"
+alias gstpm="git stash push -u --message"
 
 # Projects
 alias side="${REPOS}/side"
 alias work="${REPOS}/work"
 alias courses="${REPOS}/courses/"
+alias s=side
+alias w=work
+alias c=courses
 
 # Project folders
 alias tokens="${REPOS}/work/kiwi-tokens"
 alias tokens-ios="${REPOS}/work/kiwi-ios"
 alias transforms="${REPOS}/work/sd-internal-transforms"
 alias components="${REPOS}/work/@components"
+alias config="$"
