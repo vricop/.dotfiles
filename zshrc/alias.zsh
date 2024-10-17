@@ -21,7 +21,18 @@ alias nvchad="NVIM_APPNAME='nvchad' nvim"
 alias lvim="NVIM_APPNAME=lvim nvim"
 
 # Better commands
-alias ls="eza --icons=always --color=always --git --no-filesize --no-user --no-time --long --no-permissions -G"
+alias ls="eza \
+  --color=always \
+  --icons=always \
+  --long \
+  --no-filesize \
+  --no-permissions \
+  --no-time \
+  --no-user \
+  -stype \
+  -G \
+  -w80 \
+"
 alias rm="trash -F"
 alias cat="bat"
 alias mkdir"mkdir -p -v"
@@ -64,5 +75,5 @@ alias c=courses
 alias tokens="${REPOS}/work/kiwi-tokens"
 alias tokens-ios="${REPOS}/work/kiwi-ios"
 alias transforms="${REPOS}/work/sd-internal-transforms"
-alias components="${REPOS}/work/@components"
+alias components="${REPOS}/work/@components/storybook"
 alias config="$"

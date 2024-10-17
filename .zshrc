@@ -9,6 +9,11 @@ export CONFIG="$HOME/.config"
 export REPOS="$HOME/Repos"
 export EXA_ICON_SPACING=2
 
+# Add deno completions to search path
+if [[ ":$FPATH:" != *":/Users/victor/.zsh/completions:"* ]]; then
+  export FPATH="/Users/victor/.zsh/completions:$FPATH"; 
+fi
+
 ZSH_THEME="refined"
 
 plugins=(
@@ -30,3 +35,6 @@ export NVM_DIR="$HOME/.nvm"
 for file in ~/zshrc/*; do
   source $file
 done
+
+eval "$(starship init zsh)"
+. "/Users/victor/.deno/env"

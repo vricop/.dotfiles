@@ -12,9 +12,11 @@ export FZF_DEFAULT_OPTS="
 
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_T_OPTS="
-  --walker-skip '.git,.next,node_modules,target,.Trash'
+  --walker-skip .git,.next,node_modules,target,.cache,.local,Library,Applications,Music,Pictures,Movies,.Trash
   --preview 'bat -n --color 'always' {}'
+  --multi
   --bind 'ctrl-/:change-preview-window(down|hidden|)'
+  --bind 'enter:execute(nvim {+})'
 "
 
 export FZF_ALT_C_OPTS="
