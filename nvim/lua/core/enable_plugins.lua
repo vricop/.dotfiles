@@ -28,6 +28,7 @@ _G.enable_plugins = {
   linting = false,
   lualine = true,
   luasnip = true,
+  markview = true,
   mason = true,
   mdx = false,
   neogen = true,

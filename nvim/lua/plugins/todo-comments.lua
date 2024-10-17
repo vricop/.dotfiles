@@ -20,13 +20,5 @@ return {
         alt = { 'TESTING', 'PASSED', 'FAILED' },
       },
     },
-  },
-  keys = {
-    {
-      '<Leader>fT',
-      ':TodoTelescope<Cr>',
-      desc = 'Open TODO items in Telescope',
-      silent = true,
-    },
-  },
+  }
 }

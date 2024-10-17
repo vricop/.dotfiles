@@ -7,7 +7,7 @@ return {
       icons_enabled = true,
       theme = 'catppuccin-macchiato',
       component_separators = { left = '', right = '' },
-      section_separators = { left = [[ ]], right = [[ ]] },
+      section_separators = { left = '', right = '' },
       disabled_filetypes = {
         statusline = {},
         winbar = {},
@@ -23,7 +23,7 @@ return {
     },
     sections = {
       lualine_a = {
-        { 'mode', icon = [[ ]] },
+        { 'mode' },
       },
       lualine_b = {
         { 'branch', icon = '󰘬' },
@@ -41,7 +41,7 @@ return {
       },
       lualine_x = {},
       lualine_y = { 'diagnostics' },
-      lualine_z = { { 'location', icon = [[󰉡 ]] } },
+      lualine_z = { { 'location', icon = [[󰉡]] } },
     },
     inactive_sections = {
       lualine_a = {},

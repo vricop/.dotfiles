@@ -21,7 +21,7 @@ return {
         'lua_ls',
         'marksman',
         'rust_analyzer',
-        'tsserver',
+        'ts_ls',
       },
     },
   },

@@ -22,7 +22,7 @@ return {
         desc = 'Toggle loclist',
       },
       {
-        '>',
+        '+',
         function()
           require('quicker').expand {
             before = 2,
@@ -33,7 +33,7 @@ return {
         desc = 'Expand quickfix context',
       },
       {
-        '<',
+        '-',
         function()
           require('quicker').collapse()
         end,

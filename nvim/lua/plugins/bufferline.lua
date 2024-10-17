@@ -10,7 +10,7 @@ return {
   },
   keys = {
     {
-      '<Leader>b',
+      '<Leader>B',
       '<Cmd>BufferLinePick<Cr>',
       desc = 'Jump to tab',
       silent = true,

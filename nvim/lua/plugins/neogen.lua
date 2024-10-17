@@ -2,6 +2,7 @@ return {
   'danymat/neogen',
   dependencies = { 'nvim-treesitter/nvim-treesitter' },
   enabled = enable_plugins.neogen,
+  cmd = 'Neogen',
   init = function()
     require('which-key').add { '<Leader>n', group = 'Neogen' }
   end,

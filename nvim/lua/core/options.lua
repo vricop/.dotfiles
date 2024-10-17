@@ -5,7 +5,7 @@ local o = vim.o
 
 opt.backup = false -- Creates a backup file
 opt.clipboard = 'unnamedplus' -- Allows neovim to access the system clipboard
-opt.cmdheight = 0 -- Command line height
+opt.cmdheight = 1 -- Command line height
 opt.colorcolumn = '80' -- Show vertical column line
 opt.completeopt = { 'menu', 'menuone', 'noselect' } -- Mostly just for cmp
 opt.conceallevel = 0 -- So that `` is visible in markdown files

@@ -21,6 +21,11 @@ keymap('n', '<Leader>d', require('utils.ui').bufremove, {
   silent = true,
 })
 
+keymap('n', '<Leader>da', '<cmd>bufdo bd<cr>', {
+  desc = 'Delete all buffers',
+  silent = true,
+})
+
 keymap('n', '<Leader>x', function()
   local current_buf = vim.api.nvim_get_current_buf()
   local buffers = vim.api.nvim_list_bufs()
@@ -45,7 +50,7 @@ keymap('n', '<Leader>c', ':close<Cr>', {
   silent = true,
 })
 
-keymap('n', '<Leader>B', ':bufdo tabedit %<Cr>', {
+keymap('n', '<Leader>b', ':tab ball<cr>', {
   desc = 'Open all buffers in tabs',
   silent = true,
 })
@@ -54,25 +59,11 @@ keymap('n', 'J', 'mzJ`z', {
   desc = 'Join lines and center screen',
 })
 
-keymap('n', Meta.h, 'gT', {
-  desc = 'Previous tab',
-})
+keymap('n', '<tab>', 'gT', { desc = 'Previous tab' })
+keymap('n', '<s-tab>', 'gt', { desc = 'Next tab' })
+keymap('n', Meta.h, '<C-w>>', { desc = 'Increase vertical split' })
+keymap('n', Meta.l, '<C-w><', { desc = 'Decrease vertical split' })
 
-keymap('n', Meta.l, 'gt', {
-  desc = 'Next tab',
-})
-
-keymap('n', 'H', ':bp<Cr>', {
-  desc = 'Previous buffer',
-  silent = true,
-})
-
-keymap('n', 'L', ':bn<Cr>', {
-  desc = 'Next buffer',
-  silent = true,
-})
-
--- Alternative way to navigate buffers
 keymap('n', '[b', ':bp<Cr>', {
   desc = 'Previous buffer',
   silent = true,
@@ -123,27 +114,8 @@ keymap('v', Meta.K, ":t'<-1<Cr>", {
   silent = true,
 })
 
-keymap('n', '<Tab>', '>>', {
-  desc = 'Indent line right',
-})
-
-keymap('n', '<S-Tab>', '<<', {
-  desc = 'Indent line left',
-})
-
-keymap('v', '<Tab>', '>gv', {
-  desc = 'Indent selection right',
-})
-
-keymap('v', '<S-Tab>', '<gv', {
-  desc = 'Indent selection left',
-})
-
-keymap('v', '>', '>gv', {
-  silent = true,
-})
-
-keymap('v', '<', '<gv', { silent = true })
+keymap('v', '>', '>gv', { desc = 'Indent selection right', noremap = true })
+keymap('v', '<', '<gv', { desc = 'Indent selection left', noremap = true })
 keymap('n', 'n', 'nzz', { desc = 'Next occurrency & center' })
 keymap('n', 'N', 'Nzz', { desc = 'Previous occurrency & center' })
 keymap('n', '*', '*zz', { desc = 'Next occurrency & center' })

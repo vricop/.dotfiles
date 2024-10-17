@@ -6,11 +6,11 @@ return {
     render = 'virtual',
 
     ---Set virtual symbol (requires render to be set to 'virtual')
-    virtual_symbol = '●',
-    virtual_symbol_prefix = ' ',
+    virtual_symbol = ' ',
+    virtual_symbol_prefix = '',
 
     ---@type 'inline'|'eol'|'eow'
-    virtual_symbol_position = 'eow',
+    virtual_symbol_position = 'inline',
 
     ---Highlight named colors, e.g. 'green'
     enable_named_colors = true,
