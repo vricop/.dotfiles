@@ -1,1 +1,4 @@
-return { 'garymjr/nvim-snippets' }
+return {
+  'garymjr/nvim-snippets',
+  enabled = enable_plugins.snippets
+}
