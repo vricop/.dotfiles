@@ -4,12 +4,10 @@ return {
     event = 'InsertEnter',
     enabled = enable_plugins.cmp,
     dependencies = {
-      'L3MON4D3/LuaSnip',
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-cmdline',
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-path',
-      'saadparwaiz1/cmp_luasnip',
       'hrsh7th/cmp-emoji',
       'hrsh7th/cmp-nvim-lua',
       'roginfarrer/cmp-css-variables',
@@ -58,7 +56,7 @@ return {
         experimental = { ghost_text = true },
         snippet = {
           expand = function(args)
-            require('luasnip').lsp_expand(args.body)
+            vim.snippet.expand(args.body)
           end,
         },
         window = {
@@ -75,7 +73,7 @@ return {
           ['<CR>'] = cmp.mapping.confirm { select = true },
         },
         sources = cmp.config.sources {
-          { name = 'luasnip' },
+          { name = 'snippets' },
           { name = 'nvim_lsp' },
           { name = 'path' },
           { name = 'buffer' },
