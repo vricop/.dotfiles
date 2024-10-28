@@ -27,7 +27,7 @@ _G.enable_plugins = {
   lazygit = true,
   linting = false,
   lualine = true,
-  luasnip = true,
+  luasnip = false,
   markview = true,
   mason = true,
   mdx = false,
@@ -43,4 +43,5 @@ _G.enable_plugins = {
   treesitter = true,
   ufo = true,
   undotree = true,
+  snippets = true,
 }
