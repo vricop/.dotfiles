@@ -7,8 +7,8 @@ return {
   config = function()
     local types = require 'luasnip.util.types'
 
-    require('luasnip.loaders.from_vscode').lazy_load {
-      paths = { './lua/snippets' },
+    require('luasnip.loaders.from_lua').lazy_load {
+      paths = { './snippets' },
       fs_event_providers = { libuv = true },
     }
 
