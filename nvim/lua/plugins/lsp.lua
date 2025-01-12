@@ -22,6 +22,7 @@ return {
         'marksman',
         'rust_analyzer',
         'ts_ls',
+        'denols',
       },
     },
   },
@@ -136,6 +137,24 @@ return {
                 schemas = require('schemastore').json.schemas(),
               },
             },
+          }
+        end,
+        -- Specific configuration for Deno
+        ['denols'] = function()
+          require('lspconfig').denols.setup {
+            on_attach = on_attach,
+            root_dir = require('lspconfig').util.root_pattern(
+              'deno.json',
+              'deno.jsonc'
+            ), -- Specific to Deno
+          }
+        end,
+        -- Specific configuration for TypeScript
+        ['ts_ls'] = function()
+          require('lspconfig').ts_ls.setup {
+            on_attach = on_attach,
+            root_dir = require('lspconfig').util.root_pattern 'package.json', -- Specific to TypeScript
+            single_file_support = false, -- Specific to TypeScript
           }
         end,
       }
