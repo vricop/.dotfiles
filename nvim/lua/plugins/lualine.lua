@@ -15,15 +15,15 @@ return {
       ignore_focus = {},
       always_divide_middle = true,
       globalstatus = true, -- vim.opt.laststatus = 3
-      refresh = {
-        statusline = 1000,
-        tabline = 1000,
-        winbar = 1000,
-      },
     },
     sections = {
       lualine_a = {
-        { 'mode' },
+        {
+          'mode',
+          fmt = function(mode)
+            return mode:sub(1, 1)
+          end,
+        },
       },
       lualine_b = {
         { 'branch', icon = '󰘬' },
@@ -39,9 +39,9 @@ return {
           },
         },
       },
-      lualine_x = {},
-      lualine_y = { 'diagnostics' },
-      lualine_z = { { 'location', icon = [[󰉡]] } },
+      lualine_x = { 'diagnostics', 'filetype' },
+      lualine_y = {},
+      lualine_z = { 'location' },
     },
     inactive_sections = {
       lualine_a = {},
