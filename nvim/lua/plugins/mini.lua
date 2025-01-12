@@ -41,4 +41,20 @@ return {
       },
     },
   },
+  {
+    'echasnovski/mini.files',
+    enabled = enable_plugins['mini.files'],
+    opts = {},
+    keys = {
+      {
+        '<leader>E',
+        function()
+          ---@diagnostic disable: undefined-global
+          if not MiniFiles.close() then
+            MiniFiles.open(vim.api.nvim_buf_get_name(0))
+          end
+        end,
+      },
+    },
+  },
 }
