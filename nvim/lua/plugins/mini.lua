@@ -8,18 +8,8 @@ vim.pack.add({
 require("mini.icons").setup()
 require("mini.files").setup()
 
-require("mini.pick").setup({
-	window = { config = {
-		height = 15,
-	}, prompt_prefix = "   " },
-})
-
 local map = vim.keymap.set
 
-map("n", "<Leader><space>", ":Pick files<Cr>", { desc = "Pick files", silent = true })
-map("n", "<Leader>ff", ":Pick files<Cr>", { desc = "Pick files", silent = true })
-map("n", "<Leader>fb", ":Pick buffers<Cr>", { desc = "Pick files", silent = true })
-map("n", "<Leader>/", ":Pick grep_live<Cr>", { desc = "Find (grep)", silent = true })
 map("n", "<Leader>e", function()
 	local buf = vim.api.nvim_buf_get_name(0)
 	local path = vim.fn.fnamemodify(buf, ":h")
@@ -30,6 +20,17 @@ map("n", "<Leader>e", function()
 		MiniFiles.open(path)
 	end
 end, { desc = "File explorer" })
+
+require("mini.pick").setup({
+	window = { config = {
+		height = 15,
+	}, prompt_prefix = "   " },
+})
+
+
+map("n", "<Leader><space>", ":Pick files<Cr>", { desc = "Pick files", silent = true })
+map("n", "<Leader>,", ":Pick buffers<Cr>", { desc = "Pick files", silent = true })
+map("n", "<Leader>/", ":Pick grep_live<Cr>", { desc = "Find (grep)", silent = true })
 
 local hipatterns = require("mini.hipatterns")
 
