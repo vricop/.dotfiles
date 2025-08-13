@@ -1,0 +1,44 @@
+return {
+  'nvim-treesitter/nvim-treesitter',
+  build = ':TSUpdate',
+  main = 'nvim-treesitter.configs',
+  dependencies = {
+    'nvim-treesitter/nvim-treesitter-textobjects',
+  },
+  opts = {
+    ensure_installed = {
+      'bash',
+      'c',
+      'css',
+      'devicetree',
+      'diff',
+      'gitignore',
+      'html',
+      'javascript',
+      'jsdoc',
+      'lua',
+      'luadoc',
+      'markdown',
+      'rust',
+      'toml',
+      'tsx',
+      'typescript',
+      'vim',
+      'yaml',
+    },
+    -- Improves indent formatting for the `=` command
+    indent = { enable = true },
+    highlight = { enable = true },
+    auto_install = true,
+    sync_install = false,
+    incremental_selection = {
+      enable = true,
+      keymaps = {
+        init_selection = '<c-space>',
+        node_incremental = '<Leader><tab>',
+        scope_incremental = false,
+        node_decremental = '<bs>',
+      },
+    },
+  },
+}

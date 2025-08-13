@@ -1,45 +1,21 @@
-return {
-  'nvim-treesitter/nvim-treesitter',
-  build = ':TSUpdate',
-  enabled = enable_plugins.treesitter,
-  main = 'nvim-treesitter.configs',
-  dependencies = {
-    'nvim-treesitter/nvim-treesitter-textobjects',
-  },
-  opts = {
-    ensure_installed = {
-      'bash',
-      'c',
-      'css',
-      'devicetree',
-      'diff',
-      'gitignore',
-      'html',
-      'javascript',
-      'jsdoc',
-      'lua',
-      'luadoc',
-      'markdown',
-      'rust',
-      'toml',
-      'tsx',
-      'typescript',
-      'vim',
-      'yaml',
-    },
-    -- Improves indent formatting for the `=` command
-    indent = { enable = true },
-    highlight = { enable = true },
-    auto_install = true,
-    sync_install = false,
-    incremental_selection = {
-      enable = true,
-      keymaps = {
-        init_selection = '<c-space>',
-        node_incremental = '<tab>',
-        scope_incremental = false,
-        node_decremental = '<bs>',
-      },
-    },
-  },
-}
+-- TODO: Config vitels
+
+vim.pack.add({ "https://github.com/nvim-treesitter/nvim-treesitter" })
+
+require("nvim-treesitter.configs").setup({
+	ensure_installed = {
+		"markdown",
+		"dot",
+		"bash",
+		"html",
+		"javascript",
+		"typescript",
+    -- "vitels",
+		"tsx",
+		"vue",
+		"svelte",
+		"css",
+		"lua",
+	},
+	highlight = { enable = true },
+})

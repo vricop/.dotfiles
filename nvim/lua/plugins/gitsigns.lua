@@ -1,92 +1,54 @@
-return {
-  'lewis6991/gitsigns.nvim',
-  enabled = enable_plugins.gitsigns,
-  opts = {
-    current_line_blame = true,
-    on_attach = function(bufnr)
-      local gs = package.loaded.gitsigns
+vim.pack.add({ "https://github.com/lewis6991/gitsigns.nvim" })
+local gitsigns = require("gitsigns")
+local map = vim.keymap.set
 
-      local function keymap(mode, l, r, opts)
-        opts = opts or {}
-        opts.buffer = bufnr
-        vim.keymap.set(mode, l, r, opts)
-      end
+gitsigns.setup()
 
-      -- Navigation
-      keymap('n', ']c', function()
-        if vim.wo.diff then
-          return ']c'
-        end
-        vim.schedule(function()
-          gs.next_hunk()
-        end)
-        return '<Ignore>'
-      end, { expr = true, desc = 'Go to next change' })
+local stage_hunk = function()
+	gitsigns.stage_hunk({
+		vim.fn.line("."),
+		vim.fn.line("v"),
+	})
+end
 
-      keymap('n', '[c', function()
-        if vim.wo.diff then
-          return '[c'
-        end
-        vim.schedule(function()
-          gs.prev_hunk()
-        end)
-        return '<Ignore>'
-      end, { expr = true, desc = 'Go to previous change' })
+local reset_hunk = function()
+	gitsigns.reset_hunk({
+		vim.fn.line("."),
+		vim.fn.line("v"),
+	})
+end
 
-      -- Actions
-      keymap({ 'n', 'v' }, '<Leader>gs', ':Gitsigns stage_hunk<CR>', {
-        desc = 'Stage hunk',
-      })
+local go_next_change = function()
+	if vim.wo.diff then
+		vim.cmd.normal({ "]c", bang = true })
+	else
+		gitsigns.nav_hunk("next")
+	end
+end
 
-      keymap({ 'n', 'v' }, '<Leader>gr', ':Gitsigns reset_hunk<CR>', {
-        desc = 'Reset hunk',
-      })
+local go_previous_change = function ()
+	if vim.wo.diff then
+		vim.cmd.normal({ "[c", bang = true })
+	else
+		gitsigns.nav_hunk("prev")
+	end
+end
 
-      keymap('n', '<Leader>gS', gs.stage_buffer, {
-        desc = 'Stage buffer',
-      })
-
-      keymap('n', '<Leader>gu', gs.undo_stage_hunk, {
-        desc = 'Undo stage hunk',
-      })
-
-      keymap('n', '<Leader>gR', gs.reset_buffer, {
-        desc = 'Reset buffer',
-      })
-
-      keymap('n', '<Leader>gp', gs.preview_hunk, {
-        desc = 'Preview hunk',
-      })
-
-      keymap('n', '<Leader>gb', function()
-        gs.blame_line { full = true }
-      end, {
-        desc = 'Blame line',
-      })
-
-      keymap('n', '<Leader>gd', gs.diffthis, {
-        desc = 'Diff this',
-      })
-
-      keymap('n', '<Leader>gD', function()
-        gs.diffthis '~'
-      end, {
-        desc = 'Diff last commit?',
-      })
-
-      keymap('n', '<Leader>gtd', gs.toggle_deleted, {
-        desc = 'Toggle deleted',
-      })
-
-      keymap('n', '<Leader>gtb', gs.toggle_current_line_blame, {
-        desc = 'Toggle current line blame',
-      })
-
-      -- Text object
-      keymap({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>', {
-        desc = 'Inside hunk',
-        silent = true,
-      })
-    end,
-  },
-}
+map("n", "]c", go_next_change, { desc = "Go to next change", })
+map("n", "[c", go_previous_change, { desc = "Got to previous change", })
+map("n", "<leader>hs", gitsigns.stage_hunk, { desc = "Stage hunk" })
+map("n", "<leader>hr", gitsigns.reset_hunk, { desc = "Reset hunk" })
+map("v", "<leader>hs", stage_hunk, { desc = "Hunk stage" })
+map("v", "<leader>hr", reset_hunk, { desc = "Hunk reset" })
+map("n", "<leader>hS", gitsigns.stage_buffer, { desc = "Stage hunk (Buffer)" })
+map("n", "<leader>hR", gitsigns.reset_buffer, { desc = "Reset hunk (Buffer)" })
+map("n", "<leader>hp", gitsigns.preview_hunk, { desc = "Preview hunk" })
+map("n", "<leader>hi", gitsigns.preview_hunk_inline, { desc = "Preview hunk (inline)" })
+map("n", "<leader>hb", function() gitsigns.blame_line({ full = true }) end, { desc = "Blame line" })
+map("n", "<leader>hd", gitsigns.diffthis, { desc = "Diff hunk" })
+map("n", "<leader>hD", function() gitsigns.diffthis("~") end, { desc = "Diff this" })
+map("n", "<leader>hQ", function() gitsigns.setqflist("all") end, { desc = "Set quickfix list" })
+map("n", "<leader>hq", gitsigns.setqflist, { desc = "Set git quickfix list" })
+map("n", "<leader>tb", gitsigns.toggle_current_line_blame, { desc = "Toggle current line blame" })
+map("n", "<leader>tw", gitsigns.toggle_word_diff, { desc = "Toggle word diff" })
+map({ "o", "x" }, "ih", gitsigns.select_hunk, { desc = "Select hunk" })

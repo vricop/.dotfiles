@@ -1,60 +1,44 @@
-return {
-  {
-    'echasnovski/mini.surround',
-    version = '*',
-    enabled = enable_plugins['mini.surround'],
-    opts = {},
-  },
-  {
-    'echasnovski/mini.ai',
-    enabled = enable_plugins['mini.ai'],
-    version = '*',
-    opts = {},
-  },
-  {
-    'echasnovski/mini.pairs',
-    event = 'VeryLazy',
-    enabled = enable_plugins['mini.pairs'],
-    opts = {
-      modes = { insert = true, command = true, terminal = false },
-      -- skip autopair when next character is one of these
-      skip_next = [=[[%w%%%'%[%"%.%`%$]]=],
-      -- skip autopair when the cursor is inside these treesitter nodes
-      skip_ts = { 'string' },
-      -- skip autopair when next character is closing pair
-      -- and there are more closing pairs than opening pairs
-      skip_unbalanced = true,
-      -- better deal with markdown code blocks
-      markdown = true,
-    },
-  },
-  {
-    'echasnovski/mini.comment',
-    event = 'VeryLazy',
-    enable_plugins = enable_plugins['mini.comment'],
-    opts = {
-      options = {
-        custom_commentstring = function()
-          return require('ts_context_commentstring.internal').calculate_commentstring()
-            or vim.bo.commentstring
-        end,
-      },
-    },
-  },
-  {
-    'echasnovski/mini.files',
-    enabled = enable_plugins['mini.files'],
-    opts = {},
-    keys = {
-      {
-        '<leader>E',
-        function()
-          ---@diagnostic disable: undefined-global
-          if not MiniFiles.close() then
-            MiniFiles.open(vim.api.nvim_buf_get_name(0))
-          end
-        end,
-      },
-    },
-  },
-}
+vim.pack.add({
+	"https://github.com/echasnovski/mini.icons",
+	"https://github.com/echasnovski/mini.files",
+	"https://github.com/echasnovski/mini.pick",
+	"https://github.com/echasnovski/mini.hipatterns",
+})
+
+require("mini.icons").setup()
+require("mini.files").setup()
+
+require("mini.pick").setup({
+	window = { config = {
+		height = 15,
+	}, prompt_prefix = "   " },
+})
+
+local map = vim.keymap.set
+
+map("n", "<Leader><space>", ":Pick files<Cr>", { desc = "Pick files", silent = true })
+map("n", "<Leader>ff", ":Pick files<Cr>", { desc = "Pick files", silent = true })
+map("n", "<Leader>fb", ":Pick buffers<Cr>", { desc = "Pick files", silent = true })
+map("n", "<Leader>/", ":Pick grep_live<Cr>", { desc = "Find (grep)", silent = true })
+map("n", "<Leader>e", function()
+	local buf = vim.api.nvim_buf_get_name(0)
+	local path = vim.fn.fnamemodify(buf, ":h")
+
+	---@diagnostic disable-next-line: undefined-global
+	if not MiniFiles.close() then
+		---@diagnostic disable-next-line: undefined-global
+		MiniFiles.open(path)
+	end
+end, { desc = "File explorer" })
+
+local hipatterns = require("mini.hipatterns")
+
+hipatterns.setup({
+	highlighters = {
+		fixme = { pattern = "%f[%w]()FIXME()%f[%W]", group = "MiniHipatternsFixme" },
+		hack = { pattern = "%f[%w]()HACK()%f[%W]", group = "MiniHipatternsHack" },
+		todo = { pattern = "%f[%w]()TODO()%f[%W]", group = "MiniHipatternsTodo" },
+		note = { pattern = "%f[%w]()NOTE()%f[%W]", group = "MiniHipatternsNote" },
+		hex_color = hipatterns.gen_highlighter.hex_color(),
+	},
+})
