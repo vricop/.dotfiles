@@ -110,7 +110,7 @@ do
 		return orig(padded, syntax, opts, ...)
 	end
 end
- 
+
 vim.lsp.config("*", {
 	capabilities = vim.lsp.protocol.make_client_capabilities(),
 })

@@ -1,6 +1,6 @@
 vim.opt.backup = false -- Creates a backup file
-vim.opt.clipboard = "unnamedplus" -- Allows neovim to access the system clipboard
-vim.opt.cmdheight = 0 -- Command line height
+vim.opt.clipboard = "unnamedplus" -- Clipboard mode, `unnamedplus` is for the system clipboard
+vim.opt.cmdheight = 1 -- Command line height
 vim.opt.colorcolumn = "80" -- Show vertical column line
 vim.opt.completeopt = { "menu", "menuone", "noselect" } -- Mostly just for cmp
 vim.opt.conceallevel = 0 -- So that `` is visible in markdown files
@@ -20,9 +20,9 @@ vim.opt.scrolloff = 8 -- Minimal number of screen lines to keep above and below 
 vim.opt.shiftwidth = 2 -- The number of spaces inserted for each indentation
 vim.opt.showmode = false -- We don't need to see things like -- INSERT -- anymore
 vim.opt.showcmdloc = "statusline" -- Remove selection count in cmdline
-vim.opt.showtabline = 0 -- Always show tabs
+vim.opt.showtabline = 0 -- Show/Hide tabs
 vim.opt.sidescrolloff = 8 -- The minimal number of screen columns to keep to the both sides of the cursor if `'nowrap'`  is set.
-vim.opt.signcolumn = "yes" -- Always show the sign column otherwise it would shift the text each time
+vim.opt.signcolumn = "yes" -- Sign column (number, diagnostics, etc)
 vim.opt.smartcase = true -- Smart case
 vim.opt.smartindent = true -- Make indenting smarter again
 vim.opt.spell = true -- Enable spelling
@@ -30,9 +30,9 @@ vim.opt.spelllang = { "en", "fr", "ca", "it" } -- Install spelling for these lan
 vim.opt.splitbelow = true -- Force all horizontal splits to go below current window
 vim.opt.splitright = true -- Force all vertical splits to go to the right of current window
 vim.opt.swapfile = false -- Creates a swapfile
-vim.opt.tabstop = 2 -- Insert 2 spaces for a tab
+vim.opt.tabstop = 2 -- Tabs
 vim.opt.termguicolors = true -- Set term gui colors (most terminals support this)
-vim.opt.timeoutlen = 450 -- Time to wait for a mapped sequence to complete (in milliseconds)
+vim.opt.timeoutlen = 350 -- Time to wait for a mapped sequence to complete (in milliseconds)
 vim.opt.undofile = true -- Enable persistent undo
 vim.opt.updatetime = 300 -- Faster completion (4000ms default)
 vim.opt.wrap = false -- Display lines as one long line
@@ -43,7 +43,7 @@ vim.opt.grepprg = "rg --vimgrep --smart-case" -- Use ripgrep instead of grep
 vim.opt.grepformat = "%f:%l:%c:%m" -- Use this cli format for ripgrep
 vim.opt.statuscolumn = "%s %l "
 vim.opt.fillchars = { foldopen = "", foldclose = "", fold = " ", foldsep = " ", diff = "╱", eob = " " }
-vim.opt.shortmess:append("cS") -- Hide search count and `ins-completion-menu` messages in cmdline
+vim.opt.shortmess:append("c") -- Hide short messages, `appends` means don't show message (specified with a letter)
 vim.opt.whichwrap:append("<,>,[,],h,l") -- Set what commands wrap to the next line when at the end of the line
 vim.opt.wildignore:append("**/node_modules/**") -- Don't show results from `node_modules` recursively
 vim.opt.path:append("**") -- Tell Neovim to look in all subdirectories relative to the current directory when searching for a file
