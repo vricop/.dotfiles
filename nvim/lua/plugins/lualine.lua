@@ -7,26 +7,36 @@ lualine.setup({
 		theme = "catppuccin-macchiato",
 		component_separators = { left = "", right = "" },
 		section_separators = { left = "", right = "" },
-		disabled_filetypes = {
-			statusline = {},
-			winbar = {},
-		},
-		ignore_focus = {},
 		always_divide_middle = true,
 		globalstatus = true,
 	},
 	sections = {
 		lualine_a = {
-			"mode",
+			{
+				"mode",
+				right_padding = 0,
+				fmt = function(str)
+					return str:sub(1, 3)
+				end,
+			},
 		},
 		lualine_b = {
-			{ "branch", icon = "󰘬" },
+			{
+				"branch",
+				right_padding = 0,
+				icon = {
+					" ",
+					align = "right",
+				},
+			},
 		},
 		lualine_c = {
 			{
 				"filename",
+				file_status = false,
 				symbols = {
-					unnamed = "󰦨",
+					unnamed = "",
+					newfile = ""
 				},
 			},
 			{
@@ -38,15 +48,35 @@ lualine.setup({
 				},
 			},
 		},
-		lualine_x = {},
+		lualine_x = {
+			{
+				"location",
+				padding = { left = 0 },
+			},
+			{ "progress" },
+			{
+				"selectioncount",
+				left_padding = 0,
+			},
+			{
+				"diagnostics",
+				left_padding = 0,
+			},
+		},
 		lualine_y = {
-			"diagnostics",
-			"filetype",
+			{
+				"filetype",
+        colored = true,
+				left_padding = 0,
+			},
 		},
 		lualine_z = {
-			"selectioncount",
-			"searchcount",
-			"location",
+			{
+				"datetime",
+				left_padding = 0,
+				style = "%H:%M",
+				icon = "󱑎 ",
+			},
 		},
 	},
 	inactive_sections = {

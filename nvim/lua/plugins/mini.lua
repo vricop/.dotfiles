@@ -3,10 +3,15 @@ vim.pack.add({
 	"https://github.com/echasnovski/mini.files",
 	"https://github.com/echasnovski/mini.pick",
 	"https://github.com/echasnovski/mini.hipatterns",
+	"https://github.com/echasnovski/mini.pairs",
 })
 
 require("mini.icons").setup()
 require("mini.files").setup()
+require("mini.pairs").setup()
+
+---@diagnostic disable-next-line: undefined-global
+MiniIcons.mock_nvim_web_devicons()
 
 local map = vim.keymap.set
 
