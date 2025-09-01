@@ -24,6 +24,7 @@ Some rulles I follow:
 
 ### Quick daily life actions:
 
+```txt
 <Leader>
 ├──► q       # Quit neovim
 ├──► f       # Find file (native, opens cmd with '**/<cursor>')
@@ -44,11 +45,12 @@ Some rulles I follow:
 ├──► e       # Open tree view (mini.picker plugin)
 ├──► -       # Open current parent folder (oil plugin)
 └──► E       # Open neovim config file
-
+```
 ### Grouped actions
 
 #### Lsp/Git actions
 
+```txt
 <Leader>
 ├──► h       # Hunk group actions (gitsigns plugin):
 │   ├──► r       # Reset current hunk in current line
@@ -65,9 +67,11 @@ Some rulles I follow:
     ├──► a       # Code action
     ├──► d       # Open diagnostic
     └──► i       # Show lsp info
+```
 
 #### Toggle options
 
+```txt
 <Leader>
 └──► t       # Toggle group actions:
     ├──► n      # Relative Numbers
@@ -81,3 +85,4 @@ Some rulles I follow:
     ├──► s      # Spelling
     ├──► m      # render markdown (rendermarkdown plugin)
     └──► d      # diff splits (You first need to open two different files in splits)
+```
