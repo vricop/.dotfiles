@@ -3,6 +3,8 @@
 > [!WARNING]
 Work in progress :point_up:
 
+---
+
 Some rulles I follow:
 
 - Most common actions use a lowercase letter
@@ -10,6 +12,8 @@ Some rulles I follow:
   less common action
 - Easy to remember keymaps that try to follow vim mnemonics. I only use grouped
   keymaps when it makes sense
+
+---
 
 > [!NOTE]
 > Not all keymaps not documented here. You can take a look in the
