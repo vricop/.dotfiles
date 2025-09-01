@@ -17,7 +17,7 @@ Some rulles I follow:
 > interesting mappings I collected over the years from people like the
 > @ThePrimeagen and reedit posts.
 
-## [Keybindings diagram]
+## Keybindings diagram
 
 **Note** the `<Leader>` key is the `<Space>` key.
 
