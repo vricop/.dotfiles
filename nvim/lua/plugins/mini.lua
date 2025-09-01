@@ -10,6 +10,7 @@ require("mini.icons").setup()
 require("mini.files").setup()
 require("mini.pairs").setup()
 
+--- Show filetype icons in lualine
 ---@diagnostic disable-next-line: undefined-global
 MiniIcons.mock_nvim_web_devicons()
 
@@ -36,6 +37,7 @@ require("mini.pick").setup({
 map("n", "<Leader><space>", ":Pick files<Cr>", { desc = "Pick files", silent = true })
 map("n", "<Leader>,", ":Pick buffers<Cr>", { desc = "Pick files", silent = true })
 map("n", "<Leader>/", ":Pick grep_live<Cr>", { desc = "Find (grep)", silent = true })
+map("n", "<Leader>i", ":Pick help<Cr>", { desc = "Find help info", silent = true })
 
 local hipatterns = require("mini.hipatterns")
 

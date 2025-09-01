@@ -27,12 +27,13 @@ vim.opt.smartcase = true -- Smart case
 vim.opt.smartindent = true -- Make indenting smarter again
 vim.opt.spell = true -- Enable spelling
 vim.opt.spelllang = { "en", "fr", "ca", "it" } -- Install spelling for these languages
+vim.opt.spelloptions = { "camel" } -- Spell options, separate camel case words
 vim.opt.splitbelow = true -- Force all horizontal splits to go below current window
 vim.opt.splitright = true -- Force all vertical splits to go to the right of current window
 vim.opt.swapfile = false -- Creates a swapfile
 vim.opt.tabstop = 2 -- Tabs
 vim.opt.termguicolors = true -- Set term gui colors (most terminals support this)
-vim.opt.timeoutlen = 350 -- Time to wait for a mapped sequence to complete (in milliseconds)
+-- vim.opt.timeoutlen = 350 -- Time to wait for a mapped sequence to complete (in milliseconds)
 vim.opt.undofile = true -- Enable persistent undo
 vim.opt.updatetime = 300 -- Faster completion (4000ms default)
 vim.opt.wrap = false -- Display lines as one long line
@@ -47,6 +48,8 @@ vim.opt.shortmess:append("c") -- Hide short messages, `appends` means don't show
 vim.opt.whichwrap:append("<,>,[,],h,l") -- Set what commands wrap to the next line when at the end of the line
 vim.opt.wildignore:append("**/node_modules/**") -- Don't show results from `node_modules` recursively
 vim.opt.path:append("**") -- Tell Neovim to look in all subdirectories relative to the current directory when searching for a file
+vim.opt.foldlevel = 99
+vim.opt.foldlevelstart = 99
 vim.cmd("colorscheme unokai")
 vim.cmd("highlight WinSeparator guibg=None") -- Thin split lines
 vim.g.mapleader = " " -- Set leader key

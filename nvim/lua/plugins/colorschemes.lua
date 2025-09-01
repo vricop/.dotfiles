@@ -1,7 +1,8 @@
 vim.pack.add({
-	"https://github.com/catppuccin/nvim",
-	"https://github.com/folke/tokyonight.nvim",
-	"https://github.com/EdenEast/nightfox.nvim",
+	{ src = "https://github.com/catppuccin/nvim", name = 'catppuccin' },
+	{ src = "https://github.com/folke/tokyonight.nvim" },
+	{ src = "https://github.com/EdenEast/nightfox.nvim" },
+	{ src = "https://github.com/sainnhe/everforest" },
 })
 
-pcall(vim.cmd.colorscheme, "catppuccin-mocha")
+pcall(vim.cmd.colorscheme, "catppuccin-macchiato")

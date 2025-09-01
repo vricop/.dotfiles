@@ -67,7 +67,6 @@ lualine.setup({
 			{
 				"filetype",
         colored = true,
-				left_padding = 0,
 			},
 		},
 		lualine_z = {
@@ -87,8 +86,4 @@ lualine.setup({
 		lualine_y = {},
 		lualine_z = {},
 	},
-	tabline = {},
-	winbar = {},
-	inactive_winbar = {},
-	extensions = {},
 })
