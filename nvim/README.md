@@ -1,6 +1,6 @@
 # Mnemonic leader keymaps
 
-> [!WARNINNG]: Work in progress :point_up:
+> [!WARNING] Work in progress :point_up:
 
 Some rulles I follow:
 
@@ -10,7 +10,7 @@ Some rulles I follow:
 - Easy to remember keymaps that try to follow vim mnemonics. I only use grouped
   keymaps when it makes sense
 
-> [!NOTE]: Not all keymaps not documented here. You can take a look in the
+> [!NOTE] Not all keymaps not documented here. You can take a look in the
 > `lua/config/keymaps.lua` file if you're curious. There are some
 > interesting mappings I collected over the years from people like the
 > @ThePrimeagen and reedit posts.
