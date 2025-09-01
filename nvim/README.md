@@ -5,7 +5,7 @@ Work in progress :point_up:
 
 ---
 
-Some rulles I follow:
+Some rules I follow:
 
 - Most common actions use a lowercase letter
 - The uppercase variant means a bigger operation for the entire buffer, or a
