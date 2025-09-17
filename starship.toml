@@ -1,12 +1,6 @@
 # Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 
-# [character]
-# format = '[ 󰅂 ]($style)'
-# success_symbol = '[ 󰅂 ]($style)'
-# error_symbol = '[ 󰅂 ]($style)'
-# vimcmd_symbol = '[ 󰅂 ]($style)'
-
 [git_branch]
 symbol = ' '
 
@@ -17,7 +11,7 @@ format = '[  $version]($style)'
 format = '[🦖  $version]($style)'
 
 [lua]
-format = '[$󰢱  version]($style)'
+format = '[󰢱  version]($style)'
 
 [package]
 format = '[$symbol$version]($style) '
@@ -25,15 +19,3 @@ symbol = ' '
 
 [directory]
 truncate_to_repo = false
-home_symbol = ' '
-
-[directory.substitutions]
-'Downloads' = ' 󰉍 '
-'Documents' = ' 󱧶 '
-'Music' = ' 󱍙 '
-'Pictures' = ' 󰉔 '
-'Movies' = ' 󰕧 '
-'Repos/work/@components/storybook' = ' components'
-'Repos/work/kiwi-tokens' = ' tokens'
-'Repos/work/sd-internal-transforms' = ' transforms'
-
