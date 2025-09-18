@@ -1,9 +1,9 @@
 vim.pack.add({
-	"https://github.com/echasnovski/mini.icons",
-	"https://github.com/echasnovski/mini.files",
-	"https://github.com/echasnovski/mini.pick",
-	"https://github.com/echasnovski/mini.hipatterns",
-	"https://github.com/echasnovski/mini.pairs",
+  "https://github.com/mini-nvim/mini.icons",
+	"https://github.com/mini-nvim/mini.files",
+	"https://github.com/mini-nvim/mini.pick",
+	"https://github.com/mini-nvim/mini.hipatterns",
+	"https://github.com/mini-nvim/mini.pairs",
 })
 
 require("mini.icons").setup()
@@ -32,7 +32,6 @@ require("mini.pick").setup({
 		height = 15,
 	}, prompt_prefix = "   " },
 })
-
 
 map("n", "<Leader><space>", ":Pick files<Cr>", { desc = "Pick files", silent = true })
 map("n", "<Leader>,", ":Pick buffers<Cr>", { desc = "Pick files", silent = true })
