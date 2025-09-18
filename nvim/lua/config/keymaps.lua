@@ -25,10 +25,10 @@ end, {
 map("n", "<Leader>q", ":qa<Cr>", { desc = "Quit Neovim", silent = true })
 map("n", "<Leader>c", ":close<Cr>", { desc = "Close window", silent = true })
 map("n", "J", "mzJ`z", { desc = "Join lines and center screen" })
-map("n", "<Tab>", ">>", { desc = "Indent" })
-map("n", "<S-Tab>", "<<", { desc = "Unindent" })
-map("v", "<Tab>", ">gv", { desc = "Indent" })
-map("v", "<S-Tab>", "<gv", { desc = "Unindent" })
+map("n", "<Tab>", ">>", { noremap = true, desc = "Indent" })
+map("n", "<S-Tab>", "<<", { noremap = true, desc = "Unindent" })
+map("v", "<Tab>", ">gv", { noremap = true, desc = "Indent" })
+map("v", "<S-Tab>", "<gv", { noremap = true, desc = "Unindent" })
 map("n", "H", ":bp<Cr>", { desc = "Previous buffer", silent = true })
 map("n", "L", ":bn<Cr>", { desc = "Next buffer", silent = true })
 
@@ -122,5 +122,5 @@ map("n", "<Leader>ts", function()
 end, { desc = "Toggle spelling" })
 
 map("n", "<Leader>t", ":InspectTree<Cr>", { silent = true, desc = "Inspect tree" })
-
 map("n", "<Leader>r", ":update<Cr> :source<Cr>", { silent = true, desc = "Reload config" })
+
