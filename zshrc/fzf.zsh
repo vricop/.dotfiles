@@ -1,4 +1,6 @@
-export FZF_DEFAULT_COMMAND="find . -type f"
+# Use `fd` as the source. It respects .gitignore by default.
+# We also explicitly exclude .git and node_modules.
+export FZF_DEFAULT_COMMAND="fd --type f --strip-cwd-prefix --exclude .git --exclude node_modules"
 
 export FZF_DEFAULT_OPTS="
   --info inline --padding 2 --reverse
@@ -10,17 +12,18 @@ export FZF_DEFAULT_OPTS="
   --height 100%
 "
 
+# Ctrl-T: files via fd (same filters)
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_T_OPTS="
-  --walker-skip .git,.next,node_modules,target,.cache,.local,Library,Applications,Music,Pictures,Movies,.Trash
-  --preview 'bat -n --color 'always' {}'
+  --preview 'bat -n --color=always {}'
   --multi
   --bind 'ctrl-/:change-preview-window(down|hidden|)'
   --bind 'enter:execute(nvim {+})'
 "
 
+# Alt-C: directories via fd (same filters)
+export FZF_ALT_C_COMMAND="fd --type d --strip-cwd-prefix --exclude .git --exclude node_modules"
 export FZF_ALT_C_OPTS="
-  --walker-skip .git,node_modules,target,.Trash
   --preview 'tree -L 1 -C {}'
 "
 
