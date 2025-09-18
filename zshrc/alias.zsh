@@ -7,6 +7,7 @@ alias run="npm run"
 alias build="npm run build"
 alias start="npm start"
 alias dev="npm run dev"
+alias format="npm run format"
 alias test="npm run test"
 alias prod="npm run build && npm start"
 alias i="npm i"
@@ -37,43 +38,28 @@ alias rm="trash -F"
 alias cat="bat"
 alias mkdir"mkdir -p -v"
 alias mv="mv -i"
+alias v="nvim"
 alias vi="nvim"
 alias vim="nvim"
 alias tree="tree -C"
-alias zellij="zellij -l welcome"
 
 # Manage zshrc
 alias reload-zshrc='source ~/.zshrc && reset && zsh'
 alias edit-zshrc="$EDITOR ~/.zshrc"
 alias edit-aliases="nvim ~/zshrc/alias.zsh"
 
-# Git aliases
-alias gl="git log"
-alias glol="git log --oneline"
-alias gs="git status"
-alias gco="git checkout"
-alias gsw="git switch"
-alias gsw-t="git switch --track"
-alias gsw-c="git switch -c"
-alias gb="git branch"
-alias gc="git commit"
 alias lasttag='git describe --abbrev=0 --tags'
-alias gsl="git log --oneline | fzf --preview=\"echo {1} | cut -d ' ' -f 1 | xargs -I '#' sh -c 'git show --color=always #'\" | delta"
-alias gst="git stash"
-alias gstp="git stash push -u"
-alias gstpm="git stash push -u --message"
 
 # Projects
-alias side="${REPOS}/side"
-alias work="${REPOS}/work"
-alias courses="${REPOS}/courses/"
+alias side="$REPOS/side"
+alias work="$REPOS/work"
+alias packages="$REPOS/packages"
+alias courses="$REPOS/courses/"
 alias s=side
 alias w=work
 alias c=courses
 
 # Project folders
-alias tokens="${REPOS}/work/kiwi-tokens"
-alias tokens-ios="${REPOS}/work/kiwi-ios"
-alias transforms="${REPOS}/work/sd-internal-transforms"
-alias components="${REPOS}/work/@components/storybook"
-alias config="$"
+alias components="$REPOS/work/components/storybook"
+alias testing="$REPOS/work/components/testing"
+alias tokens="$REPOS/work/tokens"
