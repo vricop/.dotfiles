@@ -23,7 +23,7 @@ Some rules I follow:
 
 ## Keybindings diagram
 
-> [!INFO]
+> [!IMPORTANT]
 > The `<Leader>` key is the `<Space>` key.
 
 ### Quick daily life actions:
@@ -50,6 +50,7 @@ Some rules I follow:
 ├──► -       # Open current parent folder (oil plugin)
 └──► E       # Open neovim config file
 ```
+
 ### Grouped actions
 
 #### Lsp/Git actions
