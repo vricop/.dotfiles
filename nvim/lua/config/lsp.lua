@@ -5,6 +5,7 @@ vim.lsp.enable({
 	"ts_ls",
   --TODO: Use vitels instead of ts_ls
 	-- "vitels",
+  "tailwindcss",
 	"bashls",
 	"jsonls",
 	"html",
@@ -29,10 +30,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		map("n", "gi", vim.lsp.buf.implementation, { buffer = event.buf, desc = "Go to implementation" })
 		map("n", "gr", vim.lsp.buf.references, { buffer = event.buf, desc = "Referencees" })
 		map("n", "gk", vim.lsp.buf.signature_help, { buffer = event.buf, desc = "Show signature help" })
-		map("n", "<Leader>lr", vim.lsp.buf.rename, { buffer = event.buf, desc = "Rename" })
-		map("n", "<Leader>la", vim.lsp.buf.code_action, { buffer = event.buf, desc = "Code actions" })
-		map("n", "<Leader>ld", vim.diagnostic.open_float, { desc = "Open diagnostic" })
-		map("n", "<Leader>li", "<Cmd>checkhealth vim.lsp<Cr>", { buffer = event.buf, desc = "See lsp info" })
+		map("n", "<Leader>cr", vim.lsp.buf.rename, { buffer = event.buf, desc = "Rename" })
+		map("n", "<Leader>ca", vim.lsp.buf.code_action, { buffer = event.buf, desc = "Code actions" })
+		map("n", "<Leader>cd", vim.diagnostic.open_float, { desc = "Open diagnostic" })
+		map("n", "<Leader>ci", "<Cmd>checkhealth vim.lsp<Cr>", { buffer = event.buf, desc = "See lsp info" })
 
 		if client:supports_method("textDocument/completion") then
 			local group = vim.api.nvim_create_augroup("lsp-highlight", { clear = false })
