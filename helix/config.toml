@@ -1,0 +1,44 @@
+theme = "catppuccin_mocha"
+
+[editor]
+line-number = "relative"
+mouse = true
+rulers = [80]
+auto-format = true
+color-modes = true
+
+[editor.statusline]
+left = [ "mode", "spacer", "version-control", "spacer", "file-modification-indicator", "spacer", "spinner" ]
+center = ["file-base-name"]
+
+[editor.indent-guides]
+render = true
+
+[editor.lsp]
+display-messages = true
+display-inlay-hints = false
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.inline-diagnostics]
+cursor-line = "warning"
+
+[editor.auto-pairs]
+'<' = '>'
+'(' = ')'
+'{' = '}'
+'[' = ']'
+'`' = '`'
+'"' = '"'
+"'" = "'"
+
+# Mappings
+[keys.normal.space]
+q = ":qa"
+"=" = ":format"
+"u" = ":u" # Update (write) buffer
+"x" = ":bc" # Buffer close
+"o" = ":bco" # Close other buffers but current

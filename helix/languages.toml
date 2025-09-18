@@ -1,0 +1,46 @@
+[language-server.emmet-ls]
+command = "emmet-ls"
+args = [ "--stdio" ]
+name = "emmet-ls"
+file-types = ["tsx", "jsx", "html"]
+language-server = { command = "emmet-ls" }
+
+# [[language]]
+# name = "tsx"
+# language-servers = [
+#   "tailwindcss-ls", "typescript-language-server", "emmet-ls", "tailwindcss-ls", "biome"
+# ]
+
+[language-server.biome]
+command = "biome"
+args = ["lsp-proxy"]
+
+[[language]]
+name = "javascript"
+language-servers = ["tailwindcss-ls", { name = "typescript-language-server", except-features = [ "format" ] }, "emmet-ls", "biome" ]
+auto-format = true
+
+[[language]]
+name = "typescript"
+language-servers = ["tailwindcss-ls", { name = "typescript-language-server", except-features = [ "format" ] }, "emmet-ls", "biome" ]
+auto-format = true
+
+[[language]]
+name = "tsx"
+auto-format = true
+language-servers = ["tailwindcss-ls", { name = "typescript-language-server", except-features = [ "format" ] }, "emmet-ls", "biome" ]
+
+[[language]]
+name = "jsx"
+auto-format = true
+language-servers = ["tailwindcss-ls", { name = "typescript-language-server", except-features = [ "format" ] }, "emmet-ls", "biome" ]
+
+[[language]]
+name = "css"
+auto-format = true
+language-servers = [{ name = "vscode-css-language-server", except-features = [ "format" ] }, "emmet-ls", "biome" ]
+
+[[language]]
+name = "json"
+language-servers = ["tailwindcss-ls", { name = "vscode-json-language-server", except-features = [ "format" ] }, "emmet-ls", "biome" ]
+
