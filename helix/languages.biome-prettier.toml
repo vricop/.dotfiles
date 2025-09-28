@@ -1,0 +1,33 @@
+# JS/TS/JSON -> Biome
+[[language]]
+name = "javascript"
+formatter = { command = "biome", args = ["format", "--stdin-file-path", "file.js"] }
+
+[[language]]
+name = "jsx"
+formatter = { command = "biome", args = ["format", "--stdin-file-path", "file.jsx"] }
+
+[[language]]
+name = "typescript"
+formatter = { command = "biome", args = ["format", "--stdin-file-path", "file.ts"] }
+
+[[language]]
+name = "tsx"
+formatter = { command = "biome", args = ["format", "--stdin-file-path", "file.tsx"] }
+
+[[language]]
+name = "json"
+formatter = { command = "biome", args = ["format", "--stdin-file-path", "file.json"] }
+
+# HTML/CSS/Markdown -> Prettier
+[[language]]
+name = "html"
+formatter = { command = "prettier", args = ["--stdin-filepath", "file.html"] }
+
+[[language]]
+name = "css"
+formatter = { command = "prettier", args = ["--stdin-filepath", "file.css"] }
+
+[[language]]
+name = "markdown"
+formatter = { command = "prettier", args = ["--stdin-filepath", "file.md"] }

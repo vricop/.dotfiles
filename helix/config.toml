@@ -1,7 +1,6 @@
 theme = "catppuccin_mocha"
 
 [editor]
-line-number = "relative"
 mouse = true
 rulers = [80]
 auto-format = true
@@ -21,10 +20,10 @@ display-inlay-hints = false
 [editor.cursor-shape]
 insert = "bar"
 normal = "block"
-select = "underline"
+select = "block"
 
-[editor.inline-diagnostics]
-cursor-line = "warning"
+[editor.whitespace]
+reder = "all"
 
 [editor.auto-pairs]
 '<' = '>'
@@ -35,10 +34,9 @@ cursor-line = "warning"
 '"' = '"'
 "'" = "'"
 
-# Mappings
 [keys.normal.space]
 q = ":qa"
 "=" = ":format"
-"u" = ":u" # Update (write) buffer
-"x" = ":bc" # Buffer close
-"o" = ":bco" # Close other buffers but current
+"u" = ":u"
+"x" = ":bc"
+"o" = ":bco"

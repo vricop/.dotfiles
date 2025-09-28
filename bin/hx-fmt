@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+usage() {
+  echo "Usage: hx-fmt [biome|prettier|biome-prettier] [PROJECT_DIR=.]" >&2
+  exit 1
+}
+
+choice="${1:-}"
+proj="${2:-.}"
+
+[[ -z "$choice" ]] && usage
+case "$choice" in
+  biome|prettier|biome-prettier) ;;
+  *) usage ;;
+esac
+
+dotfiles="${HOME}/.dotfiles/helix"
+src="${dotfiles}/languages.${choice}.toml"
+dest="${proj%/}/.helix/languages.toml"
+
+[[ -f "$src" ]] || { echo "Error: missing template: $src" >&2; exit 2; }
+
+mkdir -p "$(dirname "$dest")"
+ln -sfn "$src" "$dest"
+echo "Linked: $dest -> $src"
+
+# Friendly formatter check
+case "$choice" in
+  biome)
+    command -v biome >/dev/null 2>&1 || echo "Note: 'biome' not found on PATH."
+    ;;
+  prettier)
+    command -v prettier >/dev/null 2>&1 || echo "Note: 'prettier' not found on PATH."
+    ;;
+  biome-prettier)
+    command -v biome >/dev/null 2>&1 || echo "Note: 'biome' not found on PATH."
+    command -v prettier >/dev/null 2>&1 || echo "Note: 'prettier' not found on PATH."
+    ;;
+esac
