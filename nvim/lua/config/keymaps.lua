@@ -2,10 +2,10 @@ local map = vim.keymap.set
 
 map("n", "<Esc>", ":noh<cr>", { desc = "Stop highlighting", noremap = true, silent = true })
 map("n", "<Leader>w", ":up<Cr>", { desc = "Write buffer", silent = true })
-map("n", "<Leader>W", ":wa<Cr>", { desc = "Write all buffers", silent = true })
+map("n", "<Leader>s", ":wa<Cr>", { desc = "Save all buffers", silent = true })
 map("n", "<Leader>d", ":bd<Cr>", { desc = "Delete buffer", silent = true })
 map("n", "<Leader>D", "<cmd>bufdo bd<cr>", { desc = "Delete all buffers", silent = true })
-map("n", "<Leader>E", ":e $MYVIMRC<Cr>", { desc = "Edit config", silent = true })
+map("n", "<Leader>C", ":e $MYVIMRC<Cr>", { desc = "Edit config", silent = true })
 map("n", "<Leader>b", ":ls<Cr>", { desc = "Show buffers", silent = true })
 
 map("n", "<Leader>o", function()
@@ -31,23 +31,6 @@ map("v", "<Tab>", ">gv", { noremap = true, desc = "Indent" })
 map("v", "<S-Tab>", "<gv", { noremap = true, desc = "Unindent" })
 map("n", "H", ":bp<Cr>", { desc = "Previous buffer", silent = true })
 map("n", "L", ":bn<Cr>", { desc = "Next buffer", silent = true })
-
---NOTE: I cannot use meta key alongside HJKL, this is used by aerospace window
---manager. <C-n> & <C-p> are used as emacs-like counterparts in neovim. Since
---I'm not using this for navigating vertically I can safely reuse this for
---moving lines current line up and down
-map("v", "<C-n>", ":m '>+1<Cr>gv=gv", { desc = "Move line down", silent = true })
-map("n", "<C-n>", ":m .+1<Cr>==", { desc = "Move line down", silent = true })
-map("v", "<C-p>", ":m '<-2<Cr>gv=gv", { desc = "Move line up", silent = true })
-map("n", "<C-p>", ":m .-2<Cr>==", { desc = "Move line up", silent = true })
-
---NOTE: These are using the <C-n> & <C-p> with `g` prefix for duplicating lines
---I still need to think for a better keymap for this
-map("n", "g<C-n>", ":t+0<Cr>", { desc = "Duplicate line below", silent = true })
-map("v", "g<C-n>", ":t'>+0<Cr>", { desc = "Duplicate line below", silent = true })
-map("n", "g<C-p>", ":t-1<Cr>", { desc = "Duplicate line above", silent = true })
-map("v", "g<C-p>", ":t'<-1<Cr>", { desc = "Duplicate line above", silent = true })
-
 map("v", ">", ">gv", { desc = "Indent selection right", noremap = true })
 map("v", "<", "<gv", { desc = "Indent selection left", noremap = true })
 map("n", "n", "nzz", { desc = "Next occurrency & center" })
@@ -56,6 +39,8 @@ map("n", "*", "*zz", { desc = "Next occurrency & center" })
 map("n", "#", "#zz", { desc = "Previous occurrency & center" })
 map("n", "g*", "g*zz", { desc = "Next occurrency & center" })
 map("n", "g#", "g#zz", { desc = "Previous occurrency & center" })
+map({ "n", "v" }, "k", "gk", { desc = "Move up" })
+map({ "n", "v" }, "j", "gj", { desc = "Move down" })
 map("n", "<C-d>", "<C-d>zz", { desc = "Move screen up & center" })
 map("n", "<C-u>", "<C-u>zz", { desc = "Move screen down & center" })
 map("n", "<C-h>", "<C-w>h", { desc = "Move to window left" })
@@ -123,4 +108,3 @@ end, { desc = "Toggle spelling" })
 
 map("n", "<Leader>t", ":InspectTree<Cr>", { silent = true, desc = "Inspect tree" })
 map("n", "<Leader>r", ":update<Cr> :source<Cr>", { silent = true, desc = "Reload config" })
-
