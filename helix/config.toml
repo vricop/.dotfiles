@@ -5,6 +5,7 @@ mouse = true
 rulers = [80]
 auto-format = true
 color-modes = true
+bufferline = "always"
 
 [editor.statusline]
 left = [ "mode", "spacer", "version-control", "spacer", "file-modification-indicator", "spacer", "spinner" ]
@@ -33,6 +34,9 @@ reder = "all"
 '`' = '`'
 '"' = '"'
 "'" = "'"
+
+[keys.normal.g] 
+"h" = "goto_first_nonwhitespace"
 
 [keys.normal.space]
 q = ":qa"
