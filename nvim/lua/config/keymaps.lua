@@ -23,7 +23,7 @@ end, {
 })
 
 map("n", "<Leader>q", ":qa<Cr>", { desc = "Quit Neovim", silent = true })
-map("n", "<Leader>c", ":close<Cr>", { desc = "Close window", silent = true })
+map("n", "<Leader>x", ":close<Cr>", { desc = "Close window", silent = true })
 map("n", "J", "mzJ`z", { desc = "Join lines and center screen" })
 map("n", "<Tab>", ">>", { noremap = true, desc = "Indent" })
 map("n", "<S-Tab>", "<<", { noremap = true, desc = "Unindent" })
@@ -108,3 +108,32 @@ end, { desc = "Toggle spelling" })
 
 map("n", "<Leader>t", ":InspectTree<Cr>", { silent = true, desc = "Inspect tree" })
 map("n", "<Leader>r", ":update<Cr> :source<Cr>", { silent = true, desc = "Reload config" })
+map("n", "<Leader>U", function()
+	vim.pack.update()
+end, { desc = "Update packages" })
+map("n", "<Leader>l", "<cmd>Lazy<cr>", { desc = "Lazy", silent = true })
+
+--- Integrate CLI programs within Neovim terminals
+map("n", "<Leader>gg", function()
+	vim.cmd([[
+    term lazygit
+    file lazygit
+    startinsert
+  ]])
+end, { desc = "Open LazyGit", silent = true })
+
+map("n", "<Leader>a", function()
+	vim.cmd([[
+    term opencode
+    file opencode
+    startinsert
+  ]])
+end, { desc = "Open Opencode", silent = true })
+
+map("n", "<Leader>r", function()
+	vim.cmd([[
+    term serpl
+    file serpl
+    startinsert
+  ]])
+end, { desc = "Open serpl", silent = true })
