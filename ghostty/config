@@ -1,7 +1,5 @@
 theme = Catppuccin Macchiato
 font-family = IosevkaTerm Nerd Font Props
-# font-family = Victor Mono
-# font-family = PragmataPro Liga
 font-style = Semibold
 font-size = 20
 adjust-box-thickness = 1
