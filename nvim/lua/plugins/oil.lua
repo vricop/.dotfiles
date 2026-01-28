@@ -1,4 +1,7 @@
-vim.pack.add({ "https://github.com/stevearc/oil.nvim" })
-require("oil").setup()
-
-vim.keymap.set("n", "-", "<Cmd>Oil<CR>", { desc = "Open parent directory" })
+return {
+  'stevearc/oil.nvim',
+  opts = {},
+  keys = {
+    { '-', '<Cmd>Oil<CR>', desc = 'Open parent directory' },
+  },
+}

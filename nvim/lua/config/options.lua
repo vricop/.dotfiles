@@ -2,7 +2,6 @@ vim.opt.backup = false                                  -- Creates a backup file
 vim.opt.clipboard = "unnamedplus"                       -- Clipboard mode, `unnamedplus` is for the system clipboard
 vim.opt.cmdheight = 1                                   -- Command line height
 vim.opt.colorcolumn = "80"                              -- Show vertical column line
-vim.opt.completeopt = { "menu", "menuone", "noselect" } -- Mostly just for cmp
 vim.opt.conceallevel = 0                                -- So that `` is visible in markdown files
 vim.opt.cursorline = true                               -- Highlight the current line
 vim.opt.expandtab = true                                -- Convert tabs to spaces
@@ -24,7 +23,6 @@ vim.opt.sidescrolloff = 8                               -- The minimal number of
 vim.opt.signcolumn = "yes"                              -- Sign column (number, diagnostics, etc)
 vim.opt.smartcase = true                                -- Smart case
 vim.opt.smartindent = true                              -- Make indenting smarter again
-vim.opt.spell = true                                    -- Enable spelling
 vim.opt.spelllang = { "en", "fr", "ca", "it" }          -- Install spelling for these languages
 vim.opt.spelloptions = { "camel" }                      -- Spell options, separate camel case words
 vim.opt.splitbelow = true                               -- Force all horizontal splits to go below current window
@@ -34,41 +32,28 @@ vim.opt.tabstop = 2                                     -- Tabs
 vim.opt.termguicolors = true                            -- Set term gui colors (most terminals support this)
 vim.opt.undofile = true                                 -- Enable persistent undo
 vim.opt.updatetime = 300                                -- Faster completion (4000ms default)
+vim.opt.timeout = true
+vim.opt.timeoutlen = 300
 vim.opt.wrap = false                                    -- Display lines as one long line
 vim.opt.writebackup = false                             -- If a file is being edited by another program (or was written to file while editing with another program) it is not allowed to be edited
 vim.opt.cursorcolumn = true                             -- Draw vertical column for the cursor position
 vim.opt.pumheight = 10                                  -- Pop up menu height
 vim.opt.grepprg = "rg --vimgrep --smart-case"           -- Use ripgrep instead of grep
 vim.opt.grepformat = "%f:%l:%c:%m"                      -- Use this cli format for ripgrep
-vim.opt.statuscolumn = "%s %l "
-vim.opt.list = true
-vim.opt.wrap = true
-
-vim.opt.fillchars = {
-  foldopen = "",
-  foldclose = "",
-  fold = " ",
-  foldsep = " ",
-  diff = "╱",
-  eob = " ",
-}
-
-vim.opt.listchars = {
-  tab = " ",
-  space = "·",
-  trail = "·",
-  extends = "›",
-  precedes = "‹",
-  nbsp = "␣",
-}
-
-vim.opt.shortmess:append("c")                   -- Hide short messages, `appends` means don't show message (specified with a letter)
-vim.opt.whichwrap:append("<,>,[,],h,l")         -- Set what commands wrap to the next line when at the end of the line
-vim.opt.wildignore:append("**/node_modules/**") -- Don't show results from `node_modules` recursively
-vim.opt.path:append("**")                       -- Tell Neovim to look in all subdirectories relative to the current directory when searching for a file
+-- statuscolumn handled by snacks.statuscolumn
+vim.opt.shortmess:append("c")                           -- Hide short messages, `appends` means don't show message (specified with a letter)
+vim.opt.whichwrap:append("<,>,[,],h,l")                 -- Set what commands wrap to the next line when at the end of the line
+vim.opt.wildignore:append("**/node_modules/**")         -- Don't show results from `node_modules` recursively
+vim.opt.path:append("**")                               -- Tell Neovim to look in all subdirectories relative to the current directory when searching for a file
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldtext = ""                                   -- Use treesitter highlighting for fold text
 vim.opt.foldlevel = 99
 vim.opt.foldlevelstart = 99
+vim.opt.fillchars:append("fold: ")                      -- Clean fold fill character
+
 vim.cmd("colorscheme unokai")
 vim.cmd("highlight WinSeparator guibg=None") -- Thin split lines
+
 vim.g.mapleader = " "                        -- Set leader key
 vim.o.exrc = true                            -- Automatically execute .nvim.lua, .nvimrc, and .exrc files in the current directory

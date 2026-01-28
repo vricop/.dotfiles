@@ -1,21 +1,35 @@
--- TODO: Config vitels
-
-vim.pack.add({ "https://github.com/nvim-treesitter/nvim-treesitter" })
-
-require("nvim-treesitter.configs").setup({
-	ensure_installed = {
-		"markdown",
-		"dot",
-		"bash",
-		"html",
-		"javascript",
-		"typescript",
-    -- "vitels",
-		"tsx",
-		"vue",
-		"svelte",
-		"css",
-		"lua",
+return {
+	"nvim-treesitter/nvim-treesitter",
+	build = ":TSUpdate",
+	opts = {
+		indent = { enable = true },
+		highlight = { enable = true },
+		folds = { enable = true },
+		ensure_installed = {
+			"bash",
+			"c",
+			"diff",
+			"html",
+			"javascript",
+			"jsdoc",
+			"json",
+			"jsonc",
+			"lua",
+			"luadoc",
+			"luap",
+			"markdown",
+			"markdown_inline",
+			"printf",
+			"python",
+			"query",
+			"regex",
+			"toml",
+			"tsx",
+			"typescript",
+			"vim",
+			"vimdoc",
+			"xml",
+			"yaml",
+		},
 	},
-	highlight = { enable = true },
-})
+}

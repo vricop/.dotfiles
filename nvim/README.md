@@ -31,13 +31,13 @@ Some rules I follow:
 ```txt
 <Leader>
 ├──► q       # Quit neovim
-├──► f       # Find file (native, opens cmd with '**/<cursor>')
+├──► space   # Find file (native, opens cmd with '**/<cursor>')
 ├──► d       # Delete buffer
 ├──► D       # Delete all buffers
 ├──► o       # Delete other buffers but current
-├──► c       # Close window
+├──► x       # Close window
 ├──► w       # Write buffer
-├──► W       # Write all buffers
+├──► s       # Save current work
 ├──► k       # Show keybindings
 ├──► @       # Show registers
 ├──► '       # Show marks
@@ -48,7 +48,7 @@ Some rules I follow:
 ├──► ,       # Find within buffers
 ├──► e       # Open tree view (mini.picker plugin)
 ├──► -       # Open current parent folder (oil plugin)
-└──► E       # Open neovim config file
+└──► C       # Open neovim config file
 ```
 
 ### Grouped actions
