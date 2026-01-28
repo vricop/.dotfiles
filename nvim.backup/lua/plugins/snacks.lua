@@ -16,6 +16,9 @@ return {
       },
     },
     input = { enabled = true },
+    indent = { enabled = true },
+    scope = { enabled = true },
+    statuscolumn = { enabled = true },
   },
   keys = {
     -- Top Pickers & Explorer
