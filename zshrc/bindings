@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+open-nvim() { nvim }
+open-lazygit() { lazygit }
+open-serpl() { serpl }
+
+zle -N open-nvim
+zle -N open-lazygit
+zle -N open-serpl
+
+bindkey '^V' open-nvim
+bindkey '^G' open-lazygit
+bindkey '^_' open-serpl

@@ -1,11 +1,12 @@
 export ZSH="$HOME/.oh-my-zsh"
 
-# Path
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/.cargo/bin:$PATH"
-export PATH="$HOME/.config/emacs/bin:$PATH"
-export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/17/bin
-export PATH="$HOME/.dotfiles/bin:$PATH"
+# Paths
+export PATH=$HOME/.local/bin:$PATH
+export PATH=$HOME/.cargo/bin:$PATH
+export PATH=$HOME/.config/emacs/bin:$PATH
+export PATH=/Applications/Postgres.app/Contents/Versions/17/bin:$PATH
+export PATH=$HOME/.dotfiles/bin:$PATH
+export PATH=$HOME/.opencode/bin:$PATH
 
 # env vars
 export XDG_CONFIG_HOME=$HOME/.config
@@ -24,6 +25,8 @@ if [[ ":$FPATH:" != *":$HOME/.zsh/completions:"* ]]; then
   export FPATH="$HOME/.zsh/completions:$FPATH"; 
 fi
 
+# Oh my zsh config
+
 ZSH_THEME="refined"
 
 plugins=(
@@ -36,18 +39,23 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-# Node Version Manager
+# nvm (Node Version Manager)
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Load all config files
-for file in ~/zshrc/*; do
-  . $file
-done
+. $HOME/zshrc/vim_mode
+. $HOME/zshrc/fzf
+. $HOME/zshrc/alias
+. $HOME/zshrc/bindings
+. $HOME/zshrc/tmux
+. $HOME/zshrc/myinvestor
+. $HOME/zshrc/functions
 
+eval "$(atuin init zsh)"
 eval "$(starship init zsh)"
-# eval $(ssh-agent)
+
 . "$HOME/.deno/env"
 
 # pnpm
@@ -56,13 +64,3 @@ case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-
-# opencode
-export PATH=$HOME/.opencode/bin:$PATH
-
-# MyInvestor nvm config
-. "$HOME/.dotfiles/zshrc/myinvestor.zsh"

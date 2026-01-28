@@ -1,12 +1,8 @@
+#!/usr/bin/env bash
+
 # Enable zsh vi mode
 # bindkey -v
 export KEYTIMEOUT=1
-
-# Open nvim with Control+V
-open-nvim() { nvim }
-zle -N open-nvim
-
-bindkey '^V' open-nvim
 
 # Use vim keys in tab complete menu:
 bindkey -M menuselect 'h' vi-backward-char
@@ -17,6 +13,7 @@ bindkey -M menuselect 'left' vi-backward-char
 bindkey -M menuselect 'down' vi-down-line-or-history
 bindkey -M menuselect 'up' vi-up-line-or-history
 bindkey -M menuselect 'right' vi-forward-char
+
 # Emacs-like movements in insert mode
 bindkey -M viins '^F' forward-char
 bindkey -M viins '^B' backward-char

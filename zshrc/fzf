@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Use `fd` as the source. It respects .gitignore by default.
 # We also explicitly exclude .git and node_modules.
 export FZF_DEFAULT_COMMAND="fd --type f --strip-cwd-prefix --exclude .git --exclude node_modules"
@@ -27,4 +29,4 @@ export FZF_ALT_C_OPTS="
   --preview 'tree -L 1 -C {}'
 "
 
-source <(fzf --zsh)
+. <(fzf --zsh)

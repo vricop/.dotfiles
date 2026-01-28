@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+# Change directory and list contents
+cd() {
+    builtin cd "$@" && ls
+}
+
+..() {
+    builtin cd .. && ls
+}
+
+# Run after any directory change (including AUTO_CD) to list contents
+chpwd() {
+    ls
+}

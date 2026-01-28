@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 alias config="$CONFIG"
 alias dotfiles="$HOME/.dotfiles"
 alias nvimconfig="$CONFIG/nvim"
@@ -15,25 +17,41 @@ alias ci="npm ci"
 alias pack="npm pack --pack-destination"
 alias clean="rm -rf node_modules && npm ci"
 
+# Yarn
+alias y="yarn"
+alias yi="yarn install"
+alias ya="yarn add"
+alias yad="yarn add -D"
+alias yrm="yarn remove"
+alias yr="yarn run"
+alias yd="yarn dev"
+alias yb="yarn build"
+alias yt="yarn test"
+alias ye2e="yarn test:e2e"
+alias ycc="yarn cache clean"
+alias yo="yarn outdated"
+alias pr="yarn playwright show-report"
+
 alias -s {js,jsx,ts,html,css,scss,sass,json,md,txt,php,yml,vue}=$EDITOR
 
 # Neovim distros
 alias nvchad="NVIM_APPNAME='nvchad' nvim"
 alias lvim="NVIM_APPNAME=lvim nvim"
+alias astro="NVIM_APPNAME='astronvim' nvim"
 
-# Better commands
-alias ls="eza \
-  --color=always \
-  --icons=always \
-  --long \
-  --no-filesize \
-  --no-permissions \
-  --no-time \
-  --no-user \
-  -stype \
-  -G \
-  -w80 \
-"
+# Better commands, sorthands or added flags
+# alias ls="eza \
+#   --color=always \
+#   --icons=always \
+#   --long \
+#   --no-filesize \
+#   --no-permissions \
+#   --no-time \
+#   --no-user \
+#   -stype \
+#   -G \
+#   -w80 \
+# "
 alias rm="trash -F"
 alias cat="bat"
 alias mkdir"mkdir -p -v"
@@ -42,13 +60,24 @@ alias v="nvim"
 alias vi="nvim"
 alias vim="nvim"
 alias tree="tree -C"
+alias z="lazygit"
+alias rep="serpl"
 
-# Manage zshrc
-alias reload-zshrc='source ~/.zshrc && reset && zsh'
+# Git shortcuts
+alias gc="git commit"
+alias gs="git status"
+alias gl="git log"
+alias gco="git checkout"
+alias lasttag='git describe --abbrev=0--tags'
+
+# Reload zshrc config
+reload() {
+  . ~/.zshrc
+  echo ".zshrc was sourced"
+}
+
 alias edit-zshrc="$EDITOR ~/.zshrc"
-alias edit-aliases="nvim ~/zshrc/alias.zsh"
-
-alias lasttag='git describe --abbrev=0 --tags'
+alias edit-aliases="nvim ~/zshrc/alias"
 
 # Projects
 alias side="$REPOS/side"
@@ -63,3 +92,6 @@ alias c=courses
 alias components="$REPOS/work/components/storybook"
 alias testing="$REPOS/work/components/testing"
 alias tokens="$REPOS/work/tokens"
+
+alias python="python3"
+alias pip="pip3"
