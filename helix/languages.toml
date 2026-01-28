@@ -5,42 +5,22 @@ name = "emmet-ls"
 file-types = ["tsx", "jsx", "html"]
 language-server = { command = "emmet-ls" }
 
-# [[language]]
-# name = "tsx"
-# language-servers = [
-#   "tailwindcss-ls", "typescript-language-server", "emmet-ls", "tailwindcss-ls", "biome"
-# ]
-
-[language-server.biome]
-command = "biome"
-args = ["lsp-proxy"]
+[language-server.astro-ls]
+command = "astro-ls"
+args = [ "--stdio" ]
+config = { typescript = { tsdk = "node_modules/typescript/lib" } }
 
 [[language]]
-name = "javascript"
-language-servers = ["tailwindcss-ls", { name = "typescript-language-server", except-features = [ "format" ] }, "emmet-ls", "biome" ]
+name = "astro"
+scope = "source.astro"
+injection-regex = "astro"
+file-types = ["astro"]
+block-comment-tokens = { start = "<!--", end = "-->" }
+indent = { tab-width = 2, unit = "  " }
+language-servers = [ "astro-ls" ]
 auto-format = true
+formatter = { command = "prettierd", args = ["--stdin-filepath", "%{buffer_name}"] }
 
-[[language]]
-name = "typescript"
-language-servers = ["tailwindcss-ls", { name = "typescript-language-server", except-features = [ "format" ] }, "emmet-ls", "biome" ]
-auto-format = true
-
-[[language]]
-name = "tsx"
-auto-format = true
-language-servers = ["tailwindcss-ls", { name = "typescript-language-server", except-features = [ "format" ] }, "emmet-ls", "biome" ]
-
-[[language]]
-name = "jsx"
-auto-format = true
-language-servers = ["tailwindcss-ls", { name = "typescript-language-server", except-features = [ "format" ] }, "emmet-ls", "biome" ]
-
-[[language]]
-name = "css"
-auto-format = true
-language-servers = [{ name = "vscode-css-language-server", except-features = [ "format" ] }, "emmet-ls", "biome" ]
-
-[[language]]
-name = "json"
-language-servers = ["tailwindcss-ls", { name = "vscode-json-language-server", except-features = [ "format" ] }, "emmet-ls", "biome" ]
-
+[[grammar]]
+name = "astro"
+source = { git = "https://github.com/virchau13/tree-sitter-astro", rev = "947e93089e60c66e681eba22283f4037841451e7" }# [[language]]
